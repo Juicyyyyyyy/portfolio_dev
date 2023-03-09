@@ -1,0 +1,12 @@
+.hero-image {
+  transition: transform 0.5s;
+}
+
+.hero-image {
+  transform: scale(1.30);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
