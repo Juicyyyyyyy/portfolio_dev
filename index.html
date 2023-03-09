@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.all.min.js"></script>
 
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
@@ -26,11 +27,11 @@
 
         <nav class="flex items-center" id="nav-content">
         <ul class="list-reset lg:flex justify-end flex-1 items-center ml-auto">
-          <li class="mr-3">
-            <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll" data-duration="300" href="#projects">Projects</a>
+                    <li class="mr-3">
+            <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll" data-duration="300" href="#about">About</a>
           </li>
           <li class="mr-3">
-            <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll" data-duration="300" href="#about">About</a>
+            <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll" data-duration="300" href="#projects">Projects</a>
           </li>
           <li class="mr-3">
             <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll" data-duration="300" href="#skills">Skills</a>
@@ -45,18 +46,20 @@
 </header>
 
 <!-- Hero Section -->
-<section id="hero" class="bg-gradient-to-b from-purple-800 to-purple-500 text-gray-100 py-32">
+<!-- Hero Section -->
+<section id="hero" class="bg-gray-900 text-white py-32" >
   <div class="container mx-auto px-4 flex flex-wrap items-center">
-    <div class="w-full lg:w-1/2">
+    <div class="w-full lg:w-1/2" >
       <h1 class="text-4xl lg:text-5xl font-bold leading-none mb-6 animate__animated animate__fadeInDown">Showcase Your Coding Skills</h1>
       <p class="text-xl lg:text-2xl font-light mb-10 animate__animated animate__fadeInDown animate__delay-1s">Impress potential employers with a stunning, modern and interactive portfolio design that showcases your unique skills.</p>
-      <a href="#projects" class="inline-block mt-8 py-4 px-8 text-lg bg-gray-100 text-purple-800 font-bold rounded-full hover:bg-purple-400 transition duration-200 animate__animated animate__fadeInDown animate__delay-1s">View Projects</a>
+      <a href="#projects" class="inline-block mt-8 py-4 px-8 text-lg bg-white text-gray-900 font-bold rounded-full hover:bg-purple-700 transition duration-200 animate__animated animate__fadeInDown animate__delay-1s">View Projects</a>
     </div>
-    <div class="w-full lg:w-1/2 lg:pl-16 mt-12 lg:mt-0 flex items-center justify-center">
-      <img src="/img/best.png" alt="Hero Image" class="w-full h-auto rounded-lg shadow-lg hero-image animate__animated animate__fadeInRight">
+    <div class="w-full lg:w-1/2 lg:pl-16 mt-12 lg:mt-0 flex items-center justify-center" >
+      <img src="/img/best.png"  alt="Hero Image" class="w-full h-auto rounded-lg shadow-lg hero-image animate__animated animate__fadeInRight">
     </div>
   </div>
 </section>
+
 
 
 <!-- About Section -->
@@ -282,6 +285,10 @@
 </footer>
 
   <script src='https://cdn.tailwindcss.com'></script>
+  <script>
+  AOS.init();
+</script>
+
   </body>
 </html>
 
