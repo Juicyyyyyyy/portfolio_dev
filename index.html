@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,19 +7,22 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="js/script.js"></script>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.all.min.js"></script>
-
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.9/lottie.min.js" integrity="sha512-MeRp/4HXl4xHjIv8BCZS1Nrmc9e9OuPvR8zDfjw/v6xqu/LVU2v6OG3MhU5Ub6U5X5cEhGyP7oCGB58cJDx7Ag==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+ <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
 
+
   </head>
-  <body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+  <body class="bg-gray-100 font-sans leading-normal tracking-normal" >
+
     <!-- Navigation Bar -->
 <header>
-  <nav class="bg-white p-4 fixed w-full z-10 top-0 shadow">
+  <nav class="bg-white p-4 w-full z-10 top-0 shadow">
     <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
       <div class="flex items-center">
         <a class="text-2xl font-bold" href="#" js-smooth-scroll data-duration="300">Corentin Dupaigne</a>
@@ -45,19 +48,27 @@
   </nav>
 </header>
 
+
+
+  <div class="animate__animated animate__fadeInUp">
 <!-- Hero Section -->
-<section id="hero" class="bg-gradient-to-br from-pink-500 to-purple-600 py-32 h-screen">
-  <div class="container mx-auto px-8 lg:px-20 flex flex-wrap items-center justify-center">
-    <div class="w-full lg:w-1/2 text-center">
-      <h1 class="text-5xl lg:text-7xl font-bold leading-tight mb-8 text-white tracking-tighter">Unleash Your Coding Genius</h1>
-      <p class="text-lg lg:text-xl font-medium mb-12 text-white opacity-90">Show off your creative coding skills with an outstanding, interactive and visually stunning portfolio design that makes a bold impression.</p>
-      <a href="#projects" class="inline-block bg-white hover:bg-purple-500 text-purple-500 font-bold py-4 px-8 rounded-full transition duration-200">View Projects</a>
+<!-- Hero Section -->
+<section class="hero bg-gray-900 text-white">
+  <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-4 py-16">
+    <div class="md:w-1/2 mb-12 md:mb-0">
+      <h1 class="text-5xl font-bold mb-6 text-center md:text-left">Your Name</h1>
+      <h2 class="text-2xl mb-8 text-center md:text-left">Full Stack Web Developer</h2>
+      <p class="text-xl mb-8 text-center md:text-left">I'm a full stack web developer with a passion for creating beautiful and functional web applications. With over 5 years of experience, I've worked on projects ranging from small business websites to large-scale enterprise applications. Let's work together to bring your ideas to life!</p>
+      <a href="#projects" class="bg-white text-gray-900 px-6 py-3 rounded-full font-bold hover:bg-gray-200 transition-colors duration-300 block mx-auto md:mx-0 md:ml-0">View Projects</a>
     </div>
-    <div class="w-full lg:w-1/2 lg:pl-16 mt-12 lg:mt-0 flex items-center justify-center">
-      <img src="/img/best.png" alt="Hero Image" class="w-full h-auto rounded-lg shadow-2xl transform -rotate-6 hover:rotate-0 transition duration-500">
+    <div class="md:w-1/2">
+      <img src="img/corentin.jpg" alt="Your Name" class="rounded-full shadow-lg mx-auto"/>
     </div>
   </div>
 </section>
+
+
+
 
 
 
@@ -67,78 +78,122 @@
     <h2 class="text-4xl font-bold mb-4 text-gray-800 text-center">About Me</h2>
     <p class="text-gray-600 mb-8 text-center">Here's a little bit about who I am and what I do</p>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl">
+      <div class="bg-white rounded-lg overflow-hidden shadow-lg">
         <img class="w-full h-64 object-cover" src="/img/moscow-cityscape-wallpaper.jpg" alt="Profile">
         <div class="p-6">
-          <h3 class="font-bold text-xl mb-2"><a href="#" class="hover:text-purple-500 hover:underline">Your Name</a></h3>
+          <h3 class="font-bold text-xl mb-2 text-gray-800 hover:text-purple-500 transition duration-300 ease-in-out"><a href="#" class="hover:underline">Your Name</a></h3>
           <p class="text-gray-700 text-base leading-7">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel metus scelerisque, molestie metus quis, bibendum lorem. Aliquam id bibendum turpis, eu consectetur massa.</p>
         </div>
       </div>
       <div class="p-6">
         <p class="text-gray-700 text-base leading-7">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel metus scelerisque, molestie metus quis, bibendum lorem. Aliquam id bibendum turpis, eu consectetur massa. Praesent malesuada lobortis sapien, a sodales dolor tincidunt vel. Nulla tincidunt bibendum turpis, sit amet posuere elit efficitur at. Curabitur vel nibh a arcu aliquet tempor eu a tellus. Duis nec augue vel ex interdum rhoncus at vel massa. Integer tincidunt metus id elementum euismod. Donec consectetur aliquet dolor, sit amet tempor tortor. Aenean hendrerit elit in enim laciniaincidunt id. Duis ut lorem id arcu blandit laoreet sit amet sit amet ex. Nunc vehicula a sapien eu sagittis. Donec vitae nibh eget velit placerat ultrices.</p>
-</div>
-</div>
-
+      </div>
+    </div>
   </div>
 </section>
 
 
-    <!-- Projects Section -->
-   <section id="projects" class="bg-gray-100 py-20">
+
+<!-- Projects Section -->
+<section id="projects" class="bg-gray-100 py-20">
   <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold mb-4 text-gray-800 text-center">Projects</h2>
-    <p class="text-gray-600 mb-12 text-center">Here are some of my recent projects</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      <!-- Project #1 -->
-      <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
-        <a href="#">
-          <img class="w-full h-64 object-cover object-center" src="/img/vcvcvc.png" alt="Project 1">
-        </a>
-        <div class="p-4">
-          <a href="#" class="inline-block py-1 px-2 bg-gray-200 text-gray-800 rounded-full text-xs uppercase font-bold mb-2">Web Development</a>
-          <h3 class="font-bold text-2xl mb-2"><a href="#" class="hover:text-purple-600 hover:underline">Project 1</a></h3>
-          <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel metus scelerisque, molestie metus quis, bibendum lorem. Aliquam id bibendum turpis, eu consectetur massa.</p>
+    <h2 class="text-4xl font-bold mb-2 text-gray-800 text-center">My Projects</h2>
+    <p class="text-gray-600 mb-8 text-center">Check out some of my recent work</p>
+    <div class="flex flex-wrap -mx-4">
+
+      <div class="w-full md:w-1/2 px-4 mb-8">
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+          <img class="w-full" src="/img/moscow-cityscape-wallpaper.jpg" alt="Project Image">
+          <div class="p-4">
+            <h3 class="font-bold text-2xl mb-2"><a href="#" class="hover:text-indigo-600 hover:underline">Project Title</a></h3>
+            <p class="text-gray-700 text-base mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sodales augue vitae ligula bibendum, nec fermentum est hendrerit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec tristique eleifend sem, a iaculis ipsum bibendum ut. </p>
+            <ul class="list-none">
+              <li class="mb-2">
+                <strong class="text-gray-700">Technologies:</strong> HTML, CSS, JavaScript, React
+              </li>
+              <li class="mb-2">
+                <strong class="text-gray-700">Features:</strong> Responsive design, dynamic content, user authentication
+              </li>
+              <li>
+                <strong class="text-gray-700">Github:</strong> <a href="#">Link to Github repository</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-        <!-- Project #2 -->
-  <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
-    <a href="#">
-      <img class="w-full h-64 object-cover object-center" src="/img/1000_F_373494941_y6xTg7WcCKGNIWQMwKKcAp6rUbOWBuZ0.jpg" alt="Project 2">
-    </a>
-    <div class="p-4">
-      <a href="#" class="inline-block py-1 px-2 bg-gray-200 text-gray-800 rounded-full text-xs uppercase font-bold mb-2">Web Development</a>
-      <h3 class="font-bold text-2xl mb-2"><a href="#" class="hover:text-purple-600 hover:underline">Project 2</a></h3>
-      <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel metus scelerisque, molestie metus quis, bibendum lorem. Aliquam id bibendum turpis, eu consectetur massa.</p>
+
+      <div class="w-full md:w-1/2 px-4 mb-8">
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+          <img class="w-full" src="img/moscow-cityscape-wallpaper.jpg" alt="Project Image">
+          <div class="p-4">
+            <h3 class="font-bold text-2xl mb-2"><a href="#" class="hover:text-indigo-600 hover:underline">Project Title</a></h3>
+            <p class="text-gray-700 text-base mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sodales augue vitae ligula bibendum, nec fermentum est hendrerit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec tristique eleifend sem, a iaculis ipsum bibendum ut. </p>
+            <ul class="list-none">
+              <li class="mb-2">
+                <strong class="text-gray-700">Technologies:</strong> HTML, CSS, JavaScript, React
+              </li>
+              <li class="mb-2">
+                <strong class="text-gray-700">Features:</strong> Responsive design, dynamic content, user authentication
+              </li>
+              <li>
+                <strong class="text-gray-700">Github:</strong> <a href="#">Link to Github repository</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full md:w-1/2 px-4 mb-8">
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+          <img class="w-full" src="img/moscow-cityscape-wallpaper.jpg" alt="Project Image">
+          <div class="p-4">
+            <h3 class="font-bold text-2xl mb-2"><a href="#" class="hover:text-indigo-600 hover:underline">Project Title</a></h3>
+            <p class="text-gray-700 text-base mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sodales augue vitae ligula bibendum, nec fermentum est hendrerit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec tristique eleifend sem, a iaculis ipsum bibendum ut. </p>
+            <ul class="list-none">
+              <li class="mb-2">
+                <strong class="text-gray-700">Technologies:</strong> HTML, CSS, JavaScript, React
+              </li>
+              <li class="mb-2">
+                <strong class="text-gray-700">Features:</strong> Responsive design, dynamic content, user authentication
+              </li>
+              <li>
+                <strong class="text-gray-700">Github:</strong> <a href="#">Link to Github repository</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full md:w-1/2 px-4 mb-8">
+        <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+          <img class="w-full" src="img/moscow-cityscape-wallpaper.jpg" alt="Project Image">
+          <div class="p-4">
+            <h3 class="font-bold text-2xl mb-2"><a href="#" class="hover:text-indigo-600 hover:underline">Project Title</a></h3>
+            <p class="text-gray-700 text-base mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sodales augue vitae ligula bibendum, nec fermentum est hendrerit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec tristique eleifend sem, a iaculis ipsum bibendum ut. </p>
+            <ul class="list-none">
+              <li class="mb-2">
+                <strong class="text-gray-700">Technologies:</strong> HTML, CSS, JavaScript, React
+              </li>
+              <li class="mb-2">
+                <strong class="text-gray-700">Features:</strong> Responsive design, dynamic content, user authentication
+              </li>
+              <li>
+                <strong class="text-gray-700">Github:</strong> <a href="#">Link to Github repository</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- Project #3 -->
-  <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
-    <a href="#">
-      <img class="w-full h-64 object-cover object-center" src="/img/1000_F_199085055_PHnnW6fDvptWOHj6mAVtKiXXYZ4yXc0m.jpg" alt="Project 3">
-    </a>
-    <div class="p-4">
-      <a href="#" class="inline-block py-1 px-2 bg-gray-200 text-gray-800 rounded-full text-xs uppercase font-bold mb-2">Web Development</a>
-      <h3 class="font-bold text-2xl mb-2"><a href="#" class="hover:text-purple-600 hover:underline">Project 3</a></h3>
-      <p class="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel metus scelerisque, molestie metus quis, bibendum lorem. Aliquam id bibendum turpis, eu consectetur massa.</p>
-    </div>
-  </div>
 
-  <!-- Project #4 -->
-  <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
-<a href="#">
-<img class="w-full h-64 object-cover object-center" src="/img/project-4.png" alt="Project 4">
-</a>
-<div class="p-4">
-<a href="#" class="inline-block py-1 px-2 bg-gray-200 text-gray-800 rounded-full text-xs uppercase font-bold mb-2">Web Development</a>
-<h3 class="font-bold text-2xl mb-2"><a href="#" class="hover:text-purple-600 hover:underline">Project 4</a></h3>
-<p class="text-gray-700 text-base">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vel metus scelerisque, molestie metus quis, bibendum lorem. Aliquam id bibendum turpis, eu consectetur massa.</p>
-</div>
-</div>
-</div>
-
-  </div>
 </section>
+
+
+
+
+
 
 
 <!-- Skills Section -->
@@ -335,11 +390,15 @@ viewBox="0 0 24 24">
 </footer>
 
   <script src='https://cdn.tailwindcss.com'></script>
+  <script src="js/script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-  AOS.init();
-</script>
-
+    AOS.init();
+  </script>
+  </div>
   </body>
+
+  </div>
 </html>
 
 

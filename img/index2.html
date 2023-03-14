@@ -1,24 +1,95 @@
-<!-- Hero Section -->
-<section class="relative overflow-hidden">
-  <!-- Overscroll Section -->
-  <div class="absolute top-0 left-0 w-full h-full overflow-hidden">
-    <div class="w-full h-full absolute top-0 left-0 transform-gpu skew-y-6 origin-top-right bg-gradient-to-r from-purple-700 to-indigo-700"></div>
-    <div class="w-full h-full absolute top-0 left-0 transform-gpu skew-y-6 origin-bottom-left bg-gradient-to-r from-yellow-500 to-red-500"></div>
-  </div>
-
-  <!-- Hero Container -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Developer Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css">
+  </head>
+  <body>
+    <header class="bg-gray-900 text-white py-4">
+      <div class="container mx-auto flex justify-between items-center px-4">
+        <h1 class="font-bold text-lg">Your Name</h1>
+        <nav>
+          <ul class="flex space-x-4">
+            <li><a href="#" class="hover:text-gray-300">Home</a></li>
+            <li><a href="#" class="hover:text-gray-300">About</a></li>
+            <li><a href="#" class="hover:text-gray-300">Projects</a></li>
+            <li><a href="#" class="hover:text-gray-300">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <main class="container mx-auto py-12">
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold mb-4">About Me</h2>
+        <p class="text-gray-700 leading-loose">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat blandit malesuada. Aenean ac mauris eu dolor eleifend vestibulum. Maecenas ullamcorper eros ut massa sagittis, eget bibendum sem sagittis.
+        </p>
+      </section>
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold mb-4">Skills</h2>
+        <ul class="grid grid-cols-2 gap-4">
+          <li class="bg-gray-100 p-4 rounded shadow-sm">HTML</li>
+          <li class="bg-gray-100 p-4 rounded shadow-sm">CSS</li>
+          <li class="bg-gray-100 p-4 rounded shadow-sm">JavaScript</li>
+          <li class="bg-gray-100 p-4 rounded shadow-sm">React</li>
+          <li class="bg-gray-100 p-4 rounded shadow-sm">Node.js</li>
+          <li class="bg-gray-100 p-4 rounded shadow-sm">MongoDB</li>
+        </ul>
+      </section>
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold mb-4">Projects</h2>
+        <ul>
+          <li class="bg-gray-100 p-4 rounded shadow-sm mb-4">
+            <h3 class="text-lg font-bold mb-2">Project Title</h3>
+            <p class="text-gray-700 leading-loose mb-2">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat blandit malesuada. Aenean ac mauris eu dolor eleifend vestibulum. Ma        </p>
+        <a href="#" class="text-blue-500 hover:text-blue-700">View Project</a>
+      </li>
+      <li class="bg-gray-100 p-4 rounded shadow-sm mb-4">
+        <h3 class="text-lg font-bold mb-2">Project Title</h3>
+        <p class="text-gray-700 leading-loose mb-2">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat blandit malesuada. Aenean ac mauris eu dolor eleifend vestibulum. Maecenas ullamcorper eros ut massa sagittis, eget bibendum sem sagittis.
+        </p>
+        <a href="#" class="text-blue-500 hover:text-blue-700">View Project</a>
+      </li>
+      <li class="bg-gray-100 p-4 rounded shadow-sm mb-4">
+        <h3 class="text-lg font-bold mb-2">Project Title</h3>
+        <p class="text-gray-700 leading-loose mb-2">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat blandit malesuada. Aenean ac mauris eu dolor eleifend vestibulum. Maecenas ullamcorper eros ut massa sagittis, eget bibendum sem sagittis.
+        </p>
+        <a href="#" class="text-blue-500 hover:text-blue-700">View Project</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+    <h2 class="text-2xl font-bold mb-4">Contact Me</h2>
+    <form>
+      <div class="mb-4">
+        <label class="block font-bold mb-2" for="name">Name</label>
+        <input class="border-gray-400 border-2 p-2 w-full rounded" type="text" id="name" name="name">
+      </div>
+      <div class="mb-4">
+        <label class="block font-bold mb-2" for="email">Email</label>
+        <input class="border-gray-400 border-2 p-2 w-full rounded" type="email" id="email" name="email">
+      </div>
+      <div class="mb-4">
+        <label class="block font-bold mb-2" for="message">Message</label>
+        <textarea class="border-gray-400 border-2 p-2 w-full rounded" id="message" name="message"></textarea>
+      </div>
+      <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" type="submit">Send Message</button>
+    </form>
+  </section>
+</main>
+<footer class="bg-gray-900 text-white py-4">
   <div class="container mx-auto px-4">
-    <div class="relative py-20 flex flex-col lg:flex-row items-center justify-center">
-      <!-- Hero Content -->
-      <div class="lg:w-1/2 lg:pr-12">
-        <h1 class="text-6xl font-bold leading-tight text-gray-900 mb-6">Hi, I'm John Doe</h1>
-        <p class="text-xl text-gray-800 mb-8">I'm a software developer with a passion for building great applications. I specialize in web development using technologies such as Python, PHP, and React.</p>
-        <a href="#contact" class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">Contact Me</a>
-      </div>
-      <!-- Hero Image -->
-      <div class="lg:w-1/2">
-        <img src="https://via.placeholder.com/600x400" alt="John Doe" class="rounded-lg shadow-lg">
-      </div>
-    </div>
+    <p class="text-center">&copy; Your Name | 2023</p>
   </div>
-</section>
+</footer>
+
+
+<script src='https://cdn.tailwindcss.com'></script>
+</body>
+</html>
