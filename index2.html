@@ -1,95 +1,156 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Developer Portfolio</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css">
-  </head>
-  <body>
-    <header class="bg-gray-900 text-white py-4">
-      <div class="container mx-auto flex justify-between items-center px-4">
-        <h1 class="font-bold text-lg">Your Name</h1>
-        <nav>
-          <ul class="flex space-x-4">
-            <li><a href="#" class="hover:text-gray-300">Home</a></li>
-            <li><a href="#" class="hover:text-gray-300">About</a></li>
-            <li><a href="#" class="hover:text-gray-300">Projects</a></li>
-            <li><a href="#" class="hover:text-gray-300">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
-    <main class="container mx-auto py-12">
-      <section class="mb-8">
-        <h2 class="text-2xl font-bold mb-4">About Me</h2>
-        <p class="text-gray-700 leading-loose">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat blandit malesuada. Aenean ac mauris eu dolor eleifend vestibulum. Maecenas ullamcorper eros ut massa sagittis, eget bibendum sem sagittis.
-        </p>
-      </section>
-      <section class="mb-8">
-        <h2 class="text-2xl font-bold mb-4">Skills</h2>
-        <ul class="grid grid-cols-2 gap-4">
-          <li class="bg-gray-100 p-4 rounded shadow-sm">HTML</li>
-          <li class="bg-gray-100 p-4 rounded shadow-sm">CSS</li>
-          <li class="bg-gray-100 p-4 rounded shadow-sm">JavaScript</li>
-          <li class="bg-gray-100 p-4 rounded shadow-sm">React</li>
-          <li class="bg-gray-100 p-4 rounded shadow-sm">Node.js</li>
-          <li class="bg-gray-100 p-4 rounded shadow-sm">MongoDB</li>
-        </ul>
-      </section>
-      <section class="mb-8">
-        <h2 class="text-2xl font-bold mb-4">Projects</h2>
-        <ul>
-          <li class="bg-gray-100 p-4 rounded shadow-sm mb-4">
-            <h3 class="text-lg font-bold mb-2">Project Title</h3>
-            <p class="text-gray-700 leading-loose mb-2">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat blandit malesuada. Aenean ac mauris eu dolor eleifend vestibulum. Ma        </p>
-        <a href="#" class="text-blue-500 hover:text-blue-700">View Project</a>
-      </li>
-      <li class="bg-gray-100 p-4 rounded shadow-sm mb-4">
-        <h3 class="text-lg font-bold mb-2">Project Title</h3>
-        <p class="text-gray-700 leading-loose mb-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat blandit malesuada. Aenean ac mauris eu dolor eleifend vestibulum. Maecenas ullamcorper eros ut massa sagittis, eget bibendum sem sagittis.
-        </p>
-        <a href="#" class="text-blue-500 hover:text-blue-700">View Project</a>
-      </li>
-      <li class="bg-gray-100 p-4 rounded shadow-sm mb-4">
-        <h3 class="text-lg font-bold mb-2">Project Title</h3>
-        <p class="text-gray-700 leading-loose mb-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam consequat blandit malesuada. Aenean ac mauris eu dolor eleifend vestibulum. Maecenas ullamcorper eros ut massa sagittis, eget bibendum sem sagittis.
-        </p>
-        <a href="#" class="text-blue-500 hover:text-blue-700">View Project</a>
-      </li>
-    </ul>
-  </section>
-  <section>
-    <h2 class="text-2xl font-bold mb-4">Contact Me</h2>
-    <form>
-      <div class="mb-4">
-        <label class="block font-bold mb-2" for="name">Name</label>
-        <input class="border-gray-400 border-2 p-2 w-full rounded" type="text" id="name" name="name">
-      </div>
-      <div class="mb-4">
-        <label class="block font-bold mb-2" for="email">Email</label>
-        <input class="border-gray-400 border-2 p-2 w-full rounded" type="email" id="email" name="email">
-      </div>
-      <div class="mb-4">
-        <label class="block font-bold mb-2" for="message">Message</label>
-        <textarea class="border-gray-400 border-2 p-2 w-full rounded" id="message" name="message"></textarea>
-      </div>
-      <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded" type="submit">Send Message</button>
-    </form>
-  </section>
-</main>
-<footer class="bg-gray-900 text-white py-4">
-  <div class="container mx-auto px-4">
-    <p class="text-center">&copy; Your Name | 2023</p>
-  </div>
-</footer>
+<!-- Skills Section -->
+<section id="skills" class="bg-gray-100 py-20">
+    <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold mb-8 text-gray-800 text-center">Skills</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Skill #1 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                <div class="p-8">
+                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M13.0164 2C10.8193 2 9.03825 3.72453 9.03825 5.85185V8.51852H15.9235V9.25926H5.97814C3.78107 9.25926 2 10.9838 2 13.1111L2 18.8889C2 21.0162 3.78107 22.7407 5.97814 22.7407H8.27322V19.4815C8.27322 17.3542 10.0543 15.6296 12.2514 15.6296H19.5956C21.4547 15.6296 22.9617 14.1704 22.9617 12.3704V5.85185C22.9617 3.72453 21.1807 2 18.9836 2H13.0164ZM12.0984 6.74074C12.8589 6.74074 13.4754 6.14378 13.4754 5.40741C13.4754 4.67103 12.8589 4.07407 12.0984 4.07407C11.3378 4.07407 10.7213 4.67103 10.7213 5.40741C10.7213 6.14378 11.3378 6.74074 12.0984 6.74074Z"
+                              fill="url(#paint0_linear_87_8204)"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M18.9834 30C21.1805 30 22.9616 28.2755 22.9616 26.1482V23.4815L16.0763 23.4815L16.0763 22.7408L26.0217 22.7408C28.2188 22.7408 29.9998 21.0162 29.9998 18.8889V13.1111C29.9998 10.9838 28.2188 9.25928 26.0217 9.25928L23.7266 9.25928V12.5185C23.7266 14.6459 21.9455 16.3704 19.7485 16.3704L12.4042 16.3704C10.5451 16.3704 9.03809 17.8296 9.03809 19.6296L9.03809 26.1482C9.03809 28.2755 10.8192 30 13.0162 30H18.9834ZM19.9015 25.2593C19.1409 25.2593 18.5244 25.8562 18.5244 26.5926C18.5244 27.329 19.1409 27.9259 19.9015 27.9259C20.662 27.9259 21.2785 27.329 21.2785 26.5926C21.2785 25.8562 20.662 25.2593 19.9015 25.2593Z"
+                              fill="url(#paint1_linear_87_8204)"/>
+                        <defs>
+                            <linearGradient id="paint0_linear_87_8204" x1="12.4809" y1="2" x2="12.4809" y2="22.7407"
+                                            gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#327EBD"/>
+                                <stop offset="1" stop-color="#1565A7"/>
+                            </linearGradient>
+                            <linearGradient id="paint1_linear_87_8204" x1="19.519" y1="9.25928" x2="19.519" y2="30"
+                                            gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#FFDA4B"/>
+                                <stop offset="1" stop-color="#F9C600"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+
+                    <h3 class="font-bold text-2xl mb-2 text-gray-800 hover:text-purple-600"><a href="#">Python</a>
+                    </h3>
+                    <p class="text-gray-700 text-base leading-6">Proficient in Python and have experience in using
+                        it for various applications.</p>
+                </div>
+            </div>
+
+            <!-- Skill #2 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                <div class="p-8">
+                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="16" cy="16" r="14" fill="#8892BF"/>
+                        <path d="M14.4392 10H16.1192L15.6444 12.5242H17.154C17.9819 12.5419 18.5986 12.7269 19.0045 13.0793C19.4184 13.4316 19.5402 14.1014 19.3698 15.0881L18.5541 19.4889H16.8497L17.6288 15.2863C17.7099 14.8457 17.6856 14.533 17.5558 14.348C17.426 14.163 17.146 14.0705 16.7158 14.0705L15.3644 14.0573L14.3661 19.4889H12.6861L14.4392 10Z"
+                              fill="white"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M6.74092 12.5243H10.0036C10.9612 12.533 11.6552 12.8327 12.0854 13.4229C12.5156 14.0132 12.6576 14.8193 12.5115 15.8414C12.4548 16.3085 12.3289 16.7665 12.1341 17.2159C11.9474 17.6652 11.6878 18.0704 11.355 18.4317C10.9491 18.8898 10.5149 19.1805 10.0523 19.304C9.58969 19.4274 9.11076 19.489 8.61575 19.489H7.15484L6.69222 22H5L6.74092 12.5243ZM7.43485 17.9956L8.16287 14.0441H8.40879C8.49815 14.0441 8.5914 14.0396 8.6888 14.0309C9.33817 14.0221 9.87774 14.0882 10.308 14.2291C10.7462 14.37 10.8923 14.9031 10.7462 15.8282C10.5678 16.9296 10.2186 17.5727 9.69926 17.7577C9.1799 17.934 8.53053 18.0176 7.75138 18.0088H7.58094C7.53224 18.0088 7.48355 18.0043 7.43485 17.9956Z"
+                              fill="white"/>
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                              d="M24.4365 12.5243H21.1738L19.4329 22H21.1251L21.5878 19.489H23.0487C23.5437 19.489 24.0226 19.4274 24.4852 19.304C24.9479 19.1805 25.382 18.8898 25.7879 18.4317C26.1207 18.0704 26.3803 17.6652 26.567 17.2159C26.7618 16.7665 26.8877 16.3085 26.9444 15.8414C27.0905 14.8193 26.9486 14.0132 26.5183 13.4229C26.0881 12.8327 25.3942 12.533 24.4365 12.5243ZM22.5958 14.0441L21.8678 17.9956C21.9165 18.0043 21.9652 18.0088 22.0139 18.0088H22.1843C22.9635 18.0176 23.6128 17.934 24.1322 17.7577C24.6515 17.5727 25.0007 16.9296 25.1792 15.8282C25.3253 14.9031 25.1792 14.37 24.7409 14.2291C24.3107 14.0882 23.7711 14.0221 23.1217 14.0309C23.0243 14.0396 22.9311 14.0441 22.8417 14.0441H22.5958Z"
+                              fill="white"/>
+                    </svg>
+                    <h3 class="font-bold text-2xl mb-2 text-gray-800 hover:text-purple-600"><a href="#">PHP</a></h3>
+                    <p class="text-gray-700 text-base leading-6">Experienced in PHP programming language and have
+                        built several applications using PHP.</p>
+                </div>
+            </div>
+
+            <!-- Skill #3 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                <div class="p-8">
+                    <svg width="24" height="24" viewBox="0 0 256 256" version="1.1"
+                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         preserveAspectRatio="xMidYMid">
+                        <g>
+                            <rect fill="#092E20" x="0" y="0" width="256" height="256" rx="28">
+
+                            </rect>
+                            <path d="M186.377012,94.197636 L186.377012,160.424478 C186.377012,183.243286 184.707519,194.187745 179.699037,203.649406 C175.060358,212.741266 168.937684,218.490548 156.323731,224.798721 L129.794937,212.183571 C142.410087,206.247593 148.531564,201.05481 152.427049,193.074749 C156.509231,184.91278 157.808923,175.451119 157.808923,150.593015 L157.808923,94.197636 L186.377012,94.197636 Z M140.928486,50.0787207 L140.928486,182.316986 C126.272844,185.099476 115.512688,186.212472 103.826231,186.212472 C68.9487718,186.212472 50.7686431,170.445031 50.7686431,140.205054 C50.7686431,111.079269 70.0629644,92.1583404 99.9295492,92.1583404 C104.567032,92.1583404 108.091519,92.5281423 112.359199,93.6411381 L112.359199,50.0787207 L140.928486,50.0787207 Z M102.713236,115.160254 C88.243093,115.160254 79.8944275,124.065418 79.8944275,139.647359 C79.8944275,154.860696 87.8720944,163.208164 102.527736,163.208164 C105.680028,163.208164 108.278215,163.022665 112.359199,162.467364 L112.359199,116.643052 C109.020212,115.531253 106.237722,115.160254 102.713236,115.160254 Z M186.377012,50.2307105 L186.377012,79.5419941 L157.808923,79.5419941 L157.808923,50.2307105 L186.377012,50.2307105 Z"
+                                  fill="#FFFFFD">
+
+                            </path>
+                        </g>
+                    </svg>
+                    <h3 class="font-bold text-2xl mb-2 text-gray-800 hover:text-purple-600"><a href="#">Django</a>
+                    </h3>
+                    <p class="text-gray-700 text-base leading-6">Familiar with the Django web framework and have
+                        used it for building web applications.</p>
+                </div>
+            </div>
+            <!-- Skill #4 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                <div class="p-8">
+                    <svg width="24" height="24" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><title>
+                        file_type_tailwind</title>
+                        <path d="M9,13.7q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q11.1,10.9,9,13.7ZM2,22.1q1.4-5.6,7-5.6c5.6,0,6.3,4.2,9.1,4.9q2.8.7,4.9-2.1-1.4,5.6-7,5.6c-5.6,0-6.3-4.2-9.1-4.9Q4.1,19.3,2,22.1Z"
+                              style="fill:#44a8b3"/>
+                    </svg>
+                    <h3 class="font-bold text-2xl mb-2 text-gray-800 hover:text-purple-600"><a href="#">Tailwind
+                        CSS</a></h3>
+                    <p class="text-gray-700 text-base leading-6">Proficient in using Tailwind CSS and have used it
+                        to create several responsive web designs.</p>
+                </div>
+            </div>
+            <!-- Skill #5 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                <div class="p-8">
+                    <svg width="24" height="24" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><title>
+                        file_type_sql</title>
+                        <path d="M8.562,15.256A21.159,21.159,0,0,0,16,16.449a21.159,21.159,0,0,0,7.438-1.194c1.864-.727,2.525-1.535,2.525-2V9.7a10.357,10.357,0,0,1-2.084,1.076A22.293,22.293,0,0,1,16,12.078a22.36,22.36,0,0,1-7.879-1.3A10.28,10.28,0,0,1,6.037,9.7v3.55C6.037,13.724,6.7,14.528,8.562,15.256Z"
+                              style="fill:#ffda44"/>
+                        <path d="M8.562,21.961a15.611,15.611,0,0,0,2.6.741A24.9,24.9,0,0,0,16,23.155a24.9,24.9,0,0,0,4.838-.452,15.614,15.614,0,0,0,2.6-.741c1.864-.727,2.525-1.535,2.525-2v-3.39a10.706,10.706,0,0,1-1.692.825A23.49,23.49,0,0,1,16,18.74a23.49,23.49,0,0,1-8.271-1.348,10.829,10.829,0,0,1-1.692-.825V19.96C6.037,20.426,6.7,21.231,8.562,21.961Z"
+                              style="fill:#ffda44"/>
+                        <path d="M16,30c5.5,0,9.963-1.744,9.963-3.894V23.269a10.5,10.5,0,0,1-1.535.762l-.157.063A23.487,23.487,0,0,1,16,25.445a23.422,23.422,0,0,1-8.271-1.351c-.054-.02-.106-.043-.157-.063a10.5,10.5,0,0,1-1.535-.762v2.837C6.037,28.256,10.5,30,16,30Z"
+                              style="fill:#ffda44"/>
+                        <ellipse cx="16" cy="5.894" rx="9.963" ry="3.894" style="fill:#ffda44"/>
+                    </svg>
+                    <h3 class="font-bold text-2xl mb-2 text-gray-800 hover:text-purple-600"><a href="#">SQL</a></h3>
+                    <p class="text-gray-700 text-base leading-6">Familiar with SQL and have experience in using it
+                        for database management.</p>
+                </div>
+            </div>
+            <!-- Skill #6 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                <div class="p-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
+                         viewBox="0 0 24 24">
+                        <path d="M10.9,2.1c-4.6,0.5-8.3,4.2-8.8,8.7c-0.5,4.7,2.2,8.9,6.3,10.5C8.7,21.4,9,21.2,9,20.8v-1.6c0,0-0.4,0.1-0.9,0.1 c-1.4,0-2-1.2-2.1-1.9c-0.1-0.4-0.3-0.7-0.6-1C5.1,16.3,5,16.3,5,16.2C5,16,5.3,16,5.4,16c0.6,0,1.1,0.7,1.3,1c0.5,0.8,1.1,1,1.4,1 c0.4,0,0.7-0.1,0.9-0.2c0.1-0.7,0.4-1.4,1-1.8c-2.3-0.5-4-1.8-4-4c0-1.1,0.5-2.2,1.2-3C7.1,8.8,7,8.3,7,7.6C7,7.2,7,6.6,7.3,6 c0,0,1.4,0,2.8,1.3C10.6,7.1,11.3,7,12,7s1.4,0.1,2,0.3C15.3,6,16.8,6,16.8,6C17,6.6,17,7.2,17,7.6c0,0.8-0.1,1.2-0.2,1.4 c0.7,0.8,1.2,1.8,1.2,3c0,2.2-1.7,3.5-4,4c0.6,0.5,1,1.4,1,2.3v2.6c0,0.3,0.3,0.6,0.7,0.5c3.7-1.5,6.3-5.1,6.3-9.3 C22,6.1,16.9,1.4,10.9,2.1z"></path>
+                    </svg>
+                    <h3 class="font-bold text-2xl mb-2 text-gray-800 hover:text-purple-600"><a
+                            href="#">JavaScript</a></h3>
+                    <p class="text-gray-700 text-base leading-6">Proficient in using JavaScript and have experience
+                        in building interactive web applications using modern frameworks like React and Vue.js.</p>
+                </div>
+            </div>
+
+            <!-- Skill #7 -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                <div class="p-8">
+                    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M6 28L4 3H28L26 28L16 31L6 28Z" fill="#1172B8"/>
+                        <path d="M26 5H16V29.5L24 27L26 5Z" fill="#33AADD"/>
+                        <path d="M19.5 17.5H9.5L9 14L17 11.5H9L8.5 8.5H24L23.5 12L17 14.5H23L22 24L16 26L10 24L9.5 19H12.5L13 21.5L16 22.5L19 21.5L19.5 17.5Z"
+                              fill="white"/>
+                    </svg>
+                    <h3 class="font-bold text-2xl mb-2 text-gray-800 hover:text-purple-600"><a href="#">CSS</a></h3>
+                    <p class="text-gray-700 text-base leading-6">Proficient in using CSS and have experience in
+                        creating complex and responsive designs using modern CSS frameworks like Tailwind CSS.</p>
+                </div>
+            </div>
+
+            <!-- Skill #8  -->
+            <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                <div class="p-8">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="24" height="24"
+                         viewBox="0 0 24 24">
+                        <path d="M10.9,2.1c-4.6,0.5-8.3,4.2-8.8,8.7c-0.5,4.7,2.2,8.9,6.3,10.5C8.7,21.4,9,21.2,9,20.8v-1.6c0,0-0.4,0.1-0.9,0.1 c-1.4,0-2-1.2-2.1-1.9c-0.1-0.4-0.3-0.7-0.6-1C5.1,16.3,5,16.3,5,16.2C5,16,5.3,16,5.4,16c0.6,0,1.1,0.7,1.3,1c0.5,0.8,1.1,1,1.4,1 c0.4,0,0.7-0.1,0.9-0.2c0.1-0.7,0.4-1.4,1-1.8c-2.3-0.5-4-1.8-4-4c0-1.1,0.5-2.2,1.2-3C7.1,8.8,7,8.3,7,7.6C7,7.2,7,6.6,7.3,6 c0,0,1.4,0,2.8,1.3C10.6,7.1,11.3,7,12,7s1.4,0.1,2,0.3C15.3,6,16.8,6,16.8,6C17,6.6,17,7.2,17,7.6c0,0.8-0.1,1.2-0.2,1.4 c0.7,0.8,1.2,1.8,1.2,3c0,2.2-1.7,3.5-4,4c0.6,0.5,1,1.4,1,2.3v2.6c0,0.3,0.3,0.6,0.7,0.5c3.7-1.5,6.3-5.1,6.3-9.3 C22,6.1,16.9,1.4,10.9,2.1z"></path>
+                    </svg>
+                    <h3 class="font-bold text-2xl mb-2 text-gray-800 hover:text-purple-600"><a href="#">C++</a></h3>
+                    <p class="text-gray-700 text-base leading-6">Proficient in using CSS and have experience in
+                        creating complex and responsive designs using modern CSS frameworks like Tailwind CSS.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-<script src='https://cdn.tailwindcss.com'></script>
-</body>
-</html>
+</section>
