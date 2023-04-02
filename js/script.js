@@ -129,3 +129,24 @@
                 retina_detect: true,
             });
         });
+
+    document.getElementById("burger").addEventListener("click", function() {
+        var navContent = document.getElementById("nav-content");
+        navContent.classList.toggle("hidden");
+        navContent.classList.toggle("block");
+    });
+
+
+
+/* Hide menu on scroll JavaScript */
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("custom-navbar").style.top = "0";
+  } else {
+    document.getElementById("custom-navbar").style.top = "-100px"; // Updated height
+  }
+  prevScrollpos = currentScrollPos;
+}
+

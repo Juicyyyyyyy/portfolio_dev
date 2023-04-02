@@ -85,7 +85,64 @@ html {
 
 
 
-.max-height-project{
-    height: 700px;
+.project-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
+
+.project-container .bg-white {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-container .max-height-project {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-container .p-4 {
+    flex-grow: 1;
+}
+
+
+
+
+   .hidden { display: none; }
+        .block { display: block; }
+
+
+
+
+/* Hide menu on scroll CSS */
+#custom-navbar {
+  position: fixed; /* Make it stick/fixed */
+  top: 0; /* Stay on top */
+  width: 100%; /* Full width */
+  transition: top 0.3s; /* Transition effect when sliding down (and up) */
+}
+
+
+.custom-hero {
+    margin-top: 64px; /* Adjust the value based on the height of your navbar */
+}
+
+
+
+
+  .skills-container {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Add this if you want some space between the navigation and content on larger screens */
+  @media (min-width: 640px) {
+    .skills-container {
+      gap: 1rem;
+    }
+  }
+
+
 
