@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Corentin Dupaigne</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="js/script.js"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.9/lottie.min.js"
             integrity="sha512-MeRp/4HXl4xHjIv8BCZS1Nrmc9e9OuPvR8zDfjw/v6xqu/LVU2v6OG3MhU5Ub6U5X5cEhGyP7oCGB58cJDx7Ag=="
@@ -67,7 +69,6 @@
 
 <div class="animate__animated animate__fadeInUp">
     <!-- Hero Section -->
-    <!-- Hero Section -->
     <section class="hero text-white py-16 custom-hero">
 
         <div id="particles-js" class="absolute top-0 left-0 w-full h-full z-0"></div>
@@ -85,8 +86,9 @@
                     </a>
                 </div>
                 <div class="md:w-1/2">
-                    <img src="img/corentin.jpg" alt="Your Name"
-                         class="rounded-full shadow-2xl mx-auto w-3/4 md:w-full"/>
+                    <img src="{{ url_for('static', filename='img/corentin.jpg') }}" alt="Your Name"
+     class="rounded-full shadow-2xl mx-auto w-3/4 md:w-full"/>
+
                 </div>
 
             </div>
@@ -124,7 +126,7 @@
                     </p>
                 </div>
                 <div class="relative group">
-                    <img src="img/best.png" alt="Corentin working on a project" class="w-full rounded shadow-lg">
+                    <img src="../static/img/best.png" alt="Corentin working on a project" class="w-full rounded shadow-lg">
                     <div class="absolute bottom-0 left-0 w-full bg-black bg-opacity-50 text-white text-center py-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
                         <p class="text-lg">Parody of "Girl with a Pearl Earring" made with midjourney </p>
                     </div>
@@ -146,9 +148,9 @@
                     <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transform">
                         <div class="max-height-project">
                             <div class="relative w-full">
-                                <img class="w-full rounded-t-xl" src="/img/Screenshot_3.png" alt="Project Image">
+                                <img class="w-full rounded-t-xl" src="/static/img/Screenshot_3.png" alt="Project Image">
                                 <video class="absolute top-0 left-0 w-full rounded-t-xl opacity-0 hover:opacity-100 transition-opacity duration-300"
-                                       src="/videos/multi_indicator.mp4" autoplay muted loop onmouseover="this.play()"
+                                       src="/static/videos/multi_indicator.mp4" autoplay muted loop onmouseover="this.play()"
                                        onmouseout="this.pause()"></video>
                             </div>
                             <div class="p-4">
@@ -184,9 +186,9 @@
                         <div class="max-height-project">
 
                             <div class="relative w-full">
-                                <img class="w-full rounded-t-xl" src="img/portfolio_artist.png" alt="Project Image">
+                                <img class="w-full rounded-t-xl" src="../static/img/portfolio_artist.png" alt="Project Image">
                                 <video class="absolute top-0 left-0 w-full rounded-t-xl opacity-0 hover:opacity-100 transition-opacity duration-300"
-                                       src="/videos/portfolio_artist.mp4" autoplay muted loop onmouseover="this.play()"
+                                       src="/static/videos/portfolio_artist.mp4" autoplay muted loop onmouseover="this.play()"
                                        onmouseout="this.pause()"></video>
                             </div>
                             <div class="p-4">
@@ -594,7 +596,7 @@
                     <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transform">
                         <div style="height: 600px;">
                             <div class="relative w-full">
-                                <img class="w-full rounded-t-xl" src="/img/waldata.jpg" alt="Project Image">
+                                <img class="w-full rounded-t-xl" src="/static/img/waldata.jpg" alt="Project Image">
                             </div>
                             <div class="p-4">
                                 <h3 class="font-bold text-2xl mb-2"><a
@@ -623,7 +625,7 @@
                         <div style="height: 600px;">
 
                             <div class="relative w-full">
-                                <img class="w-full rounded-t-xl" src="img/runbot.png" alt="Project Image">
+                                <img class="w-full rounded-t-xl" src="../static/img/runbot.png" alt="Project Image">
                             </div>
                             <div class="p-4">
                                 <h3 class="font-bold text-2xl mb-2"><a href="https://runbot.io/"
@@ -651,7 +653,7 @@
                         <div style="height: 600px;">
 
                             <div class="relative w-full">
-                                <img class="w-full rounded-t-xl" src="img/codyweb.png" alt="Project Image">
+                                <img class="w-full rounded-t-xl" src="../static/img/codyweb.png" alt="Project Image">
                             </div>
                             <div class="p-4">
                                 <h3 class="font-bold text-2xl mb-2"><a href="https://www.codyweb.fr/"
@@ -683,28 +685,32 @@
             <p class="text-gray-100 mb-8 text-center">Let's connect and start a conversation</p>
             <div class="flex flex-wrap -mx-4">
                 <div class="w-full md:w-1/2 px-4 mb-8">
-                    <form class="bg-white rounded-lg overflow-hidden shadow-md px-8 pt-6 pb-8 mb-4">
+                    <form id="contact-form" method="POST" class="bg-white rounded-lg overflow-hidden shadow-md px-8 pt-6 pb-8 mb-4">
+
+
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="name">
                                 Name
                             </label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            <input name="name"
+                                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                    id="name" type="text" placeholder="John Doe">
                         </div>
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="email">
                                 Email
                             </label>
-                            <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                            <input name="email"
+                                   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                    id="email" type="email" placeholder="johndoe@example.com">
                         </div>
                         <div class="mb-4">
                             <label class="block text-gray-700 font-bold mb-2" for="message">
                                 Message
                             </label>
-                            <textarea
-                                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
-                                    id="message" rows="6" placeholder="Enter your message here..."></textarea>
+                            <textarea name="message"
+                                      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
+                                      id="message" rows="6" placeholder="Enter your message here..."></textarea>
                         </div>
                         <div class="flex items-center justify-end">
                             <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
@@ -712,7 +718,9 @@
                                 Send Message
                             </button>
                         </div>
+
                     </form>
+                    <div id="success-message"></div>
                 </div>
                 <div class="w-full md:w-1/2 px-4 mb-8">
                     <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
@@ -739,7 +747,8 @@
                                               fill="#000000"/>
                                     </svg>
                                     <div class="text-gray-600 text-sm">
-                                        corentin.dupaigne@gmail.com</div>
+                                        corentin.dupaigne@gmail.com
+                                    </div>
 
                                 </li>
                             </ul>
@@ -768,15 +777,63 @@
     </footer>
 
     <script src='https://cdn.tailwindcss.com'></script>
-    <script src="js/script.js"></script>
+    <script src="../static/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script>
         AOS.init();
+
     </script>
+</div>
+<script>
+  const form = document.getElementById('contact-form');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        const successMessage = document.createElement('p');
+        successMessage.classList.add('bg-green-100', 'border', 'border-green-400', 'text-green-700', 'mt-8', 'px-4', 'py-3', 'rounded', 'relative');
+        successMessage.setAttribute('role', 'alert');
+
+        const strong = document.createElement('strong');
+        strong.classList.add('font-bold');
+        strong.textContent = 'Success!';
+
+        const messageText = document.createElement('span');
+        messageText.classList.add('block', 'sm:inline');
+        messageText.textContent = ' Your message has been sent successfully.';
+
+        successMessage.appendChild(strong);
+        successMessage.appendChild(messageText);
+
+        form.parentNode.insertBefore(successMessage, form.nextSibling);
+
+        form.reset();
+      } else {
+        throw new Error('There was an error sending your message.');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  });
+</script>
+
+
+
+
+
 </div>
 </body>
 
-</div>
+
 </html>
 
 
