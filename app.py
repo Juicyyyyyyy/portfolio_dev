@@ -155,7 +155,7 @@ def index():
 	except:
 		message_status = 'failure'
 
-	return render_template('base.html', message_status=message_status, projects=projects, skills=skills,
+	return render_template('main.html', message_status=message_status, projects=projects, skills=skills,
 						   categories=skills_category, categories_names=categories_names, experiences=experiences)
 
 
