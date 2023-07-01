@@ -1,24 +1,31 @@
-        document.querySelectorAll('.skills-nav-item').forEach(navItem => {
-            navItem.addEventListener('click', () => {
-                const category = navItem.getAttribute('data-category');
-                showSkillsCategory(category);
-            });
-        });
+var categories = document.querySelector('body').getAttribute('data-categories').split(',');
 
-        function showSkillsCategory(category) {
-            const categories = ['frontend', 'backend', 'databases', 'tools'];
-            categories.forEach(cat => {
-                const element = document.getElementById(`${cat}-skills`);
-                const navItem = document.querySelector(`.skills-nav-item[data-category="${cat}"]`);
-                if (cat === category) {
-                    element.classList.remove('hidden');
-                    navItem.classList.add('active');
-                } else {
-                    element.classList.add('hidden');
-                    navItem.classList.remove('active');
-                }
-            });
+document.querySelectorAll('.skills-nav-item').forEach(navItem => {
+    navItem.addEventListener('click', () => {
+        const category = navItem.getAttribute('data-category');
+        showSkillsCategory(category);
+    });
+});
+
+function showSkillsCategory(category) {
+    categories.forEach(cat => {
+        const element = document.getElementById(`${cat}-skills`);
+        const navItem = document.querySelector(`.skills-nav-item[data-category="${cat}"]`);
+        if (cat === category) {
+            element.classList.remove('hidden');
+            navItem.classList.add('active');
+        } else {
+            element.classList.add('hidden');
+            navItem.classList.remove('active');
         }
+    });
+}
+
+// Set initial state
+showSkillsCategory(categories[0]);
+
+
+
 
 
         document.addEventListener("DOMContentLoaded", function () {

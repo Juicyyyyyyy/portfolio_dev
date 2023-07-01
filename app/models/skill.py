@@ -1,7 +1,12 @@
-from . import db
+from app import db
+
 
 class Skill(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), nullable=False)
-    level = db.Column(db.Integer, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    name = db.Column(db.String(200), nullable=False)
+    icon = db.Column(db.Text, nullable=False)
+    category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
+    category = db.relationship('Category', backref=db.backref('skills', lazy=True))
+
+    def __repr__(self):
+        return '<Skill %r>' % self.name
