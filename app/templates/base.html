@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Corentin Dupaigne</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.17/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.9/lottie.min.js"
+            integrity="sha512-MeRp/4HXl4xHjIv8BCZS1Nrmc9e9OuPvR8zDfjw/v6xqu/LVU2v6OG3MhU5Ub6U5X5cEhGyP7oCGB58cJDx7Ag=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+
+
+</head>
+<body>
+<header>
+    <nav class="bg-white p-4 w-full z-10 top-0 shadow" id="custom-navbar">
+        <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
+            <div class="flex items-center">
+                <a class="text-2xl font-bold" href="#" js-smooth-scroll data-duration="300">Corentin Dupaigne</a>
+            </div>
+            <div class="lg:hidden">
+                <button id="burger" class="focus:outline-none lg:hidden">
+                    <svg class="fill-current text-gray-600" width="24" height="24" viewBox="0 0 24 24">
+                        <path d="M4 11h16v2H4zm0-7h16v2H4zm0 14h16v2H4z"/>
+                    </svg>
+                </button>
+            </div>
+            <nav class="hidden lg:flex items-center" id="nav-content">
+                <ul class="list-reset lg:flex justify-end flex-1 items-center ml-auto">
+                    <li class="mr-3">
+                        <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll"
+                           data-duration="300" href="#about">About</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll"
+                           data-duration="300" href="#projects">Projects</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll"
+                           data-duration="300" href="#skills">Skills</a>
+                    </li>
+                    <li class="mr-3">
+                        <a class="inline-block font-semibold text-blue-600 no-underline hover:text-blue-900 py-2 px-4 border border-blue-600 rounded js-smooth-scroll"
+                           data-duration="300" href="#contact">Contact</a>
+
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </nav>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer class="bg-gray-800 text-gray-600 body-font">
+    <div class="container mx-auto flex items-center justify-between px-4 py-6">
+        <p class="text-sm">&copy; 2023 Corentin Dupaigne</p>
+        <div class="flex items-center">
+            <a class="text-gray-600 hover:text-gray-400 px-3" href="https://github.com/Juicyyyyyyy">
+                <i class="fab fa-github"></i>
+            </a>
+            <a class="text-gray-600 hover:text-gray-400 px-3"
+               href="https://www.linkedin.com/in/corentin-dupaigne-b449a1242/">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
