@@ -1,0 +1,80 @@
+<section id="contact" class="bg-gray-100 py-20">
+    <div class="container mx-auto px-4">
+        <h2 class="text-5xl font-semibold text-gray-800 text-center">Get in Touch</h2>
+        <p class="text-gray-100 mb-8 text-center">Let's connect and start a conversation</p>
+        <div class="flex flex-wrap -mx-4">
+            <div class="w-full md:w-1/2 px-4 mb-8">
+                <form id="contact-form" method="POST"
+                      class="bg-white rounded-lg overflow-hidden shadow-md px-8 pt-6 pb-8 mb-4">
+
+
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="name">
+                            Name
+                        </label>
+                        <input name="name"
+                               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                               id="name" type="text" placeholder="John Doe">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="email">
+                            Email
+                        </label>
+                        <input name="email"
+                               class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                               id="email" type="email" placeholder="johndoe@example.com">
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 font-bold mb-2" for="message">
+                            Message
+                        </label>
+                        <textarea name="message"
+                                  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
+                                  id="message" rows="6" placeholder="Enter your message here..."></textarea>
+                    </div>
+                    <div class="flex items-center justify-end">
+                        <button class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                type="submit">
+                            Send Message
+                        </button>
+                    </div>
+
+                </form>
+                <div id="success-message"></div>
+            </div>
+            <div class="w-full md:w-1/2 px-4 mb-8">
+                <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2623.9610791538195!2d2.4236829156742853!3d48.84453570700094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e672a371e6ee79%3A0xac6aa25a6b978f6a!2s8%20Avenue%20de%20la%20Dame%2C%2094000%20Cr%C3%A9teil!5e0!3m2!1sen!2sfr!4v1646681871825!5m2!1sen!2sfr"
+                            width="100%" height="400" style="border:0;" allowfullscreen=""
+                            loading="lazy"></iframe>
+                    <div class="p-4">
+                        <h3 class="font-bold text-2xl mb-2">Location</h3>
+                        <p class="text-gray-700 text-base">94000 Vincennes, France</p>
+                        <ul class="list-none mt-6">
+                            <li class="flex items-center mb-2">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M9.50246 4.25722C9.19873 3.4979 8.46332 3 7.64551 3H4.89474C3.8483 3 3 3.8481 3 4.89453C3 13.7892 10.2108 21 19.1055 21C20.1519 21 21 20.1516 21 19.1052L21.0005 16.354C21.0005 15.5361 20.5027 14.8009 19.7434 14.4971L17.1069 13.4429C16.4249 13.1701 15.6483 13.2929 15.0839 13.7632L14.4035 14.3307C13.6089 14.9929 12.4396 14.9402 11.7082 14.2088L9.79222 12.2911C9.06079 11.5596 9.00673 10.3913 9.66895 9.59668L10.2363 8.9163C10.7066 8.35195 10.8305 7.57516 10.5577 6.89309L9.50246 4.25722Z"
+                                          stroke="#000000" stroke-width="2" stroke-linecap="round"
+                                          stroke-linejoin="round"/>
+                                </svg>
+                                <span class="text-gray-600 text-sm"> +33 6 14 84 46 23</span>
+                            </li>
+                            <li class="flex items-center mb-2">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M4 6L10.1076 10.6123L10.1097 10.614C10.7878 11.1113 11.1271 11.3601 11.4988 11.4562C11.8272 11.5412 12.1725 11.5412 12.501 11.4562C12.8729 11.36 13.2132 11.1105 13.8926 10.6123C13.8926 10.6123 17.8101 7.60594 20 6M3 15.8002V8.2002C3 7.08009 3 6.51962 3.21799 6.0918C3.40973 5.71547 3.71547 5.40973 4.0918 5.21799C4.51962 5 5.08009 5 6.2002 5H17.8002C18.9203 5 19.4796 5 19.9074 5.21799C20.2837 5.40973 20.5905 5.71547 20.7822 6.0918C21 6.5192 21 7.08009 21 8.2002V15.8002C21 16.9203 21 17.4796 20.7822 17.9074C20.5905 18.2837 20.2837 18.5905 19.9074 18.7822C19.4796 19 18.9203 19 17.8002 19H6.2002C5.08009 19 4.51962 19 3.9074 18.7822C3.71547 18.5905 3.40973 18.2837 3.21799 17.9074C3 17.4796 3 16.9203 3 15.8002Z"
+                                          fill="#000000"/>
+                                </svg>
+                                <div class="text-gray-600 text-sm">
+                                    corentin.dupaigne@gmail.com
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -7,6 +7,8 @@ document.querySelectorAll('.skills-nav-item').forEach(navItem => {
     });
 });
 
+
+
 function showSkillsCategory(category) {
     categories.forEach(cat => {
         const element = document.getElementById(`${cat}-skills`);

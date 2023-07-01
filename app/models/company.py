@@ -1,8 +1,12 @@
-from . import db
-from flask_sqlalchemy import SQLAlchemy
+from app import db  # assuming your Flask app is named app
 
-class Company(db.Model):
+class Experience(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    address = db.Column(db.String(200), nullable=False)
-    image_file = db.Column(db.String(120), nullable=True)
+    name = db.Column(db.String(255), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    url = db.Column(db.String(255), nullable=False)
+    img_src = db.Column(db.String(255), nullable=False)
+    languages_used = db.Column(db.String(255), nullable=False)
+
+    def __repr__(self):
+        return '<Experience %r>' % self.name

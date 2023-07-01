@@ -1,0 +1,43 @@
+<!-- Skills Section -->
+<section id="skills" class="bg-gray-100 py-20">
+    <div class="container mx-auto px-4">
+        <h2 class="text-5xl font-semibold text-gray-800 text-center">What are my skills ?</h2>
+        <p class="text-gray-100 mb-8 text-center">Discover my expertise in various domains</p>
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
+
+                <!-- Skills Navigation -->
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold mb-2 text-gray-100 text-center">Skills</h2>
+                    <p class="text-gray-100 mb-8">Discover my expertise in various domains</p>
+                    <ul class="text-gray-600">
+                        {% for category in categories %}
+                        <li class="skills-nav-item mb-2 cursor-pointer" data-category="{{ category.name | lower }}">
+                            {{ category.name }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <!-- Skills Content -->
+                {% for category in categories %}
+                <div id="{{ category.name | lower }}-skills" class="skills-category grid grid-cols-2 gap-4">
+                    {% for skill in category.skills %}
+                    <div class="col-span-1">
+                        <div class="skill-card bg-white rounded shadow p-4 h-full">
+                            <div class="skill-icon flex justify-center items-center mb-4">
+                                {{ skill.icon | safe }}
+                            </div>
+                            <h4 class="skill-title text-xl font-bold text-center mb-2">{{ skill.name }}</h4>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+
+</section>

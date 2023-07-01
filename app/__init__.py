@@ -25,7 +25,7 @@ admin = Admin(app, name='myadmin', template_mode='bootstrap3')
 from app.models.user import User
 from app.models.post import Post
 from app.models.project import Project
-from app.models.company import Company
+from app.models.company import Experience
 from app.models.skill import Skill
 from app.models.skill_category import Category
 from app.models.message import Message
@@ -33,7 +33,7 @@ from app.models.message import Message
 admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Post, db.session))
 admin.add_view(ModelView(Project, db.session))
-admin.add_view(ModelView(Company, db.session))
+admin.add_view(ModelView(Experience, db.session))
 admin.add_view(ModelView(Skill, db.session))
 admin.add_view(ModelView(Message, db.session))
 

@@ -1,0 +1,41 @@
+<!-- Projects Section -->
+<section id="projects" class="bg-gray-200 py-20">
+    <div class="container mx-auto px-4">
+        <h2 class="text-5xl font-semibold text-gray-800 text-center">My Projects</h2>
+        <p class="text-gray-200 mb-8 text-center">Check out some of my recent work</p>
+        <div class="flex flex-wrap -mx-4">
+            {% for project in projects %}
+            <div class="w-full md:w-1/2 px-4 mb-8 project-container">
+                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transform">
+                    <div class="max-height-project">
+                        <div class="relative w-full">
+                            <img class="w-full rounded-t-xl" src="{{ project.image_url }}" alt="Project Image">
+                            <video class="absolute top-0 left-0 w-full rounded-t-xl opacity-0 hover:opacity-100 transition-opacity duration-300"
+                                   src="{{ project.video_url }}" autoplay muted loop onmouseover="this.play()"
+                                   onmouseout="this.pause()"></video>
+                        </div>
+                        <div class="p-4">
+                            <h3 class="font-bold text-2xl mb-2"><a
+                                    href="{{ project.link_url }}"
+                                    class="text-indigo-600 hover:text-indigo-800 hover:underline">{{ project.title
+                                }}</a></h3>
+                            <p class="text-gray-700 text-base mb-4">{{ project.description }}</p>
+                            <ul class="list-none">
+                                <li class="mb-2">
+                                    <span class="text-gray-700 font-semibold">Languages used:</span> {{
+                                    project.languages_used }}
+                                </li>
+                                <li>
+                                    <a href="{{ project.link_url }}"
+                                       class="text-indigo-600 hover:text-indigo-800 hover:underline">Access the
+                                        project</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

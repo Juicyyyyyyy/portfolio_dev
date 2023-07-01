@@ -1,37 +1,38 @@
 from flask import request, render_template
 from flask_mail import Mail, Message
 from app import app, db
-from app import Project, Skill, Category
+from app import Project, Skill, Category, Experience
 
 with app.app_context():
-    db.create_all()
+	db.create_all()
 
 mail = Mail(app)
 
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    projects = Project.query.all()
-    skills = Skill.query.all()
-    skills_category = Category.query.order_by(Category.order).all()
-    categories_names = [category.name.lower() for category in skills_category]
-    message_status = None
-    print(skills, skills_category, skills)
-    if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        message = request.form['message']
+	projects = Project.query.all()
+	skills = Skill.query.all()
+	skills_category = Category.query.order_by(Category.order).all()
+	categories_names = [category.name.lower() for category in skills_category]
+	experiences = Experience.query.all()
+	message_status = None
+	print(skills, skills_category, skills)
+	if request.method == 'POST':
+		name = request.form['name']
+		email = request.form['email']
+		message = request.form['message']
 
-        msg = Message(
-            subject="Contact Form Submission",
-            body=f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}",
-            sender=app.config['MAIL_USERNAME'],
-            recipients=['xetriboippobu-8742@yopmail.com'],
-        )
+		msg = Message(
+			subject="Contact Form Submission",
+			body=f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}",
+			sender=app.config['MAIL_USERNAME'],
+			recipients=['xetriboippobu-8742@yopmail.com'],
+		)
 
-        ing = "100%"
+		ing = "100%"
 
-        html_template = '''
+		html_template = '''
                                 <!DOCTYPE html>
                         <html lang="en">
                         <head>
@@ -140,23 +141,23 @@ def index():
 
         ''' % (ing, name)
 
-        confirmation_msg = Message(
-            subject="Contact Form Submission Received",
-            html=html_template,
-            sender=app.config['MAIL_USERNAME'],
-            recipients=[email],
-        )
+		confirmation_msg = Message(
+			subject="Contact Form Submission Received",
+			html=html_template,
+			sender=app.config['MAIL_USERNAME'],
+			recipients=[email],
+		)
 
-    try:
-        mail.send(msg)
-        mail.send(confirmation_msg)
-        message_status = 'success'
-    except:
-        message_status = 'failure'
+	try:
+		mail.send(msg)
+		mail.send(confirmation_msg)
+		message_status = 'success'
+	except:
+		message_status = 'failure'
 
-    return render_template('main.html', message_status=message_status, projects=projects, skills=skills,
-                           categories=skills_category, categories_names=categories_names)
+	return render_template('base.html', message_status=message_status, projects=projects, skills=skills,
+						   categories=skills_category, categories_names=categories_names, experiences=experiences)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+	app.run(debug=True)
