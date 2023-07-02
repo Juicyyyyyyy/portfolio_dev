@@ -11,9 +11,7 @@ class Post(db.Model):
 	image_url = db.Column(db.String(255), nullable=True)
 	date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
-	# This field will store JSON data
-	# It will contain an introduction and a list of sections
-	content = db.Column(JSON, nullable=False)
+	content = db.Column(db.Text, nullable=False)
 
 	def __repr__(self):
 		return '<Post {}>'.format(self.title)

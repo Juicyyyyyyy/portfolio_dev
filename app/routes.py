@@ -8,28 +8,28 @@ mail = Mail(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-	projects = Project.query.all()
-	skills = Skill.query.all()
-	skills_category = Category.query.order_by(Category.order).all()
-	categories_names = [category.name.lower() for category in skills_category]
-	experiences = Experience.query.all()
-	message_status = None
-	print(skills, skills_category, skills)
-	if request.method == 'POST':
-		name = request.form['name']
-		email = request.form['email']
-		message = request.form['message']
+    projects = Project.query.all()
+    skills = Skill.query.all()
+    skills_category = Category.query.order_by(Category.order).all()
+    categories_names = [category.name.lower() for category in skills_category]
+    experiences = Experience.query.all()
+    message_status = None
+    print(skills, skills_category, skills)
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        message = request.form['message']
 
-		msg = Message(
-			subject="Contact Form Submission",
-			body=f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}",
-			sender=app.config['MAIL_USERNAME'],
-			recipients=['xetriboippobu-8742@yopmail.com'],
-		)
+        msg = Message(
+            subject="Contact Form Submission",
+            body=f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}",
+            sender=app.config['MAIL_USERNAME'],
+            recipients=['xetriboippobu-8742@yopmail.com'],
+        )
 
-		ing = "100%"
+        ing = "100%"
 
-		html_template = '''
+        html_template = '''
                                 <!DOCTYPE html>
                         <html lang="en">
                         <head>
@@ -138,29 +138,32 @@ def index():
 
         ''' % (ing, name)
 
-		confirmation_msg = Message(
-			subject="Contact Form Submission Received",
-			html=html_template,
-			sender=app.config['MAIL_USERNAME'],
-			recipients=[email],
-		)
+        confirmation_msg = Message(
+            subject="Contact Form Submission Received",
+            html=html_template,
+            sender=app.config['MAIL_USERNAME'],
+            recipients=[email],
+        )
 
-	try:
-		mail.send(msg)
-		mail.send(confirmation_msg)
-		message_status = 'success'
-	except:
-		message_status = 'failure'
+    try:
+        mail.send(msg)
+        mail.send(confirmation_msg)
+        message_status = 'success'
+    except:
+        message_status = 'failure'
 
-	return render_template('main.html', message_status=message_status, projects=projects, skills=skills,
-						   categories=skills_category, categories_names=categories_names, experiences=experiences)
+    return render_template('main.html', message_status=message_status, projects=projects, skills=skills,
+                           categories=skills_category, categories_names=categories_names, experiences=experiences)
+
 
 @app.route("/blog")
 def blog():
     posts = Post.query.order_by(Post.date_posted.desc()).all()
     return render_template('blog.html', posts=posts)
 
+
 @app.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    return render_template('post.html', title=post.title, post=post)
+    recent_posts = Post.query.order_by(Post.date_posted.desc()).limit(5).all()
+    return render_template('post.html', title=post.title, post=post, recent_posts=recent_posts)
