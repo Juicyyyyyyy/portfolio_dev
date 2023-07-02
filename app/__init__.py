@@ -29,6 +29,7 @@ from app.models.company import Experience
 from app.models.skill import Skill
 from app.models.skill_category import Category
 from app.models.message import Message
+from app.models.post import Post
 
 admin.add_view(ModelView(User, db.session))
 admin.add_view(ModelView(Post, db.session))

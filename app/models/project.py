@@ -16,3 +16,4 @@ class Project(db.Model):
         self.video_url = video_url
         self.link_url = link_url
         self.languages_used = languages_used
+

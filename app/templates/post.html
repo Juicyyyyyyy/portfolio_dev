@@ -1,0 +1,56 @@
+{% include './Sections/head.html' %}
+{% include './Sections/header.html' %}
+
+<section class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-wrap">
+            <!-- Main content -->
+            <div class="w-full lg:w-3/4 px-4">
+                <article class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="relative rounded-lg overflow-hidden">
+                        <img class="w-full h-64 object-cover" src="{{ post.image_url }}" alt="Post Image">
+                        <div class="absolute bottom-0 left-0 p-5 bg-opacity-50 bg-black">
+                            <h1 class="font-bold text-4xl text-white mb-2">{{ post.title }}</h1>
+                            <div class="flex items-center">
+                                <img class="h-8 w-8 rounded-full mr-2" src="{{ url_for('static', filename='img/corentin_2.jpg') }}" alt="Author Image">
+                                <div class="text-white">
+                                    <p class="font-semibold">Your Name</p>
+                                    <p class="text-sm">{{ post.date_posted.strftime('%B %d, %Y') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-8 post-content text-gray-600 leading-relaxed text-base sm:text-lg md:text-xl">
+                        <p class="mb-6 text-xl leading-loose">
+                            {{ post.content }}
+                        </p>
+                    </div>
+                </article>
+            </div>
+            <!-- Sidebar -->
+            <div class="w-full lg:w-1/4 px-4 mt-12 lg:mt-0">
+                <div class="bg-white rounded-lg p-6 shadow-md">
+                    <h3 class="font-bold text-2xl mb-4 text-gray-800">Recent Posts</h3>
+                    <!-- Loop over recent posts here. This is just dummy HTML -->
+                    <!-- Be sure to replace with your actual Python/Flask code -->
+                    <ul class="space-y-4">
+                        <li>
+                            <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-800 hover:underline">Post Title 1</a>
+                            <p class="text-gray-500 text-sm">June 30, 2023</p>
+                        </li>
+                        <li>
+                            <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-800 hover:underline">Post Title 2</a>
+                            <p class="text-gray-500 text-sm">June 29, 2023</p>
+                        </li>
+                        <li>
+                            <a href="#" class="font-semibold text-indigo-600 hover:text-indigo-800 hover:underline">Post Title 3</a>
+                            <p class="text-gray-500 text-sm">June 28, 2023</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include './Sections/footer.html' %}
