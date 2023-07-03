@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{% include './Sections/head.html' %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Corentin Dupaigne</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src='https://cdn.tailwindcss.com'></script>
+
+</head>
 
 {% include './Sections/header.html' %}
 
@@ -19,7 +29,7 @@
                                 <img class="h-8 w-8 rounded-full mr-2"
                                      src="{{ url_for('static', filename='img/corentin_2.jpg') }}" alt="Author Image">
                                 <div class="text-white">
-                                    <p class="font-semibold">Your Name</p>
+                                    <p class="font-semibold">Corentin Dupaigne</p>
                                     <p class="text-sm">{{ post.date_posted.strftime('%B %d, %Y') }}</p>
                                 </div>
                             </div>
@@ -112,4 +122,5 @@
 
 {% include './Sections/footer.html' %}
 
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </html>

@@ -14,7 +14,6 @@ def index():
     categories_names = [category.name.lower() for category in skills_category]
     experiences = Experience.query.all()
     message_status = None
-    print(skills, skills_category, skills)
     if request.method == 'POST':
         name = request.form['name']
         email = request.form['email']
@@ -24,7 +23,7 @@ def index():
             subject="Contact Form Submission",
             body=f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}",
             sender=app.config['MAIL_USERNAME'],
-            recipients=['xetriboippobu-8742@yopmail.com'],
+            recipients=['corentin.dupaigne@gmail.com'],
         )
 
         ing = "100%"

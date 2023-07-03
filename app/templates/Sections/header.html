@@ -40,23 +40,34 @@
     </nav>
 </header>
 
-<style>
+  <style>
     #nav-content.show {
-        display: flex !important;
+      display: flex !important;
     }
 
     #burger.close div:nth-child(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
+      transform: rotate(-45deg) translate(-5px, 6px);
     }
 
     #burger.close div:nth-child(2) {
-        opacity: 0;
+      opacity: 0;
     }
 
     #burger.close div:nth-child(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
+      transform: rotate(45deg) translate(-5px, -6px);
     }
-</style>
+
+    @media (min-width: 1024px) {
+      #custom-navbar {
+        position: sticky;
+        top: 0;
+      }
+
+      .lg\:flex {
+        display: flex !important;
+      }
+    }
+  </style>
 
 <script>
     const menuBtn = document.querySelector('#burger');

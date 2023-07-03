@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-{% include './Sections/head.html' %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blog</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src='https://cdn.tailwindcss.com'></script>
+
+</head>
 <body data-categories="{{ categories_names | join(',') }}" class="bg-gray-100 font-sans leading-normal tracking-normal">
-
-<!-- Includes -->
-
 <!-- header -->
 {% include './Sections/header.html' %}
 
@@ -40,30 +46,5 @@
 
 <!-- footer -->
 {% include './Sections/footer.html' %}
-<script>
-document.querySelector("#burger").addEventListener("click", function () {
-    const navContent = document.querySelector(".navbar-menu");
-    navContent.classList.toggle("hidden");
-    navContent.classList.toggle("block");
-
-    // toggle ARIA expanded attribute
-    this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
-});
-
-// Hide menu on scroll JavaScript
-let prevScrollpos = window.pageYOffset;
-window.addEventListener("scroll", function () {
-    const currentScrollPos = window.pageYOffset;
-    const navbar = document.querySelector(".navbar");
-
-    if (prevScrollpos > currentScrollPos) {
-        navbar.style.top = "0";
-    } else {
-        navbar.style.top = "-100px"; // Updated height
-    }
-
-    prevScrollpos = currentScrollPos;
-});
-
-</script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </body>
