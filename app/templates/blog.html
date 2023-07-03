@@ -18,11 +18,13 @@
                 <img class="w-full h-64 rounded-t-xl object-cover" src="{{ post.image_url }}" alt="Post Image">
                 <div class="p-6">
                     <h3 class="font-bold text-2xl mb-2 text-gray-800">
-                        <a href="{{ url_for('post', post_id=post.id) }}" class="hover:text-indigo-600">{{ post.title }}</a>
+                        <a href="{{ url_for('post', post_id=post.id) }}" class="hover:text-indigo-600">{{ post.title
+                            }}</a>
                     </h3>
                     <p class="text-gray-700 text-base mb-4">{{ post.excerpt }}</p>
                     <div class="flex items-center">
-                        <img class="h-10 w-10 rounded-full mr-2" src="{{ url_for('static', filename='img/corentin_2.jpg') }}">
+                        <img class="h-10 w-10 rounded-full mr-2"
+                             src="{{ url_for('static', filename='img/corentin_2.jpg') }}">
                         <div>
                             <p class="text-gray-900">Corentin Dupaigne</p>
                             <p class="text-gray-500">{{ post.date_posted.strftime('%B %d, %Y') }}</p>
@@ -36,17 +38,32 @@
 </section>
 
 
-
-
 <!-- footer -->
 {% include './Sections/footer.html' %}
-
-<script src='https://cdn.tailwindcss.com'></script>
-<script src="../static/js/script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>
-    AOS.init();
+document.querySelector("#burger").addEventListener("click", function () {
+    const navContent = document.querySelector(".navbar-menu");
+    navContent.classList.toggle("hidden");
+    navContent.classList.toggle("block");
+
+    // toggle ARIA expanded attribute
+    this.setAttribute('aria-expanded', this.getAttribute('aria-expanded') === 'false' ? 'true' : 'false');
+});
+
+// Hide menu on scroll JavaScript
+let prevScrollpos = window.pageYOffset;
+window.addEventListener("scroll", function () {
+    const currentScrollPos = window.pageYOffset;
+    const navbar = document.querySelector(".navbar");
+
+    if (prevScrollpos > currentScrollPos) {
+        navbar.style.top = "0";
+    } else {
+        navbar.style.top = "-100px"; // Updated height
+    }
+
+    prevScrollpos = currentScrollPos;
+});
 
 </script>
-
 </body>

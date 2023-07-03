@@ -2,17 +2,18 @@
     <nav class="bg-white p-4 w-full z-10 top-0 shadow" id="custom-navbar">
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
             <div class="flex items-center">
-                <a class="text-2xl font-bold" href="/" js-smooth-scroll data-duration="300">Corentin Dupaigne</a>
+                <a class="text-2xl font-bold" href="/">Corentin Dupaigne</a>
             </div>
             <div class="lg:hidden">
                 <button id="burger" class="focus:outline-none lg:hidden">
-                    <svg class="fill-current text-gray-600" width="24" height="24" viewBox="0 0 24 24">
-                        <path d="M4 11h16v2H4zm0-7h16v2H4zm0 14h16v2H4z"/>
-                    </svg>
+                    <div class="h-0.5 w-6 bg-gray-600 mb-1.5"></div>
+                    <div class="h-0.5 w-6 bg-gray-600 mb-1.5"></div>
+                    <div class="h-0.5 w-6 bg-gray-600"></div>
                 </button>
             </div>
-            <nav class="hidden lg:flex items-center" id="nav-content">
+            <div class="hidden lg:flex" id="nav-content">
                 <ul class="list-reset lg:flex justify-end flex-1 items-center ml-auto">
+                    <!-- List items here -->
                     <li class="mr-3">
                         <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll"
                            data-duration="300" href="/#about">About</a>
@@ -32,10 +33,48 @@
                     <li class="mr-3">
                         <a class="inline-block font-semibold text-blue-600 no-underline hover:text-blue-900 py-2 px-4 border border-blue-600 rounded js-smooth-scroll"
                            data-duration="300" href="/blog">Blog</a>
-
                     </li>
                 </ul>
-            </nav>
+            </div>
         </div>
     </nav>
 </header>
+
+<style>
+    #nav-content.show {
+        display: flex !important;
+    }
+
+    #burger.close div:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    #burger.close div:nth-child(2) {
+        opacity: 0;
+    }
+
+    #burger.close div:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+</style>
+
+<script>
+    const menuBtn = document.querySelector('#burger');
+    const menu = document.querySelector('#nav-content');
+
+    menuBtn.addEventListener('click', () => {
+        menu.classList.toggle('show');
+        menuBtn.classList.toggle('close');
+    });
+
+    var prevScrollpos = window.pageYOffset;
+    window.onscroll = function () {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.getElementById("custom-navbar").style.top = "0";
+        } else {
+            document.getElementById("custom-navbar").style.top = "-100px";
+        }
+        prevScrollpos = currentScrollPos;
+    }
+</script>

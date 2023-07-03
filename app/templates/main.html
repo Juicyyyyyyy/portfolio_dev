@@ -29,9 +29,7 @@
 <!-- footer -->
 {% include './Sections/footer.html' %}
 
-<script src='https://cdn.tailwindcss.com'></script>
-<script src="../static/js/script.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
 <script>
     AOS.init();
 
@@ -78,5 +76,6 @@
         }
     });
 </script>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 </body>
