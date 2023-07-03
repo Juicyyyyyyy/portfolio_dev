@@ -11,7 +11,7 @@ load_dotenv()
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:oJiDWXpYXRZq8bRxFpwR@localhost:5432/portfolio'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config.update(
     MAIL_SERVER='smtp.gmail.com',
