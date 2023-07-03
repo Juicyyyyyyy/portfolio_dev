@@ -37,5 +37,6 @@ admin.add_view(ModelView(Post, db.session))
 admin.add_view(ModelView(Project, db.session))
 admin.add_view(ModelView(Experience, db.session))
 admin.add_view(ModelView(Skill, db.session))
+admin.add_view(ModelView(Category, db.session))
 
 from app import routes
