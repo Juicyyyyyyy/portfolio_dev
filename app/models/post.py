@@ -1,10 +1,12 @@
 from app import db
 from datetime import datetime
 from sqlalchemy.dialects.postgresql import JSON
+import markdown
 
 
 class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    excerpt = db.Column(db.String(200), nullable=False)
     title = db.Column(db.String(100), nullable=False)
     header = db.Column(db.String(200), nullable=False)
     introduction = db.Column(db.String(200), nullable=False)
@@ -15,3 +17,8 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
+
+    def body_markdown(self):
+        return markdown.markdown(self.body)
+
+

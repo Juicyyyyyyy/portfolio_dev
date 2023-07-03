@@ -20,7 +20,7 @@
                     <h3 class="font-bold text-2xl mb-2 text-gray-800">
                         <a href="{{ url_for('post', post_id=post.id) }}" class="hover:text-indigo-600">{{ post.title }}</a>
                     </h3>
-                    <p class="text-gray-700 text-base mb-4">{{ post.body[:200] }}...</p>
+                    <p class="text-gray-700 text-base mb-4">{{ post.excerpt }}</p>
                     <div class="flex items-center">
                         <img class="h-10 w-10 rounded-full mr-2" src="{{ url_for('static', filename='img/corentin_2.jpg') }}">
                         <div>
@@ -47,48 +47,6 @@
 <script>
     AOS.init();
 
-</script>
-
-<script>
-    const form = document.getElementById('contact-form');
-
-    form.addEventListener('submit', async (event) => {
-        event.preventDefault();
-
-        const formData = new FormData(form);
-
-        try {
-            const response = await fetch('/', {
-                method: 'POST',
-                body: formData,
-            });
-
-            if (response.ok) {
-                const successMessage = document.createElement('p');
-                successMessage.classList.add('bg-green-100', 'border', 'border-green-400', 'text-green-700', 'mt-8', 'px-4', 'py-3', 'rounded', 'relative');
-                successMessage.setAttribute('role', 'alert');
-
-                const strong = document.createElement('strong');
-                strong.classList.add('font-bold');
-                strong.textContent = 'Success!';
-
-                const messageText = document.createElement('span');
-                messageText.classList.add('block', 'sm:inline');
-                messageText.textContent = ' Your message has been sent successfully.';
-
-                successMessage.appendChild(strong);
-                successMessage.appendChild(messageText);
-
-                form.parentNode.insertBefore(successMessage, form.nextSibling);
-
-                form.reset();
-            } else {
-                throw new Error('There was an error sending your message.');
-            }
-        } catch (error) {
-            console.error(error);
-        }
-    });
 </script>
 
 </body>

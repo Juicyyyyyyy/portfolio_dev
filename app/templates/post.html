@@ -21,13 +21,13 @@
                             </div>
                         </div>
                     </div>
-                    <div class="mt-8 post-content text-gray-600 leading-relaxed text-base sm:text-lg md:text-xl">
+                    <div class="mt-8 post-content text-gray-800 leading-relaxed text-lg">
                         <!-- Assuming post.content is in the format: header, introduction, body, conclusion -->
                         <!-- Let's give each section some distinct styling -->
                         <h2 class="mb-6 text-2xl leading-loose text-gray-800 font-bold">{{ post.header }}</h2>
                         <p class="mb-6 text-lg leading-loose text-gray-700 font-semibold">{{ post.introduction }}</p>
                         <div class="mb-6 text-base leading-loose text-gray-700">
-                            {{ post.body }}
+                            {{ post.body_markdown() | safe }}
                         </div>
                         <p class="mb-6 text-lg leading-loose text-gray-700 font-semibold">{{ post.conclusion }}</p>
                     </div>
@@ -58,5 +58,52 @@
         </div>
     </div>
 </section>
+
+<style>
+/* Custom styles for imitating Medium's professional blog style */
+
+/* Adjust post content width */
+.post-content {
+    max-width: 680px;
+    margin: auto;
+}
+
+/* Center the post title */
+.post-content h1 {
+    text-align: center;
+}
+
+/* Styling for the author section */
+.post-content .flex.items-center img {
+    border: 2px solid white;
+}
+
+/* Adjust font size and line-height for readability */
+.post-content h2 {
+    font-size: 2.5rem;
+    line-height: 1.3;
+}
+
+.post-content p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+}
+
+/* Style recent posts section */
+.sidebar .font-bold {
+    font-size: 1.5rem;
+    line-height: 1.3;
+}
+
+.sidebar .text-gray-800 {
+    font-size: 1.25rem;
+    line-height: 1.4;
+}
+
+.sidebar .text-gray-500 {
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+</style>
 
 {% include './Sections/footer.html' %}
