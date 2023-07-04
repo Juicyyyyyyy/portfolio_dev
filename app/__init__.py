@@ -10,7 +10,7 @@ load_dotenv()
 
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
-app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
+app.config['SECRET_KEY'] = os.getenv('SENDGRID_API_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('JAWSDB_MARIA_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config.update(
@@ -18,8 +18,8 @@ app.config.update(
     MAIL_PORT=587,
     MAIL_USE_TLS=True,
     MAIL_USE_SSL=False,
-    MAIL_USERNAME=os.getenv('MAIL_USERNAME'),
-    MAIL_PASSWORD=os.getenv('MAIL_PASSWORD'),
+    MAIL_USERNAME=os.getenv('SENDGRID_USERNAME'),
+    MAIL_PASSWORD=os.getenv('SENDGRID_PASSWORD'),
 )
 
 db = SQLAlchemy(app)
