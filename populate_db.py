@@ -3,6 +3,7 @@ from flask import Flask
 from app import db
 from app import Project, Category, Experience, Skill, Post
 from datetime import datetime
+import os
 
 
 # Vide toutes les tables de la database
@@ -19,7 +20,7 @@ def create_app():
 
 	# Set the configuration for the application
 	app.config[
-		'SQLALCHEMY_DATABASE_URI'] = 'mysql://pg4a74xkd537euw3:d6rz60o6ac5pb7s3@q0h7yf5pynynaq54.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/iz3lrgqj9d5t5xso'
+		'SQLALCHEMY_DATABASE_URI'] = os.getenv('JAWSDB_MARIA_URL')
 	app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 	# Initialize SQLAlchemy with this application
@@ -38,8 +39,8 @@ with app.app_context():
 		description='This is a comprehensive trading tool that presents an overview of the market in a tabular format. It consists of five distinct categories of trading indicators : Volatility , Trend, Momentum, Reversal, and Volume . Each category includes a series of indicators that are widely used in the trading community.',
 		languages_used='Pinescript',
 		link_url='https://www.tradingview.com/script/EKlYtPwv/',
-		image_url='../static/img/multi_indicator.png',
-		video_url='/videos/portfolio_artist.mp4'
+		image_url='multi_indicator.png',
+		video_url='portfolio_artist.mp4'
 	)
 
 	project2 = Project(
@@ -48,8 +49,8 @@ with app.app_context():
 		description="This is a portfolio project displaying my AI art. Since the portfolio is made using the Django framework, I've made the galleries adaptively which mean you simply need to add a new folder inside the static/gallery folder and add images inside, and it will automatically add the new collections and use the title of the folders and files as captions.",
 		languages_used='Python, Django, Css, Javascript',
 		link_url='https://github.com/Juicyyyyyyy/portfolio_artist',
-		image_url='../static/img/portfolio_artist.png',
-		video_url='/videos/portfolio_artist.mp4'
+		image_url='portfolio_artist.png',
+		video_url='portfolio_artist.mp4'
 	)
 
 	# Add them to the session
