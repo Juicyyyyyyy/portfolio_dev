@@ -40,7 +40,7 @@ with app.app_context():
 		languages_used='Pinescript',
 		link_url='https://www.tradingview.com/script/EKlYtPwv/',
 		image_url='multi_indicator.png',
-		video_url='portfolio_artist.mp4'
+		video_url='multi_indicator.mp4'
 	)
 
 	project2 = Project(
