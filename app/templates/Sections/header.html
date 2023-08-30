@@ -10,6 +10,12 @@
                     <i class="fas fa-download mr-2"></i> Download CV
                 </a>
             </div>
+            <div class="lg:hidden flex justify-end items-center space-x-4">
+                <a class="text-gray-600 hover:text-gray-900 hover:underline py-2 px-4"
+                   href="{{ url_for('static', filename='pdf/cv_updated.pdf') }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-download"></i>
+                </a>
+            </div>
             <div class="lg:hidden">
                 <button id="burger" class="focus:outline-none lg:hidden">
                     <div class="h-0.5 w-6 bg-gray-700 mb-1.5 transform transition-transform duration-300"></div>
@@ -37,7 +43,7 @@
                     </li>
                     <li class="mr-3">
                         <a class="inline-block font-semibold text-indigo-600 no-underline hover:text-indigo-800 py-2 px-4 border border-indigo-600 rounded js-smooth-scroll"
-                           data-duration="300" href="/blog">Blog <i class="fas fa-blog ml-1"></i></a>
+                           data-duration="300" href="/blog">Blog</a>
                     </li>
                 </ul>
             </div>
