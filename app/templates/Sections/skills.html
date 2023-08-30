@@ -1,18 +1,18 @@
 <!-- Skills Section -->
 <section id="skills" class="bg-gray-100 py-20">
     <div class="container mx-auto px-4">
-        <h2 class="text-5xl font-semibold text-gray-800 text-center">What are my skills ?</h2>
-        <p class="text-gray-100 mb-8 text-center">Discover my expertise in various domains</p>
-        <div class="max-w-5xl mx-auto">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-10">
+        <h2 class="text-4xl font-semibold text-gray-800 text-center md:text-left">Expertise & Proficiency</h2>
+        <p class="text-gray-600 text-center md:text-left mb-8">Navigating through my diverse skill set</p>
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
 
                 <!-- Skills Navigation -->
-                <div class="text-center">
-                    <h2 class="text-4xl font-bold mb-2 text-gray-100 text-center">Skills</h2>
-                    <p class="text-gray-100 mb-8">Discover my expertise in various domains</p>
-                    <ul class="text-gray-600">
+                <div class="text-center md:text-left">
+                    <h2 class="text-3xl font-bold mb-2 text-indigo-600">Skills</h2>
+                    <p class="text-gray-600 mb-8">Explore my proficiency in different domains</p>
+                    <ul class="text-gray-600 space-y-2">
                         {% for category in categories %}
-                        <li class="skills-nav-item mb-2 cursor-pointer" data-category="{{ category.name | lower }}">
+                        <li class="skills-nav-item cursor-pointer transition-colors duration-300 ease-in-out" data-category="{{ category.name | lower }}">
                             {{ category.name }}
                         </li>
                         {% endfor %}
@@ -21,14 +21,14 @@
 
                 <!-- Skills Content -->
                 {% for category in categories %}
-                <div id="{{ category.name | lower }}-skills" class="skills-category grid grid-cols-2 gap-4">
+                <div id="{{ category.name | lower }}-skills" class="skills-category grid grid-cols-2 gap-6 hidden">
                     {% for skill in category.skills %}
                     <div class="col-span-1">
-                        <div class="skill-card bg-white rounded shadow p-4 h-full">
+                        <div class="skill-card bg-white rounded-xl shadow-lg p-6 h-full hover:shadow-xl transition-shadow duration-300">
                             <div class="skill-icon flex justify-center items-center mb-4">
                                 {{ skill.icon | safe }}
                             </div>
-                            <h4 class="skill-title text-xl font-bold text-center mb-2">{{ skill.name }}</h4>
+                            <h4 class="skill-title text-lg font-semibold text-center">{{ skill.name }}</h4>
                         </div>
                     </div>
                     {% endfor %}
@@ -36,10 +36,8 @@
                 {% endfor %}
 
             </div>
-
         </div>
     </div>
-
 </section>
 <script>
     var categories = document.querySelector('body').getAttribute('data-categories').split(',');
@@ -50,7 +48,6 @@ document.querySelectorAll('.skills-nav-item').forEach(navItem => {
         showSkillsCategory(category);
     });
 });
-
 
 function showSkillsCategory(category) {
     categories.forEach(cat => {

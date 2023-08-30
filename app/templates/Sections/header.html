@@ -2,18 +2,23 @@
     <nav class="bg-white p-4 w-full z-10 top-0 shadow" id="custom-navbar">
         <div class="w-full container mx-auto flex flex-wrap items-center justify-between">
             <div class="flex items-center">
-                <a class="text-2xl font-bold" href="/">Corentin Dupaigne</a>
+                <a class="text-3xl font-semibold text-indigo-600" href="/">Corentin Dupaigne</a>
+            </div>
+            <div class="hidden lg:flex justify-end items-center space-x-4">
+                <a class="text-gray-600 hover:text-gray-900 hover:underline py-2 px-4"
+                   href="{{ url_for('static', filename='pdf/cv_updated.pdf') }}" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-download mr-2"></i> Download CV
+                </a>
             </div>
             <div class="lg:hidden">
                 <button id="burger" class="focus:outline-none lg:hidden">
-                    <div class="h-0.5 w-6 bg-gray-600 mb-1.5"></div>
-                    <div class="h-0.5 w-6 bg-gray-600 mb-1.5"></div>
-                    <div class="h-0.5 w-6 bg-gray-600"></div>
+                    <div class="h-0.5 w-6 bg-gray-700 mb-1.5 transform transition-transform duration-300"></div>
+                    <div class="h-0.5 w-6 bg-gray-700 mb-1.5 transform transition-transform duration-300"></div>
+                    <div class="h-0.5 w-6 bg-gray-700 transform transition-transform duration-300"></div>
                 </button>
             </div>
             <div class="hidden lg:flex" id="nav-content">
                 <ul class="list-reset lg:flex justify-end flex-1 items-center ml-auto">
-                    <!-- List items here -->
                     <li class="mr-3">
                         <a class="inline-block text-gray-600 no-underline hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll"
                            data-duration="300" href="/#about">About</a>
@@ -31,8 +36,8 @@
                            data-duration="300" href="/#contact">Contact</a>
                     </li>
                     <li class="mr-3">
-                        <a class="inline-block font-semibold text-blue-600 no-underline hover:text-blue-900 py-2 px-4 border border-blue-600 rounded js-smooth-scroll"
-                           data-duration="300" href="/blog">Blog</a>
+                        <a class="inline-block font-semibold text-indigo-600 no-underline hover:text-indigo-800 py-2 px-4 border border-indigo-600 rounded js-smooth-scroll"
+                           data-duration="300" href="/blog">Blog <i class="fas fa-blog ml-1"></i></a>
                     </li>
                 </ul>
             </div>
@@ -40,34 +45,30 @@
     </nav>
 </header>
 
-  <style>
+<style>
     #nav-content.show {
-      display: flex !important;
+        display: flex !important;
     }
 
-    #burger.close div:nth-child(1) {
-      transform: rotate(-45deg) translate(-5px, 6px);
+    #burger.close div:nth-child(1), #burger.close div:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -2px);
     }
 
     #burger.close div:nth-child(2) {
-      opacity: 0;
-    }
-
-    #burger.close div:nth-child(3) {
-      transform: rotate(45deg) translate(-5px, -6px);
+        opacity: 0;
     }
 
     @media (min-width: 1024px) {
-      #custom-navbar {
-        position: sticky;
-        top: 0;
-      }
+        #custom-navbar {
+            position: sticky;
+            top: 0;
+        }
 
-      .lg\:flex {
-        display: flex !important;
-      }
+        .lg\:flex {
+            display: flex !important;
+        }
     }
-  </style>
+</style>
 
 <script>
     const menuBtn = document.querySelector('#burger');
