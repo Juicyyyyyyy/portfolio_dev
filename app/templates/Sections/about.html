@@ -1,38 +1,39 @@
 <!-- About Me Section -->
-<section id="about" class="bg-gray-200 py-24">
-    <div class="container mx-auto px-6">
-        <!-- Heading with an elegant GSAP fade-in effect -->
-        <h2 class="text-5xl font-semibold text-gray-900 text-center mb-12 gsap-fade-slide-about">About Me</h2>
-        <p class="text-xl text-gray-700 text-center mb-16 leading-relaxed gsap-fade-slide-about-delay">Exploring the intersections of code and creativity</p>
+<section id="about" class="bg-gray-200 py-32">
+    <div class="container mx-auto px-6 md:px-12 xl:px-24">
+        <!-- Heading -->
+        <div class="text-center mb-20">
+            <h2 class="text-5xl font-extrabold text-indigo-900 mb-8 animate-fade-slide">About Me</h2>
+            <p class="text-xl text-gray-700 leading-relaxed animate-fade-slide-delay">Exploring the intersections of technology & creativity</p>
+        </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-            <!-- Text content with GSAP animations for a captivating reading experience -->
-            <div class="space-y-8 gsap-fade-slide-about-text">
-                <p class="text-lg">
-                    Born and raised in the vibrant city of Paris, I've always been fascinated by the realm of computer science. My journey, fueled by a burning passion for technology, has led me to delve deep into the potential it holds.
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+            <!-- Text content -->
+            <div class="space-y-8 animate-text-content">
+                <p class="text-lg text-gray-800">
+                    Born and raised in the heart of Paris, the world of computer science has always captivated me. Driven by an undying passion, I've ventured deep into the transformative power of technology.
                 </p>
-                <p class="text-lg">
-                    As a backend web developer, I've honed my skills in Python and PHP, while also immersing myself in frameworks like Django and Laravel. This expertise allows me to craft fluid and intuitive digital landscapes.
+                <p class="text-lg text-gray-800">
+                    With a primary focus on backend web development, I've mastered languages like Python and PHP and have a deep understanding of frameworks such as Django and Laravel. My goal? Designing seamless and engaging digital experiences.
                 </p>
-                <p class="text-lg">
-                    When I'm not writing code, you'll find me engrossed in books or exploring the vast world of AI. Technologies like ChatGPT and midjourney captivate me, pushing me to constantly broaden my perspective in this ever-evolving domain.
+                <p class="text-lg text-gray-800">
+                    Away from the code, I'm often immersed in literature or navigating the intriguing realms of AI. Innovations like ChatGPT and midjourney continually inspire and challenge me to evolve in this dynamic field.
                 </p>
             </div>
 
-            <!-- Image with a graceful GSAP hover effect and overlay transition -->
+            <!-- Image with overlay -->
             <div class="relative group">
-                <img src="../../static/img/jeune_fille_metro.png" alt="Corentin working on a project" class="w-full rounded-lg shadow-2xl hover:shadow-3xl gsap-rotate-hover transition-shadow duration-300">
-                <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black text-white text-center py-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
+                <img src="../../static/img/jeune_fille_metro.png" alt="Corentin working on a project" class="w-full rounded-lg shadow-2xl hover:shadow-3xl animate-image-hover transition-shadow duration-300">
+                <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent text-white text-center py-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
                     <p class="text-lg font-semibold">"Girl with a Pearl Earring" reimagined with midjourney</p>
                 </div>
             </div>
         </div>
-    </div>
 
-    <script>
-        // Fine-tuned GSAP animations to accentuate the "About Me" section's elements
-        gsap.from('.gsap-fade-slide-about', {duration: 1.2, y: -50, opacity: 0, delay: 0.5});
-        gsap.from('.gsap-fade-slide-about-delay', {duration: 1.2, y: -50, opacity: 0, delay: 0.7});
-        gsap.from('.gsap-fade-slide-about-text', {duration: 1.2, y: -50, opacity: 0, stagger: 0.3, delay: 1});
-    </script>
+        <!-- GSAP animations -->
+        <script>
+            gsap.from('.animate-fade-slide', {duration: 1.2, y: -50, opacity: 0, delay: 0.5});
+            gsap.from('.animate-fade-slide-delay', {duration: 1.2, y: -50, opacity: 0, delay: 0.7});
+            gsap.from('.animate-text-content', {duration: 1.2, y: -50, opacity: 0, stagger: 0.3, delay: 1});
+        </script>
 </section>
