@@ -1,68 +1,68 @@
 <!-- Skills Section -->
-<section id="skills" class="bg-gray-100 py-20">
+<section id="skills" class="bg-gray-200 py-20">
     <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-semibold text-gray-800 text-center md:text-left">Expertise & Proficiency</h2>
-        <p class="text-gray-600 text-center md:text-left mb-8">Navigating through my diverse skill set</p>
-        <div class="max-w-6xl mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <h2 class="text-5xl font-semibold text-gray-800 text-center mb-8">Expertise & Proficiency</h2>
+        <p class="text-xl text-gray-600 text-center mb-16 leading-relaxed">Navigating through my diverse skill set</p>
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
 
-                <!-- Skills Navigation -->
-                <div class="text-center md:text-left">
-                    <h2 class="text-3xl font-bold mb-2 text-indigo-600">Skills</h2>
-                    <p class="text-gray-600 mb-8">Explore my proficiency in different domains</p>
-                    <ul class="text-gray-600 space-y-2">
-                        {% for category in categories %}
-                        <li class="skills-nav-item cursor-pointer transition-colors duration-300 ease-in-out" data-category="{{ category.name | lower }}">
-                            {{ category.name }}
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-
-                <!-- Skills Content -->
-                {% for category in categories %}
-                <div id="{{ category.name | lower }}-skills" class="skills-category grid grid-cols-2 gap-6 hidden">
-                    {% for skill in category.skills %}
-                    <div class="col-span-1">
-                        <div class="skill-card bg-white rounded-xl shadow-lg p-6 h-full hover:shadow-xl transition-shadow duration-300">
-                            <div class="skill-icon flex justify-center items-center mb-4">
-                                {{ skill.icon | safe }}
-                            </div>
-                            <h4 class="skill-title text-lg font-semibold text-center">{{ skill.name }}</h4>
-                        </div>
-                    </div>
+            <!-- Skills Navigation -->
+            <div class="text-center md:text-left">
+                <h3 class="text-3xl font-bold mb-4 text-indigo-600">Skills</h3>
+                <p class="text-lg text-gray-600 mb-8">Explore my proficiency in various domains</p>
+                <ul class="skills-nav text-gray-700">
+                    {% for category in categories %}
+                    <li class="skills-nav-item cursor-pointer px-4 py-2 rounded-md hover:bg-indigo-600 hover:text-white transition-colors duration-300 ease-in-out" data-category="{{ category.name | lower }}">
+                        {{ category.name }}
+                    </li>
                     {% endfor %}
+                </ul>
+            </div>
+
+            <!-- Skills Content -->
+            {% for category in categories %}
+            <div id="{{ category.name | lower }}-skills" class="skills-category grid grid-cols-2 gap-8 hidden">
+                {% for skill in category.skills %}
+                <div class="col-span-1">
+                    <div class="skill-card bg-white rounded-xl shadow-lg p-6 h-full transform hover:scale-105 transition-transform duration-300">
+                        <div class="skill-icon flex justify-center items-center mb-6">
+                            {{ skill.icon | safe }}
+                        </div>
+                        <h4 class="skill-title text-lg font-semibold text-center">{{ skill.name }}</h4>
+                    </div>
                 </div>
                 {% endfor %}
-
             </div>
+            {% endfor %}
+
         </div>
     </div>
 </section>
+
 <script>
     var categories = document.querySelector('body').getAttribute('data-categories').split(',');
 
-document.querySelectorAll('.skills-nav-item').forEach(navItem => {
-    navItem.addEventListener('click', () => {
-        const category = navItem.getAttribute('data-category');
-        showSkillsCategory(category);
+    document.querySelectorAll('.skills-nav-item').forEach(navItem => {
+        navItem.addEventListener('click', () => {
+            const category = navItem.getAttribute('data-category');
+            showSkillsCategory(category);
+        });
     });
-});
 
-function showSkillsCategory(category) {
-    categories.forEach(cat => {
-        const element = document.getElementById(`${cat}-skills`);
-        const navItem = document.querySelector(`.skills-nav-item[data-category="${cat}"]`);
-        if (cat === category) {
-            element.classList.remove('hidden');
-            navItem.classList.add('active');
-        } else {
-            element.classList.add('hidden');
-            navItem.classList.remove('active');
-        }
-    });
-}
+    function showSkillsCategory(category) {
+        categories.forEach(cat => {
+            const element = document.getElementById(`${cat}-skills`);
+            const navItem = document.querySelector(`.skills-nav-item[data-category="${cat}"]`);
+            if (cat === category) {
+                gsap.to(element, {duration: 0, opacity: 1, display: 'grid'});  // Use GSAP for smoother animations
+                navItem.classList.add('active');
+            } else {
+                gsap.to(element, {duration: 0, opacity: 0, display: 'none'});
+                navItem.classList.remove('active');
+            }
+        });
+    }
 
-// Set initial state
-showSkillsCategory(categories[0]);
+    // Set initial state
+    showSkillsCategory(categories[0]);
 </script>
+

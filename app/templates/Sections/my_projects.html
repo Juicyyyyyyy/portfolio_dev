@@ -1,33 +1,43 @@
 <!-- Projects Section -->
-<section id="projects" class="py-16 bg-gray-100 text-gray-800">
+<section id="projects" class="py-16 bg-gray-200">
     <div class="container mx-auto px-6">
 
-        <!-- Title -->
+        <!-- Section Heading -->
         <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold mb-4">My Projects</h2>
+            <h2 class="text-4xl font-bold mb-4">Projects</h2>
             <p class="text-lg leading-relaxed">
-                A showcase of my dedication, innovation, and expertise.
+                A collection of my latest and greatest works.
             </p>
         </div>
 
-        <!-- Project Cards Grid -->
+        <!-- Projects Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
 
-            <!-- Each Project -->
+            <!-- Using Flask's loop to iterate over projects -->
             {% for project in projects %}
-            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
-
+            <div class="project-card transform transition-transform duration-300 ">
                 <!-- Project Image -->
-                <img src="../static/img/{{ project.image_url }}" alt="{{ project.title }}" class="w-full rounded-t-lg mb-4 object-cover h-56">
+                <div class="project-image mb-6 overflow-hidden rounded-lg shadow-lg">
+                    <a href="{{ project.link_url }}">
+                        <img src="../static/img/{{ project.image_url }}" alt="{{ project.title }}" class="w-full object-cover h-48">
+                    </a>
+                </div>
 
                 <!-- Project Details -->
-                <h3 class="text-xl font-bold mb-2">{{ project.title }}</h3>
-                <p class="text-sm text-indigo-600 mb-4">{{ project.languages_used }}</p>
-                <p class="text-base leading-relaxed">{{ project.description }}</p>
+                <div class="project-details">
+                    <!-- Title -->
+                    <h3 class="text-2xl font-bold mb-2">{{ project.title }}</h3>
+                    <!-- Description -->
+                    <p class="text-lg text-gray-700 mb-4">{{ project.description|truncatewords(45) }}</p>
 
+
+                    <!-- Technologies -->
+                    <span class="text-sm font-semibold bg-indigo-500 text-white px-3 py-1 rounded">{{ project.languages_used }}</span>
+                </div>
             </div>
             {% endfor %}
 
         </div>
+
     </div>
 </section>

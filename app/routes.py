@@ -8,6 +8,23 @@ mail = Mail(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
+
+    def truncate_words(s, count=20):
+        words = s.split()
+        if len(words) > count:
+            words = words[:count] + ['...']
+        return ' '.join(words)
+
+    app.jinja_env.filters['truncatewords'] = truncate_words
+
+
+    def truncate_chars(s, count=100):
+        if len(s) > count:
+            return s[:count] + '...'
+        return s
+
+    app.jinja_env.filters['truncatechars'] = truncate_chars
+
     projects = Project.query.all()
     skills = Skill.query.all()
     skills_category = Category.query.order_by(Category.order).all()
