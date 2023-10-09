@@ -1,36 +1,33 @@
 <!-- Projects Section -->
-<section id="projects" class="bg-gray-200 py-20">
-    <div class="container mx-auto px-4">
-        <h2 class="text-4xl font-semibold text-gray-800 text-center md:text-left">My Projects</h2>
-        <p class="text-gray-600 text-center md:text-left mb-8">Exploring the realms of innovation and creativity</p>
+<section id="projects" class="py-16 bg-gray-100 text-gray-800">
+    <div class="container mx-auto px-6">
+
+        <!-- Title -->
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold mb-4">My Projects</h2>
+            <p class="text-lg leading-relaxed">
+                A showcase of my dedication, innovation, and expertise.
+            </p>
+        </div>
+
+        <!-- Project Cards Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+
+            <!-- Each Project -->
             {% for project in projects %}
-            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transform transition-transform duration-300 hover:scale-105">
-                <div class="relative w-full">
-                    <img class="w-full rounded-t-xl" src="../static/img/{{ project.image_url }}" alt="Project Image">
-                    <video class="absolute top-0 left-0 w-full rounded-t-xl opacity-0 hover:opacity-100 transition-opacity duration-300"
-                           src="../static/videos/{{ project.video_url }}" autoplay muted loop onmouseover="this.play()"
-                           onmouseout="this.pause()"></video>
-                </div>
-                <div class="p-4">
-                    <h3 class="font-semibold text-xl mb-2"><a
-                            href="{{ project.link_url }}"
-                            class="text-indigo-600 hover:text-indigo-800 hover:underline">{{ project.title
-                        }}</a></h3>
-                    <p class="text-gray-700 mb-4">{{ project.description }}</p>
-                    <ul class="list-none">
-                        <li class="mb-2">
-                            <span class="text-gray-700 font-semibold">Technologies used:</span> {{
-                            project.languages_used }}
-                        </li>
-                        <li>
-                            <a href="{{ project.link_url }}"
-                               class="text-indigo-600 hover:text-indigo-800 hover:underline">Explore the Project</a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
+
+                <!-- Project Image -->
+                <img src="../static/img/{{ project.image_url }}" alt="{{ project.title }}" class="w-full rounded-t-lg mb-4 object-cover h-56">
+
+                <!-- Project Details -->
+                <h3 class="text-xl font-bold mb-2">{{ project.title }}</h3>
+                <p class="text-sm text-indigo-600 mb-4">{{ project.languages_used }}</p>
+                <p class="text-base leading-relaxed">{{ project.description }}</p>
+
             </div>
             {% endfor %}
+
         </div>
     </div>
 </section>
