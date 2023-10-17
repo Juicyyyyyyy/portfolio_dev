@@ -1,10 +1,10 @@
-<header>
+<header id="mainHeader">
     <nav class="bg-white p-4 w-full z-10 top-0 shadow-lg transition-transform duration-300 ease-in-out" id="custom-navbar">
         <div class="container mx-auto flex flex-wrap items-center justify-between">
 
             <!-- Brand Name -->
             <div class="flex items-center">
-                <a class="text-3xl font-bold text-indigo-700 hover:text-indigo-800 transition-colors duration-300" href="/">Corentin Dupaigne</a>
+                <a class="z-50 text-3xl font-bold text-indigo-700 hover:text-indigo-800 transition-colors duration-300" id="brandName" href="/">Corentin Dupaigne</a>
             </div>
 
             <!-- Hamburger Button for Mobile View -->
@@ -21,34 +21,51 @@
                 <a class="text-gray-700 hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll" data-duration="300" href="/#about">About</a>
                 <a class="text-gray-700 hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll" data-duration="300" href="/#projects">Projects</a>
                 <a class="text-gray-700 hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll" data-duration="300" href="/#skills">Skills</a>
+                <a class="text-gray-700 hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll" data-duration="300" href="/#skills">Experiences</a>
                 <a class="text-gray-700 hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll" data-duration="300" href="/#contact">Contact</a>
                 <a class="font-semibold text-indigo-700 hover:text-indigo-800 py-2 px-4 border border-indigo-700 rounded-full js-smooth-scroll" data-duration="300" href="/blog">Blog</a>
             </nav>
 
             <!-- Mobile View Menu (Hidden initially) -->
-            <nav id="menu" class="fixed top-0 left-0 w-full h-full bg-white text-gray-700 flex flex-col justify-center space-y-4 hidden z-30">
-    <a class="mobile-nav-link block text-center text-2xl px-4 py-2 hover:bg-gray-200" href="/#about">About</a>
-    <a class="mobile-nav-link block text-center text-2xl px-4 py-2 hover:bg-gray-200" href="/#projects">Projects</a>
-    <a class="mobile-nav-link block text-center text-2xl px-4 py-2 hover:bg-gray-200" href="/#skills">Skills</a>
-    <a class="mobile-nav-link block text-center text-2xl px-4 py-2 hover:bg-gray-200" href="/#contact">Contact</a>
-    <a class="mobile-nav-link block text-center text-2xl px-4 py-2 hover:bg-gray-200" href="/blog">Blog</a>
-</nav>
+            <nav id="menu"
+             class="fixed top-0 left-0 w-full h-full bg-rich-black text-gold flex flex-col justify-center items-center space-y-6 hidden z-30 shadow-lg">
+            <a href="#/about"
+               class="block text-left text-3xl font-medium px-8 py-3 hover:bg-opacity-10 hover:bg-gold transform transition-transform duration-200 hover:scale-105">
+                <i class="fas fa-user"></i> About
+            </a>
+            <a href="#skills"
+               class="block text-left text-3xl font-medium px-8 py-3 hover:bg-opacity-10 hover:bg-gold transform transition-transform duration-200 hover:scale-105">
+                <i class="fas fa-cogs"></i> Skills
+            </a>
+            <a href="#projects"
+               class="block text-left text-3xl font-medium px-8 py-3 hover:bg-opacity-10 hover:bg-gold transform transition-transform duration-200 hover:scale-105">
+                <i class="fas fa-briefcase"></i> Projects
+            </a>
+            <a href="#experiences"
+               class="block text-left text-3xl font-medium px-8 py-3 hover:bg-opacity-10 hover:bg-gold transform transition-transform duration-200 hover:scale-105">
+                <i class="fas fa-history"></i> Experiences
+            </a>
+            <a href="#contact"
+               class="block text-left text-3xl font-medium px-8 py-3 hover:bg-opacity-10 hover:bg-gold transform transition-transform duration-200 hover:scale-105">
+                <i class="fas fa-envelope"></i> Contact
+            </a>
+            <a href="{{ url_for('static', filename='pdf/cv_updated.pdf') }}" download
+               class="block text-left text-3xl font-medium px-8 py-3 hover:bg-opacity-10 hover:bg-gold transform transition-transform duration-200 hover:scale-105">
+                <i class="fas fa-file-download"></i> Download CV
+            </a>
+
+        </nav>
 
 
             <!-- Desktop View - CV Download -->
             <div class="hidden lg:flex space-x-8 items-center">
-                <a class="text-gray-700 hover:text-gray-900 hover:underline py-2 px-4 flex items-center space-x-2" href="{{ url_for('static', filename='pdf/CorentinDupaigne.pdf') }}" target="_blank" rel="noopener noreferrer">
+                <a class="text-gray-700 hover:text-gray-900 hover:underline py-2 px-4 flex items-center space-x-2" href="{{ url_for('static', filename='pdf/cv_updated.pdf') }}" target="_blank" rel="noopener noreferrer">
                     <i class="fas fa-download"></i>
                     <span>Download CV</span>
                 </a>
             </div>
 
-            <!-- Mobile View - CV Download -->
-            <div class="lg:hidden flex space-x-4 items-center">
-                <a class="text-gray-700 hover:text-gray-900 hover:underline py-2 px-4 flex items-center" href="{{ url_for('static', filename='pdf/CorentinDupaigne.pdf') }}" target="_blank" rel="noopener noreferrer">
-                    <i class="fas fa-download"></i>
-                </a>
-            </div>
+
         </div>
     </nav>
 </header>
@@ -60,7 +77,58 @@
         width: 100%;
         transition: top 0.3s;
     }
+
+    a {
+    font-family: 'Roboto', sans-serif; /* Adding Roboto font */
+    letter-spacing: 0.05em;
+}
+
+
+    .hover\:text-gold:hover {
+        color: #FFD700;
+    }
+
+    .bg-gold-text * {
+        color: #FFD700 !important;
+    }
+
+    #menu a {
+        font-family: 'Playfair Display', serif;
+        letter-spacing: 0.05em;
+        transition: background-color 0.3s, transform 0.3s;
+        border-left: 4px solid transparent;
+    }
+
+    #menu a:hover {
+        border-left: 4px solid #FFD700;
+        padding-left: 4px;
+    }
+
+    .bg-rich-black {
+        background-color: #0a0a0a;
+    }
+
+    .text-gold {
+        color: #FFD700;
+    }
+
+
+    .hover\:bg-opacity-10:hover {
+        background-color: rgba(255, 215, 0, 0.1);
+    }
+
+    .hamburger.is-active .hamburger-inner,
+    .hamburger.is-active .hamburger-inner::before,
+    .hamburger.is-active .hamburger-inner::after {
+        background-color: #FFD700;
+    }
+
+    html {
+            scroll-behavior: smooth;
+        }
 </style>
+
+
 
 <script>
     const navbar = document.getElementById('custom-navbar');
@@ -75,23 +143,39 @@
         prevScrollpos = currentScrollPos;
     }
 
-    const menuToggle = document.getElementById('menuToggle');
-const menu = document.getElementById('menu');
-menuToggle.addEventListener('click', function() {
-    this.classList.toggle('is-active');
-    if (menu.classList.contains('hidden')) {
-        gsap.from(menu, { duration: 0.3, opacity: 0, y: "100%" });
-        menu.classList.remove('hidden');
-    } else {
-        menu.classList.add('hidden');
-    }
-});
+const menuToggle = document.getElementById('menuToggle');
+    const menu = document.getElementById('menu');
+    const menuLinks = menu.querySelectorAll('a');
 
-document.querySelectorAll('.mobile-nav-link').forEach(link => {
-    link.addEventListener('click', () => {
-        menuToggle.classList.remove('is-active');
-        menu.classList.add('hidden');
+    menuToggle.addEventListener('click', toggleMenu);
+
+    menuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            if (!menu.classList.contains('hidden')) {
+                toggleMenu();
+            }
+        });
     });
-});
+
+    function toggleMenu() {
+        const brandName = document.getElementById('brandName');
+        const mainHeader = document.getElementById('mainHeader');
+
+        menuToggle.classList.toggle('is-active');
+        brandName.classList.toggle('text-gold');
+        mainHeader.classList.toggle('bg-gold-text');
+
+        if (menu.classList.contains('hidden')) {
+            gsap.fromTo(menu, {opacity: 0, y: "100%"}, {
+                duration: 0.3,
+                opacity: 1,
+                y: "0%",
+                onStart: () => menu.classList.remove('hidden')
+            });
+        } else {
+            gsap.to(menu, {duration: 0.3, opacity: 0, y: "100%", onComplete: () => menu.classList.add('hidden')});
+        }
+    }
+
 
 </script>

@@ -10,18 +10,39 @@
                 <h1 class="text-7xl font-extrabold mb-6 text-center md:text-left leading-tight gsap-fade-slide">
                     <span id="typed-output"></span>
                 </h1>
-                <h2 class="text-4xl mb-8 text-center md:text-left leading-snug gsap-fade-slide-delay">Backend Web Developer</h2>
-                <p class="text-xl mb-10 text-center md:text-left leading-relaxed gsap-fade-slide-delay-more">With a strong foundation in computer science and a passion for crafting optimal solutions, I am dedicated to creating efficient digital landscapes. Currently refining my expertise at F2I Vincennes.</p>
-                <a href="#about" class="bg-indigo-700 text-white px-8 py-3 rounded-full font-bold hover:bg-indigo-800 transition-colors duration-300 block mx-auto md:mx-0 md:ml-0 gsap-scale-hover">Learn More</a>
+                <h2 class="text-4xl mb-8 text-center md:text-left leading-snug gsap-fade-slide-delay">Backend Web
+                    Developer</h2>
+                <p class="text-xl mb-10 text-center md:text-left leading-relaxed gsap-fade-slide-delay-more">With a
+                    strong foundation in computer science and a passion for crafting optimal solutions, I am dedicated
+                    to creating efficient digital landscapes. Currently refining my expertise at F2I Vincennes.</p>
+                <a href="#about"
+                   class="bg-indigo-700 text-white px-8 py-3 rounded-full font-bold hover:bg-indigo-800 transition-colors duration-300 block mx-auto md:mx-0 md:ml-0 gsap-scale-hover">Learn
+                    More</a>
             </div>
 
             <!-- Image Section -->
             <div class="md:w-1/2 interactive-img-container">
                 <!-- The image could have a WebGL shader effect or a dynamic texture overlay using Three.js -->
-                <img src="{{ url_for('static', filename='img/img.png') }}" alt="Corentin Dupaigne" id="interactive-img" class="rounded-full shadow-2xl mx-auto w-2/3 md:w-3/4 gsap-rotate-hover"/>
+                <img src="{{ url_for('static', filename='img/img.png') }}" alt="Corentin Dupaigne" id="interactive-img"
+                     class="rounded-full shadow-2xl mx-auto w-2/3 md:w-3/4 gsap-rotate-hover"/>
             </div>
         </div>
     </div>
+
+    <style>
+        .hero-image {
+            transition: transform 0.5s;
+            transform: scale(1.30);
+        }
+
+        .hero {
+            position: relative;
+            background-color: #1a202c; /* Dark background color for better contrast with particles */
+            color: white;
+            padding: 4rem 0;
+            margin-top: 64px;
+        }
+    </style>
 
     <!-- Scripts -->
     <script>
@@ -43,6 +64,7 @@
             autoInsertCss: true
         };
         var typed = new Typed("#typed-output", options);
+
     </script>
 
 </section>
