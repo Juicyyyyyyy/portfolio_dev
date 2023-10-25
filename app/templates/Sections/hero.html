@@ -1,40 +1,33 @@
-<section class="hero text-white py-24  relative overflow-hidden custom-hero" id="dynamic-bg">
+<section class="hero text-white py-16 relative overflow-hidden custom-hero" id="dynamic-bg">
     <!-- Particle Canvas (using Three.js or updated particles-js with 3D effects) -->
     <div id="particles-js"></div>
 
     <div class="content-container">
         <div class="container mx-auto flex flex-col md:flex-row items-center justify-between px-6 md:px-12">
             <!-- Text Section -->
-            <div class="animated-text md:w-1/2 mb-12 md:mb-0">
+            <div class="animated-text md:w-1/2 mb-8 md:mb-0">
                 <!-- GSAP animations make these texts fade in and possibly slide from the side -->
-                <h1 class="text-7xl font-extrabold mb-6 text-center md:text-left leading-tight gsap-fade-slide">
+                <h1 class="text-5xl font-extrabold mb-4 text-center md:text-left leading-tight gsap-fade-slide">
                     <span id="typed-output"></span>
                 </h1>
-                <h2 class="text-4xl mb-8 text-center md:text-left leading-snug gsap-fade-slide-delay">Backend Web
+                <h2 class="text-3xl mb-6 text-center md:text-left leading-snug gsap-fade-slide-delay">Professional Backend Web
                     Developer</h2>
-                <p class="text-xl mb-10 text-center md:text-left leading-relaxed gsap-fade-slide-delay-more">With a
-                    strong foundation in computer science and a passion for crafting optimal solutions, I am dedicated
-                    to creating efficient digital landscapes. Currently refining my expertise at F2I Vincennes.</p>
+                <p class="text-lg mb-8 text-center md:text-left leading-relaxed gsap-fade-slide-delay-more">With a solid background in computer science and a passion for crafting efficient solutions, I am committed to creating optimized digital landscapes. Currently honing my skills at F2I Vincennes.</p>
                 <a href="#about"
-                   class="bg-indigo-700 text-white px-8 py-3 rounded-full font-bold hover:bg-indigo-800 transition-colors duration-300 block mx-auto md:mx-0 md:ml-0 gsap-scale-hover">Learn
-                    More</a>
+   class="bg-indigo-700 text-white px-5 py-2 rounded-full font-semibold hover:bg-indigo-800 transition-colors duration-300 inline-block mx-auto md:mx-0 md:ml-0 gsap-scale-hover">Discover More</a>
+
             </div>
 
             <!-- Image Section -->
             <div class="md:w-1/2 interactive-img-container">
                 <!-- The image could have a WebGL shader effect or a dynamic texture overlay using Three.js -->
                 <img src="{{ url_for('static', filename='img/img.png') }}" alt="Corentin Dupaigne" id="interactive-img"
-                     class="rounded-full shadow-2xl mx-auto w-2/3 md:w-3/4 gsap-rotate-hover"/>
+                     class="rounded-full shadow-lg mx-auto w-2/3 md:w-3/5 gsap-rotate-hover"/>
             </div>
         </div>
     </div>
 
     <style>
-        .hero-image {
-            transition: transform 0.5s;
-            transform: scale(1.30);
-        }
-
         .hero {
             position: relative;
             background-color: #1a202c; /* Dark background color for better contrast with particles */
@@ -47,9 +40,9 @@
     <!-- Scripts -->
     <script>
         // GSAP Animations
-        gsap.from('.gsap-fade-slide', {duration: 1.2, x: -100, opacity: 0, delay: 0.5});
-        gsap.from('.gsap-fade-slide-delay', {duration: 1.2, x: -100, opacity: 0, delay: 0.7});
-        gsap.from('.gsap-fade-slide-delay-more', {duration: 1.2, x: -100, opacity: 0, delay: 0.9});
+        gsap.from('.gsap-fade-slide', { duration: 1.2, x: -100, opacity: 0, delay: 0.5 });
+        gsap.from('.gsap-fade-slide-delay', { duration: 1.2, x: -100, opacity: 0, delay: 0.7 });
+        gsap.from('.gsap-fade-slide-delay-more', { duration: 1.2, x: -100, opacity: 0, delay: 0.9 });
 
         // Typed.js Initialization
         var options = {
