@@ -15,8 +15,10 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Tool Card 1 -->
       <div class="bg-white rounded-lg shadow-lg relative cardsTools">
+          <a href="prompt_tester" class="cursor-pointer">
           <img class="w-full aspect-square object-cover cardsHover" src="{{ url_for('static', filename='img/prompt_tester_illustration.jpeg') }}" alt="Tool 1" >
           <div class="px-6 py-2 absolute bottom-0 bg-white">
+
             <div class="flex justify-between items-center">
             <h3 class="text-xl font-semibold text-indigo-800 mb-2"><a href="prompt_tester" class="hover:underline">Prompt Tester</a></h3>
             <a href="prompt_tester" class="text-indigo-600  flex items-center justify-center hover:text-indigo-400 duration-200 goToApp">
@@ -27,10 +29,11 @@
 
             </a>
           </div>
-            <p class="text-gray-600 hidden overflow-hidden">
+            <p class="text-gray-600 hiddenn overflow-hidden">
                 Prompt Tester is a Python script for testing the same prompt multiple times concurrently using the OpenAI GPT-3.5 model. It allows you to evaluate how the model responds to a specific prompt when tested multiple times.
             </p>
         </div>
+          </a>
       </div>
 
   </div>
@@ -63,7 +66,7 @@
   transition: all 0.3s;
 }
 /* Au départ, le texte caché est masqué */
-.hidden {
+.hiddenn {
     display: block;
     transform: translateY(20px); /* Décalage initial vers le bas */
     opacity: 0; /* Opacité initiale à 0 */
@@ -72,7 +75,7 @@
 }
 
 /* Lorsque la div parent est survolée, afficher le texte caché avec un décalage de 0 et une opacité de 1 */
-.cardsTools:hover .hidden {
+.cardsTools:hover .hiddenn {
     display: block;
     transform: translateY(0); /* Décalage de 0 */
     opacity: 1;
@@ -81,7 +84,7 @@
 }
 
 /* Lorsque la div parent n'est pas survolée (hover), masquer le texte caché */
-.cardsTools:not(:hover) .hidden {
+.cardsTools:not(:hover) .hiddenn {
     display: block;
     transform: translateY(20px); /* Décalage vers le bas lorsqu'on quitte le hover */
     opacity: 0;
