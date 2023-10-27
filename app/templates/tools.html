@@ -9,33 +9,26 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Tool Card 1 -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://source.unsplash.com/random" alt="Tool 1" class="w-full h-auto max-h-36 object-cover">
+                    <img src="{{ url_for('static', filename='img/prompt_tester_illustration.jpeg') }}" alt="Tool 1" class="w-full h-auto max-h-[40] object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-indigo-800 mb-2">Prompt tester</h3>
-                        <p class="text-gray-600 mb-4">Description of Tool 1.</p>
+                        <h3 class="text-xl font-semibold text-indigo-800 mb-2"><a href="prompt_tester" class="hover:underline"> Prompt Tester </a> </h3>
+                        <p class="text-gray-600 mb-4">Prompt Tester is a Python script for testing the same prompt multiple times concurrently using the OpenAI GPT-3.5 model. It allows you to evaluate how the model responds to a specific prompt when tested multiple times.</p>
                         <a href="prompt_tester" class="text-indigo-600 hover:underline">Try the tool</a>
                     </div>
                 </div>
 
                 <!-- Tool Card 2 -->
                 <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://source.unsplash.com/random" alt="Tool 2" class="w-full h-auto max-h-36 object-cover">
+                    <img src="{{ url_for('static', filename='img/coming_soon_illustration.png') }}" alt="Tool 2" class="w-full h-auto max-h-[40] object-cover">
                     <div class="p-6">
-                        <h3 class="text-xl font-semibold text-indigo-800 mb-2">Tool 2</h3>
-                        <p class="text-gray-600 mb-4">Description of Tool 2.</p>
-                        <a href="#" class="text-indigo-600 hover:underline">Learn More</a>
+                        <h3 class="text-xl font-semibold text-indigo-800 mb-2">Prompt Generator</h3>
+                        <p class="text-gray-600 mb-4">Generate your text-to-text prompt by fulfilling a few parameters.</p>
+                        <div class="text-indigo-600">Coming soon</div>
                     </div>
                 </div>
 
-                <!-- Tool Card 3 -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="https://source.unsplash.com/random" alt="Tool 3" class="w-full h-auto max-h-36 object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-indigo-800 mb-2">Tool 3</h3>
-                        <p class="text-gray-600 mb-4">Description of Tool 3.</p>
-                        <a href="#" class="text-indigo-600 hover:underline">Learn More</a>
-                    </div>
-                </div>
+
+
             </div>
         </section>
     </main>
