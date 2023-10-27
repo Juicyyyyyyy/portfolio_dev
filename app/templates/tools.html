@@ -3,45 +3,110 @@
 {% include './Sections/head.html' %}
 <body class="font-sans leading-normal tracking-normal bg-gray-100">
     {% include './Sections/header.html' %}
-    <main class="pt-[91px]">
-                <!-- Heading -->
-        <div class="text-center heading">
-            <h2 class="text-5xl font-extrabold text-indigo-900 mb-8 animate-fade-slide">Tools</h2>
-            <p class="text-xl text-gray-700 leading-relaxed animate-fade-slide-delay">Explore and try the latest tool I've developed.</p>
+    <main class="pt-[91.5px]">
+      <!-- Heading -->
+<div class="text-center heading">
+  <h2 class="text-5xl font-extrabold text-indigo-900 mb-8 animate-fade-slide">Tools</h2>
+  <p class="text-xl text-gray-700 leading-relaxed animate-fade-slide-delay">Explore and try the latest tool I've developed.</p>
+</div>
+
+<!-- Tools Section -->
+<section class="container mx-auto px-4 py-16">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Tool Card 1 -->
+      <div class="bg-white rounded-lg shadow-lg relative cardsTools">
+          <img class="w-full aspect-square object-cover cardsHover" src="{{ url_for('static', filename='img/prompt_tester_illustration.jpeg') }}" alt="Tool 1" >
+          <div class="px-6 py-2 absolute bottom-0 bg-white">
+            <div class="flex justify-between items-center">
+            <h3 class="text-xl font-semibold text-indigo-800 mb-2"><a href="prompt_tester" class="hover:underline">Prompt Tester</a></h3>
+            <a href="prompt_tester" class="text-indigo-600  flex items-center justify-center hover:text-indigo-400 duration-200 goToApp">
+              <p>Try the tool</p>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.3" stroke="currentColor" class="w-[30px] h-[30px] svgWidth">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+              </svg>
+
+            </a>
+          </div>
+            <p class="text-gray-600 hidden overflow-hidden">
+                Prompt Tester is a Python script for testing the same prompt multiple times concurrently using the OpenAI GPT-3.5 model. It allows you to evaluate how the model responds to a specific prompt when tested multiple times.
+            </p>
         </div>
+      </div>
 
-        <!-- Tools Section -->
-        <section class="container mx-auto px-4 py-16">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Tool Card 1 -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="{{ url_for('static', filename='img/prompt_tester_illustration.jpeg') }}" alt="Tool 1" class="w-full h-auto max-h-[40] object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-indigo-800 mb-2"><a href="prompt_tester" class="hover:underline"> Prompt Tester </a> </h3>
-                        <p class="text-gray-600 mb-4">Prompt Tester is a Python script for testing the same prompt multiple times concurrently using the OpenAI GPT-3.5 model. It allows you to evaluate how the model responds to a specific prompt when tested multiple times.</p>
-                        <a href="prompt_tester" class="text-indigo-600 hover:underline">Try the tool</a>
-                    </div>
-                </div>
-
-                <!-- Tool Card 2 -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <img src="{{ url_for('static', filename='img/coming_soon_illustration.png') }}" alt="Tool 2" class="w-full h-auto max-h-[40] object-cover">
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-indigo-800 mb-2">Prompt Generator</h3>
-                        <p class="text-gray-600 mb-4">Generate your text-to-text prompt by fulfilling a few parameters.</p>
-                        <div class="text-indigo-600">Coming soon</div>
-                    </div>
-                </div>
-
-
-
-            </div>
-        </section>
-    </main>
+  </div>
+</section>
+</main>
     {% include './Sections/footer.html' %}
 </body>
 
 <style>
+.goToApp:hover .svgWidth{
+  padding-left: 5px;
+  transition: all 0.3s;
+}
+.goToApp:not(:hover) .svgWidth{
+  padding-left: 0px;
+  transition: all 0.3s;
+}
+
+.cardsHover{
+  cursor: pointer;
+}
+
+.cardsTools:hover .cardsHover{
+  filter: brightness(.5);
+  transition: all 0.3s;
+}
+
+.cardsTools:not(:hover) .cardsHover{
+  filter: brightness(1);
+  transition: all 0.3s;
+}
+/* Au départ, le texte caché est masqué */
+.hidden {
+    display: block;
+    transform: translateY(20px); /* Décalage initial vers le bas */
+    opacity: 0; /* Opacité initiale à 0 */
+    height: 0px;
+    transition: all 0.2s;
+}
+
+/* Lorsque la div parent est survolée, afficher le texte caché avec un décalage de 0 et une opacité de 1 */
+.cardsTools:hover .hidden {
+    display: block;
+    transform: translateY(0); /* Décalage de 0 */
+    opacity: 1;
+    animation: resizer 0.3s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+/* Lorsque la div parent n'est pas survolée (hover), masquer le texte caché */
+.cardsTools:not(:hover) .hidden {
+    display: block;
+    transform: translateY(20px); /* Décalage vers le bas lorsqu'on quitte le hover */
+    opacity: 0;
+    animation: resizer-out 0.3s ease-in-out;
+    animation-fill-mode: forwards;
+}
+
+@keyframes resizer {
+    0% {
+        height: 0px;
+    }
+    100% {
+        height: 100px;
+    }
+}
+
+@keyframes resizer-out {
+    0% {
+        height: 100px;
+    }
+    100% {
+        height: 0px;
+    }
+}
 
 </style>
+
 </html>
