@@ -2,67 +2,123 @@
 <html lang="en">
 {% include './Sections/head.html' %}
 <body>
-    <!-- header -->
-    {% include './Sections/header.html' %}
+<!-- header -->
+{% include './Sections/header.html' %}
 
-    <main>
-        <!-- Tool form -->
-        <section class="bg-white py-16" id="tools">
-            <div class="max-w-md mx-auto p-4">
-                <h2 class="text-2xl font-semibold text-indigo-800 mb-4">GPT-3.5 Prompt Tester</h2>
+<main>
+    <!-- Tool form -->
+    <section class="bg-white py-16" id="tools">
+        <div class="max-w-md mx-auto p-4">
+            <h2 class="text-2xl font-semibold text-indigo-800 mb-4">GPT-3.5 Prompt Tester</h2>
 
-                <!-- Prompt input -->
-                <form method="post">
-                    <div class="mb-6">
-                        <label for="prompt" class="block text-gray-800 font-semibold mb-2">Enter Prompt:</label>
-                        <textarea name="prompt" id="prompt" class="w-full min-h-10 p-4 border border-gray-300 rounded focus:outline-none focus:ring focus:border-indigo-300 transition duration-300" rows="1" oninput="autoExpand(this)"></textarea>
-                    </div>
-
-
-
-                    <!-- Number of tests slider -->
-<div class="mb-4">
-    <label for="numTests" class="block text-gray-800 font-semibold mb-2">Number of Tests (1-10):</label>
-    <input type="range" id="numTests" name="numTests" min="1" max="10" class="w-full">
-</div>
+            <!-- Prompt input -->
+            <form method="post">
+                <div class="mb-6">
+                    <label for="prompt" class="block text-gray-800 font-semibold mb-2">Enter Prompt:</label>
+                    <textarea name="prompt" id="prompt"
+                              class="w-full min-h-10 p-4 border border-gray-300 rounded focus:outline-none focus:ring focus:border-indigo-300 transition duration-300"
+                              rows="1" oninput="autoExpand(this)"></textarea>
+                </div>
 
 
-                    <!-- Process button -->
-                    <button type="submit" class="bg-indigo-700 hover:bg-indigo-800 text-white px-4 py-3 rounded-full font-semibold transition duration-300">Process</button>
-                </form>
+                <!-- Number of tests slider -->
+                <div class="mb-4">
+                    <label for="numTests" class="block text-gray-800 font-semibold mb-2">Number of Tests (1-10):</label>
+                    <input type="range" id="numTests" name="numTests" min="1" max="10" class="w-full">
+                </div>
 
-                <!-- Results -->
-                <div id="results" class="mt-8">
-                    {% if results %}
-                        <h3 class="text-xl font-semibold text-indigo-800 mb-4">Results:</h3>
-                        <ul class="space-y-4">
+
+                <!-- Process button -->
+                <button type="submit"
+                        class="bg-indigo-700 hover:bg-indigo-800 text-white px-4 py-3 rounded-full font-semibold transition duration-300">
+                    Process
+                </button>
+            </form>
+
+            <!-- Results -->
+            <div id="results" class="mt-8">
+                {% if results %}
+                <h3 class="text-xl font-semibold text-indigo-800 mb-4">Results:</h3>
+                <ul class="space-y-4">
+                    <div class="swiper-container overflow-hidden">
+                        <div class="swiper-wrapper">
                             {% for result in results %}
+                            <div class="swiper-slide">
                                 <li class="border border-gray-300 p-4 rounded-md">
                                     <div class="text-gray-700">{{ result }}</div>
                                 </li>
+                            </div>
                             {% endfor %}
-                        </ul>
-                    {% endif %}
-                </div>
+                        </div>
+                        <!-- Add navigation buttons -->
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <!-- Add pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+                </ul>
             </div>
-        </section>
-    </main>
 
-    <!-- footer -->
-    {% include './Sections/footer.html' %}
+            {% endif %}
+        </div>
+        </div>
+    </section>
+</main>
+
+<!-- footer -->
+{% include './Sections/footer.html' %}
 </body>
 
 <style>
     section {
         margin-top: 64px;
     }
+
+    .swiper-container {
+        margin: 0 auto;
+        max-width: 800px;
+    }
+
+    .swiper-slide {
+        text-align: center;
+        padding: 20px;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: #fff;
+        background-color: #007bff;
+    }
+
+    .swiper-pagination-bullet {
+        background-color: #007bff;
+    }
 </style>
 
 <script>
-    function autoExpand(textarea) {
-    textarea.style.height = 'auto'; // Reset height to auto to prevent scroll
-    textarea.style.height = (textarea.scrollHeight) + 'px'; // Set the height to the scrollHeight
-}
+
+    const swiper = new Swiper('.swiper-container', {
+        // complete the swiper here
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const swiper = new Swiper('.swiper-container', {
+            // Customize Swiper options here
+            direction: 'horizontal', // Change to 'vertical' for vertical slider
+            loop: true, // Enable loop mode
+            spaceBetween: 20, // Space between slides
+            slidesPerView: 'auto', // Number of slides per view
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+        });
+    });
+
 </script>
 
 </html>
