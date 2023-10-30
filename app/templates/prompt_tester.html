@@ -97,6 +97,11 @@
 
 <script>
 
+function autoExpand(textarea) {
+    textarea.style.height = 'auto'; // Reset height to auto to prevent scroll
+    textarea.style.height = (textarea.scrollHeight) + 'px'; // Set the height to the scrollHeight
+}
+
     const swiper = new Swiper('.swiper-container', {
         // complete the swiper here
     });
