@@ -10,32 +10,31 @@
             <p class="text-xl text-gray-700 leading-relaxed animate-fade-slide-delay">Explore my Crypto Correlation Map with dynamic parameters.</p>
         </div>
 
-        <!-- Parameters Form Section -->
-        <section class="container mx-auto px-4 py-16">
-            <form method="POST" class="flex flex-col space-y-4 max-w-md mx-auto">
+        <div class="flex">
+            <!-- Parameters Form Section -->
+            <section class="w-1/3 container mx-auto px-4 py-16">
+                <form method="POST" class="flex flex-col space-y-4 max-w-md mx-auto">
 
-                <label for="since_date" class="text-xl font-semibold text-indigo-800 mt-4 mb-2">Since Date:</label>
-                <input type="date" name="since_date" class="w-full p-2 border border-gray-300 rounded-lg" required>
+                    <label for="since_date" class="text-xl font-semibold text-indigo-800 mt-4 mb-2">Since Date:</label>
+                    <input type="date" name="since_date" class="w-full p-2 border border-gray-300 rounded-lg" required>
 
-                <label for="till_date" class="text-xl font-semibold text-indigo-800 mt-4 mb-2">Till Date:</label>
-<input type="date" name="till_date" class="w-full p-2 border border-gray-300 rounded-lg" required value="{{ today_date }}">
+                    <label for="till_date" class="text-xl font-semibold text-indigo-800 mt-4 mb-2">Till Date:</label>
+                    <input type="date" name="till_date" class="w-full p-2 border border-gray-300 rounded-lg" required value="{{ today_date }}">
 
-                <button type="submit" class="bg-indigo-600 text-white rounded-full p-3 hover:bg-indigo-700 duration-300">
-                    Display Table
-                </button>
-            </form>
-        </section>
+                    <button type="submit" class="bg-indigo-600 text-white rounded-full p-3 hover-bg-indigo-700 duration-300">
+                        Display Table
+                    </button>
+                </form>
+            </section>
 
-        <!-- Display the correlation data here -->
-{% if correlation_matrix is defined %}
-        <section class="container mx-auto px-4 py-8">
-            <div class="text-xl font-semibold text-indigo-800 mb-4">Correlation Data</div>
-            <div class="bg-white shadow-lg rounded-lg p-4">
-                {{ correlation_matrix|safe }}
-            </div>
-        </section>
-        {% endif %}
-
+            <!-- Display the correlation data here -->
+            <section class="w-2/3 container mx-auto px-4 py-8">
+                <div class="text-xl font-semibold text-indigo-800 mb-4">Correlation Data</div>
+                <div class="bg-white shadow-lg rounded-lg p-4">
+                    {{ correlation_matrix|safe }}
+                </div>
+            </section>
+        </div>
 
     </main>
     {% include './Sections/footer.html' %}
