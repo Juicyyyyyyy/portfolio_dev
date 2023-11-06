@@ -32,6 +32,7 @@ from app.models.project import Project
 from app.models.company import Experience
 from app.models.skill import Skill
 from app.models.skill_category import Category
+from app.models.cryptos import Cryptocurrency, CryptoPrice
 
 admin.add_view(ModelView(Post, db.session))
 admin.add_view(ModelView(Project, db.session))

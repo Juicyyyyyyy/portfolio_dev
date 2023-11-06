@@ -1,7 +1,7 @@
 from flask import Flask
 
 from app import db
-from app import Project, Category, Experience, Skill, Post
+from app import Project, Category, Experience, Skill, Post, CryptoPrice, Cryptocurrency
 from datetime import datetime
 import os
 
