@@ -4,10 +4,12 @@ from app import app, db
 from app import Project, Skill, Category, Experience, Post
 from app.tools.prompt_tester import process_prompt
 from app.tools.prompt_tester import openai_tool_routes
+from app.tools.crypto_correlation_map import crypto_correlation_route
 
 mail = Mail(app)
 
 app.register_blueprint(openai_tool_routes)
+app.register_blueprint(crypto_correlation_route)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():

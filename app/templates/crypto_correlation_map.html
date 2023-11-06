@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include './Sections/head.html' %}
+<body class="font-sans leading-normal tracking-normal bg-gray-100">
+    {% include './Sections/header.html' %}
+    <main class="pt-[91.5px]">
+        <!-- Heading -->
+        <div class="text-center heading">
+            <h2 class="text-5xl font-extrabold text-indigo-900 mb-8 animate-fade-slide">Crypto Correlation Map</h2>
+            <p class="text-xl text-gray-700 leading-relaxed animate-fade-slide-delay">Explore my Crypto Correlation Map with dynamic parameters.</p>
+        </div>
+
+        <!-- Parameters Form Section -->
+        <section class="container mx-auto px-4 py-16">
+            <form method="POST" class="flex flex-col space-y-4 max-w-md mx-auto">
+                <label for="symbols" class="text-xl font-semibold text-indigo-800">Select Symbols:</label>
+                <select name="symbols" multiple class="p-3 border border-gray-300 rounded-lg">
+                    <option value="BTC/USDT">BTC/USDT</option>
+                    <option value="ETH/USDT">ETH/USDT</option>
+                    <!-- Add more options as needed -->
+                </select>
+                <label for="timeframe" class="text-xl font-semibold text-indigo-800">Timeframe:</label>
+                <input type="text" name="timeframe" class="p-3 border border-gray-300 rounded-lg" value="1h">
+                <label for="since_timestamp" class="text-xl font-semibold text-indigo-800">Since Timestamp:</label>
+                <input type="text" name="since_timestamp" class="p-3 border border-gray-300 rounded-lg" value="0">
+                <label for="till_timestamp" class="text-xl font-semibold text-indigo-800">Till Timestamp:</label>
+                <input type="text" name="till_timestamp" class="p-3 border border-gray-300 rounded-lg" value="0">
+                <button type="submit" class="bg-indigo-600 text-white rounded-full p-3 hover:bg-indigo-700 duration-300">
+                    Fetch Data
+                </button>
+            </form>
+        </section>
+
+        <!-- Display the correlation data here -->
+        {% if correlation_data %}
+            <section class="container mx-auto px-4 py-8">
+                <div class="text-xl font-semibold text-indigo-800 mb-4">Correlation Data</div>
+                <div class="bg-white shadow-lg rounded-lg p-4">
+                    <!-- Display the correlation data using a table or other visualization -->
+                    <!-- Modify this section as needed to display your correlation map -->
+                </div>
+            </section>
+        {% endif %}
+    </main>
+    {% include './Sections/footer.html' %}
+</body>
+</html>
