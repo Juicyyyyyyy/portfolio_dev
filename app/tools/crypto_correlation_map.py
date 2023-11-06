@@ -3,7 +3,7 @@ from dotenv import load_dotenv
 import pandas as pd
 from flask import Flask, request, jsonify, Blueprint, render_template
 from .trading_functions import HistoricalDataFetcher
-from datetime import datetime
+from datetime import datetime, date
 from app.models.cryptos import CryptoPrice, Cryptocurrency
 from app import db
 from sqlalchemy import and_
@@ -50,7 +50,33 @@ def create_correlation_matrix():
             correlation_matrix.loc[symbol1, symbol2] = corr
             correlation_matrix.loc[symbol2, symbol1] = corr
 
-        return render_template('crypto_correlation_map.html', correlation_matrix=correlation_matrix,
-                               since_date=since_date, till_date=till_date)
+        # Convert the correlation matrix to a Plotly heatmap
+        fig = px.imshow(correlation_matrix, x=symbols, y=symbols)
+        fig.update_xaxes(side="top")  # Place the x-axis labels on top
+        fig.update_layout(
+            title="Crypto Correlation Matrix",
+            xaxis_title="Cryptocurrencies",
+            yaxis_title="Cryptocurrencies",
+            margin=dict(l=0, r=0, b=50, t=50),  # Adjust the margin for better layout
+        )
+
+        # Add annotations to display numbers in the middle of the cells
+        annotations = []
+        for i, symbol1 in enumerate(symbols):
+            for j, symbol2 in enumerate(symbols):
+                annotations.append(
+                    dict(
+                        x=i,
+                        y=j,
+                        text=f'{correlation_matrix.loc[symbol1, symbol2]:.2f}',
+                        showarrow=False,
+                        font=dict(size=12),
+                    )
+                )
+        fig.update_layout(annotations=annotations)
+
+        # Render the template and pass the Plotly figure to it
+        return render_template('crypto_correlation_map.html', correlation_matrix=fig.to_html())
     else:
-        return render_template('crypto_correlation_map.html')
+        today_date = date.today().strftime('%Y-%m-%d')
+        return render_template('crypto_correlation_map.html', today_date=today_date)
