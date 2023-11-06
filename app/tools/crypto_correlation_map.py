@@ -7,6 +7,8 @@ from datetime import datetime
 from app.models.cryptos import CryptoPrice, Cryptocurrency
 from app import db
 from sqlalchemy import and_
+from itertools import combinations
+import plotly.express as px
 import plotly.graph_objs as go
 
 data_fetcher = HistoricalDataFetcher()
@@ -16,17 +18,18 @@ crypto_correlation_route = Blueprint('crypto_correlation_map', __name__)
 @crypto_correlation_route.route('/crypto_correlation_map', methods=['GET', 'POST'])
 def create_correlation_matrix():
     if request.method == 'POST':
-        # Get the form values submitted by the user
-        selected_symbols = request.form.getlist('symbols')
-
         # Convert selected dates to timestamps
         since_date = datetime.strptime(request.form['since_date'], '%Y-%m-%d')
         till_date = datetime.strptime(request.form['till_date'], '%Y-%m-%d')
 
-        # Fetch historical data from the database
-        historical_data = {}
-        for symbol in selected_symbols:
-            # Query the CryptoPrice table for the selected symbol and date range
+        # Fetch historical data from the database for all cryptocurrencies
+        cryptocurrencies = db.session.query(Cryptocurrency).all()
+        correlation_data = {}
+
+        # Create a list of symbol names for all cryptocurrencies
+        symbols = [crypto.symbol for crypto in cryptocurrencies]
+
+        for symbol in symbols:
             data = db.session.query(CryptoPrice).join(CryptoPrice.crypto).filter(
                 and_(Cryptocurrency.symbol == symbol, CryptoPrice.date >= since_date, CryptoPrice.date <= till_date)
             ).all()
@@ -38,33 +41,16 @@ def create_correlation_matrix():
 
             # Calculate returns
             returns = data_fetcher.calculate_returns(df)
-            historical_data[symbol] = returns
+            correlation_data[symbol] = returns
 
-        # Calculate correlations
-        correlation_data = {}
-        for symbol, returns in historical_data.items():
-            correlation_matrix = data_fetcher.calculate_correlations([returns])
-            correlation_data[symbol] = correlation_matrix
+        # Calculate correlations between all pairs of cryptocurrencies
+        correlation_matrix = pd.DataFrame()
+        for symbol1, symbol2 in combinations(symbols, 2):
+            corr = correlation_data[symbol1]['return'].corr(correlation_data[symbol2]['return'])
+            correlation_matrix.loc[symbol1, symbol2] = corr
+            correlation_matrix.loc[symbol2, symbol1] = corr
 
-            # Create a correlation matrix plot
-            plot_data = []
-            for symbol, corr_matrix in correlation_data.items():
-                fig = go.Figure(data=go.Heatmap(
-                    z=corr_matrix.values,
-                    x=corr_matrix.columns,
-                    y=corr_matrix.index,
-                    colorscale='Viridis',
-                ))
-                fig.update_layout(
-                    title=f'Correlation Matrix for {symbol}',
-                    xaxis_title='Cryptocurrencies',
-                    yaxis_title='Cryptocurrencies',
-                )
-                plot_data.append(fig.to_html(full_html=False, include_plotlyjs='cdn'))
-
-            return render_template('crypto_correlation_map.html', plot_data=plot_data,
-                                   selected_symbols=selected_symbols,
-                                   since_date=since_date, till_date=till_date)
+        return render_template('crypto_correlation_map.html', correlation_matrix=correlation_matrix,
+                               since_date=since_date, till_date=till_date)
     else:
-        cryptocurrencies = db.session.query(Cryptocurrency).all()
-        return render_template('crypto_correlation_map.html', cryptocurrencies=cryptocurrencies)
+        return render_template('crypto_correlation_map.html')

@@ -13,12 +13,6 @@
         <!-- Parameters Form Section -->
         <section class="container mx-auto px-4 py-16">
             <form method="POST" class="flex flex-col space-y-4 max-w-md mx-auto">
-                <label for="symbols" class="text-xl font-semibold text-indigo-800">Select Symbols:</label>
-                <select name="symbols" multiple class="p-3 border border-gray-300 rounded-lg">
-    {% for crypto in cryptocurrencies %}
-        <option value="{{ crypto.symbol }}">{{ crypto.symbol }}</option>
-    {% endfor %}
-</select>
 
                 <label for="since_date" class="text-xl font-semibold text-indigo-800 mt-4 mb-2">Since Date:</label>
                 <input type="date" name="since_date" class="w-full p-2 border border-gray-300 rounded-lg" required>
@@ -32,17 +26,34 @@
         </section>
 
         <!-- Display the correlation data here -->
-        <!-- Display the correlation data here -->
-{% if plot_data %}
+{% if correlation_matrix is defined %}
     <section class="container mx-auto px-4 py-8">
         <div class="text-xl font-semibold text-indigo-800 mb-4">Correlation Data</div>
-        {% for plot in plot_data %}
-            <div class="bg-white shadow-lg rounded-lg p-4">
-                {{ plot|safe }}
-            </div>
-        {% endfor %}
+        <div class="bg-white shadow-lg rounded-lg p-4">
+            <table class="table-auto w-full">
+                <thead>
+                    <tr>
+                        <th class="text-left">Cryptocurrency</th>
+                        {% for symbol in correlation_matrix.columns %}
+                            <th class="text-center">{{ symbol }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for symbol, row in correlation_matrix.iterrows() %}
+                        <tr>
+                            <td class="text-left">{{ symbol }}</td>
+                            {% for value in row %}
+                                <td class="text-center">{{ value }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </section>
 {% endif %}
+
 
     </main>
     {% include './Sections/footer.html' %}
