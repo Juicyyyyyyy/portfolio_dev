@@ -16,26 +16,34 @@ data_fetcher = HistoricalDataFetcher()
 
 crypto_correlation_route = Blueprint('crypto_correlation_map', __name__)
 
-def fetch_crypto_data(since_date, till_date):
+async def fetch_crypto_data_async(since_date, till_date):
     cryptocurrencies = db.session.query(Cryptocurrency).all()
     correlation_data = {}
     symbols = [crypto.symbol for crypto in cryptocurrencies]
 
+    tasks = []
     for symbol in symbols:
-        data = db.session.query(CryptoPrice).join(CryptoPrice.crypto).filter(
-            and_(Cryptocurrency.symbol == symbol, CryptoPrice.date >= since_date, CryptoPrice.date <= till_date)
-        ).all()
+        task = asyncio.ensure_future(fetch_and_process_data(symbol, since_date, till_date, correlation_data))
+        tasks.append(task)
 
-        df = pd.DataFrame([(entry.date, entry.open, entry.high, entry.low, entry.close, entry.volume) for entry in data],
-                          columns=['timestamp', 'open', 'high', 'low', 'close', 'volume'])
-        df['timestamp'] = pd.to_datetime(df['timestamp'])
-
-        returns = data_fetcher.calculate_returns(df)
-        correlation_data[symbol] = returns
-
+    await asyncio.gather(*tasks)
     return symbols, correlation_data
 
-def generate_correlation_plot(symbols, correlation_data):
+async def fetch_and_process_data(symbol, since_date, till_date, correlation_data):
+    data = db.session.query(CryptoPrice).join(CryptoPrice.crypto).filter(
+        and_(Cryptocurrency.symbol == symbol, CryptoPrice.date >= since_date, CryptoPrice.date <= till_date)
+    ).all()
+
+    df = pd.DataFrame([(entry.date, entry.close) for entry in data], columns=['timestamp', 'close'])
+    df['timestamp'] = pd.to_datetime(df['timestamp'])
+
+    # Aggregate data by daily averages
+    df = df.resample('D', on='timestamp').mean()
+
+    returns = data_fetcher.calculate_returns(df)
+    correlation_data[symbol] = returns
+
+async def generate_correlation_plot_async(symbols, correlation_data):
     correlation_matrix = pd.DataFrame()
     for symbol1, symbol2 in combinations(symbols, 2):
         corr = correlation_data[symbol1]['return'].corr(correlation_data[symbol2]['return'])
@@ -67,8 +75,9 @@ def generate_correlation_plot(symbols, correlation_data):
 
     return fig
 
+
 @crypto_correlation_route.route('/crypto_correlation_map', methods=['GET', 'POST'])
-def create_correlation_matrix():
+async def create_correlation_matrix():
     if request.method == 'POST':
         since_date = datetime.strptime(request.form['since_date'], '%Y-%m-%d')
         till_date = datetime.strptime(request.form['till_date'], '%Y-%m-%d')
@@ -77,7 +86,7 @@ def create_correlation_matrix():
         since_date = today_date - timedelta(days=600)
         till_date = today_date
 
-    symbols, correlation_data = fetch_crypto_data(since_date, till_date)
-    fig = generate_correlation_plot(symbols, correlation_data)
+    symbols, correlation_data = await fetch_crypto_data_async(since_date, till_date)
+    fig = await generate_correlation_plot_async(symbols, correlation_data)
 
     return render_template('crypto_correlation_map.html', correlation_matrix=fig.to_html())
