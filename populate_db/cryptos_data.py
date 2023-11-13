@@ -17,7 +17,7 @@ def fetch_and_store_historical_crypto_data(symbol, start_date):
 
                 # Fetch OHLCV data
                 ohlcv = fetch_ohlcv_data(symbol, since, till)
-
+                print(ohlcv)
                 # Check if the cryptocurrency exists in the database
                 crypto = Cryptocurrency.query.filter_by(symbol=symbol).first()
 
@@ -33,18 +33,18 @@ def fetch_and_store_historical_crypto_data(symbol, start_date):
                     db.session.add(crypto)
 
                 # Store OHLCV data for the current day
-                for data in ohlcv:
-                    price = CryptoPrice(
-                        crypto=crypto,
-                        date=datetime.utcfromtimestamp(data[0] / 1000).date(),
-                        price=data[4],  # Closing price
-                        high=data[2],  # High price
-                        low=data[3],   # Low price
-                        open=data[1],  # Opening price
-                        close=data[4],  # Closing price
-                        volume=data[5]  # Trading volume
-                    )
-                    db.session.add(price)
+
+                price = CryptoPrice(
+                    crypto=crypto,
+                    date=datetime.utcfromtimestamp(ohlcv[0][0] / 1000).date(),
+                    price=ohlcv[0][4],  # Closing price
+                    high=ohlcv[0][2],  # High price
+                    low=ohlcv[0][3],   # Low price
+                    open=ohlcv[0][1],  # Opening price
+                    close=ohlcv[0][4],  # Closing price
+                    volume=ohlcv[0][5]  # Trading volume
+                )
+                db.session.add(price)
 
                 # Commit the changes to the database for the current day
                 db.session.commit()
@@ -56,7 +56,7 @@ def fetch_and_store_historical_crypto_data(symbol, start_date):
             current_date -= timedelta(days=1)
 
 def main():
-    symbols = ["BTC/USDT", "ETH/USDT", "XRP/USDT", "BNB/USDT", "USDC/USDT", "SOL/USDT", "ADA/USDT", "DOGE/USDT", "TRX/USDT", "TON/USDT", "LINK/USDT", "MATIC/USDT", "DOT/USDT", "WBTC/USDT", "DAI/USDT", "LTC/USDT", "SHIB/USDT", "BCH/USDT", "AVAX/USDT", "LEO/USDT", "XLM/USDT", "TUSD/USDT", "OKB/USDT", "ATOM/USDT", "XMR/USDT", "UNI/USDT", "ETC/USDT", "FIL/USDT", "BUSD/USDT", "HBAR/USDT", "ICP/USDT", "LDO/USDT", "CRO/USDT", "APT/USDT", "NEAR/USDT", "VET/USDT", "ARB/USDT", "OP/USDT", "INJ/USDT", "AAVE/USDT", "MKR/USDT", "MNT/USDT", "QNT/USDT", "EGLD/USDT", "GRT/USDT", "IMX/USDT", "RUNE/USDT", "ALGO/USDT", "NEO/USDT", "BSV/USDT", "STX/USDT", "RNDR/USDT", "AXS/USDT", "THETA/USDT", "SAND/USDT", "XTZ/USDT", "MANA/USDT", "EOS/USDT", "FTM/USDT", "XDC/USDT", "USDD/USDT", "SNX/USDT", "FDUSD/USDT", "KAVA/USDT", "BGB/USDT", "CHZ/USDT", "FLOW/USDT", "MINA/USDT", "XEC/USDT", "CFX/USDT", "TWT/USDT", "CAKE/USDT", "APE/USDT", "GALA/USDT", "KCS/USDT", "IOTA/USDT", "CRV/USDT", "RPL/USDT", "XAUt/USDT", "PEPE/USDT", "FXS/USDT", "SUI/USDT", "PAXG/USDT", "ZEC/USDT", "KLAY/USDT", "USDP/USDT", "ROSE/USDT", "ETHDYDX/USDT", "AR/USDT", "BTT/USDT", "GMX/USDT", "CSPR/USDT", "WOO/USDT", "COMP/USDT", "HT/USDT", "RUNE/USDT"]
+    symbols = ["BTC/USDT"]
 
     start_date = datetime(2020, 1, 1)
 
