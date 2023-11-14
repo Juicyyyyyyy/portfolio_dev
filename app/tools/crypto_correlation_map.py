@@ -54,8 +54,6 @@ async def generate_correlation_plot_async(symbols, correlation_data):
     fig.update_xaxes(side="top")
     fig.update_layout(
         title="Crypto Correlation Matrix",
-        xaxis_title="Cryptocurrencies",
-        yaxis_title="Cryptocurrencies",
         margin=dict(l=0, r=0, b=50, t=50)
     )
 
@@ -78,13 +76,9 @@ async def generate_correlation_plot_async(symbols, correlation_data):
 
 @crypto_correlation_route.route('/crypto_correlation_map', methods=['GET', 'POST'])
 async def create_correlation_matrix():
-    if request.method == 'POST':
-        since_date = datetime.strptime(request.form['since_date'], '%Y-%m-%d')
-        till_date = datetime.strptime(request.form['till_date'], '%Y-%m-%d')
-    else:
-        today_date = datetime.now()
-        since_date = today_date - timedelta(days=600)
-        till_date = today_date
+    today_date = datetime.now()
+    since_date = today_date - timedelta(days=90)
+    till_date = today_date
 
     symbols, correlation_data = await fetch_crypto_data_async(since_date, till_date)
     fig = await generate_correlation_plot_async(symbols, correlation_data)
