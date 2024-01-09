@@ -86,3 +86,8 @@ def post(post_id):
 @app.route('/tools')
 def tools():
     return render_template('tools.html')
+
+
+@app.route('/veille')
+def veille():
+    return render_template('veille.html')
