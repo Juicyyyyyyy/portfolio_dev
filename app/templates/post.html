@@ -26,14 +26,9 @@
                         </div>
                     </div>
                     <div class="mt-8 post-content text-gray-800 leading-relaxed text-lg">
-                        <!-- Assuming post.content is in the format: header, introduction, body, conclusion -->
-                        <!-- Let's give each section some distinct styling -->
-                        <h2 class="mb-6 text-2xl leading-loose text-gray-800 font-bold">{{ post.header }}</h2>
-                        <p class="mb-6 text-lg leading-loose text-gray-700 font-semibold">{{ post.introduction }}</p>
                         <div class="mb-6 text-base leading-loose text-gray-700">
-                            {{ post.body_markdown() | safe }}
+                            {{ post.content}}
                         </div>
-                        <p class="mb-6 text-lg leading-loose text-gray-700 font-semibold">{{ post.conclusion }}</p>
                     </div>
 
                 </article>

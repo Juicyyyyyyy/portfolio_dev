@@ -80,8 +80,7 @@ def blog():
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     recent_posts = Post.query.order_by(Post.date_posted.desc()).limit(5).all()
-    return render_template('post.html', title=post.title, post=post, recent_posts=recent_posts,
-                           header=post.header, introduction=post.introduction, body=post.body, conclusion=post.conclusion)
+    return render_template('post.html', title=post.title, post=post, recent_posts=recent_posts, content=post.content)
 
 @app.route('/tools')
 def tools():

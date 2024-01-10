@@ -3,9 +3,7 @@ from populate_db import app, kill_db, db, Post, datetime
 with app.app_context():
 	db.session.query(Post).delete()
 	title = "Edward Hopper: Capturing the Essence of Solitude in American Art"
-	excerpt = "Unfolding the life, art, and profound impact of American realist painter Edward Hopper."
-	header = "An Exploration into Edward Hopper's Substantial Influence on the American Art Scene"
-	introduction = "This post uncovers the intriguing life of Edward Hopper and his unique approach to capturing solitude and introspection, deeply impacting the course of American Art."
+
 	body = """
 
 	Curabitur consequat nec neque sit amet dapibus. Nulla facilisi. Donec convallis eros nec tempor pretium. Sed cursus, justo eget aliquam luctus, urna urna convallis enim, sit amet condimentum odio nisi sit amet erat. Mauris cursus nulla leo, sit amet aliquet lorem scelerisque at. Nam ac enim nulla. Suspendisse pellentesque eros sit amet justo sagittis tempor. Nunc vulputate viverra ante, in interdum mauris. Fusce condimentum euismod dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -17,15 +15,11 @@ with app.app_context():
 	Proin eget nunc felis. Fusce luctus maximus nulla sit amet accumsan. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec blandit mauris et ligula ornare, nec tristique risus scelerisque. Etiam egestas tempor libero. Aliquam ac pharetra erat. Nullam et semper massa. Maecenas eget ipsum nisl. Curabitur non iaculis nulla, sed consectetur tortor. Maecenas blandit, nulla finibus pharetra sagittis, felis nunc dignissim libero, a commodo sapien felis a quam. Nunc non quam odio. Suspendisse potenti. Maecenas eu diam vel lacus imperdiet consequat. Cras quis convallis nulla. Proin ut sapien a nunc facilisis commodo quis eu arcu. Donec venenatis laoreet magna, et accumsan dolor hendrerit vitae.
 		"""
 	conclusion = "From his early days in New York to his lasting impact on global art, Edward Hopper's journey is a tribute to the enduring power of art to encapsulate human emotions and experiences. His work, a blend of realism and emotion, continues to inspire, educate, and move audiences today."
-	image_url = "https://www.edwardhopper.net/images/paintings/summer-evening.jpg"  # replace with the actual image URL
+	image_url = "https://m.media-amazon.com/images/I/A1zF6cUJxnL._AC_UF1000,1000_QL80_.jpg"  # replace with the actual image URL
 
 	post = Post(
 		title=title,
-		excerpt=excerpt,
-		header=header,
-		introduction=introduction,
-		body=body,
-		conclusion=conclusion,
+		content=body,
 		date_posted=datetime.utcnow(),
 		image_url=image_url
 	)
@@ -34,9 +28,6 @@ with app.app_context():
 	db.session.add(post)
 
 	title = "Alan Turing: Unveiling the Architect of the Modern Computer"
-	excerpt = "A deep dive into the life and pioneering contributions of Alan Turing, the genius behind modern computing."
-	header = "The Life and Legacy of Alan Turing: The Father of Modern Computing"
-	introduction = "This post delves into the groundbreaking journey of Alan Turing, his pivotal role in World War II, and his enduring impact on the field of computer science."
 	body = """
 
 	Suspendisse vulputate viverra sem. Nulla cursus quis enim sit amet condimentum. Suspendisse at eros vehicula, ultrices justo id, rutrum risus. Nam finibus ante in sollicitudin lobortis. Quisque id elit eget nulla vestibulum ultrices. Sed pellentesque, massa sit amet auctor tincidunt, lacus est posuere velit, ac interdum nulla leo sit amet est. Etiam sodales, dolor sit amet aliquam vestibulum, orci lacus consectetur metus, quis laoreet velit ante vel nunc.
@@ -47,16 +38,12 @@ with app.app_context():
 
 	Sed ultrices pharetra dui, quis fringilla quam varius molestie. Curabitur non sem pellentesque, rhoncus ligula a, tincidunt sem. Morbi nec nunc porta, sodales lorem non, egestas ligula. Etiam venenatis tellus dolor, gravida suscipit urna suscipit ut. Nulla et libero ac nisl porta sodales. Morbi auctor elit ut augue mollis, id tempus augue elementum. Nulla scelerisque auctor nibh, ac ultricies leo malesuada sit amet. In turpis orci, varius eget orci eget, finibus euismod augue. In eget felis tempus, dignissim velit et, fermentum tellus. Sed mollis pretium varius.
 		"""
-	conclusion = "Alan Turing's immense contributions to computer science and his pivotal role in World War II mark him as one of the most impactful figures of the 20th century. His legacy serves as an inspiration for innovation and a stark reminder of the importance of societal acceptance and justice."
+
 	image_url = "https://assets.sportheroesgroup.com/articles/56faabbd475c1fed4a3d3539/alan-turing-running-1080x675.jpg?v=1658831997"  # replace with the actual image URL
 
 	post = Post(
 		title=title,
-		excerpt=excerpt,
-		header=header,
-		introduction=introduction,
-		body=body,
-		conclusion=conclusion,
+		content=body,
 		date_posted=datetime.utcnow(),
 		image_url=image_url
 	)
@@ -64,10 +51,6 @@ with app.app_context():
 	# Add the post to the session
 	db.session.add(post)
 
-	title = "Erik Satie: The Eccentric Impressionist"
-	excerpt = "Exploring the life, works, and peculiarities of the French composer and pianist Erik Satie."
-	header = "Unraveling the Enigma of Erik Satie: The Revolutionary in Music"
-	introduction = "This article uncovers the intriguing journey of Erik Satie, his unique approach to composition, and his profound influence on 20th-century music."
 	body = """
 
 
@@ -79,16 +62,11 @@ with app.app_context():
 
 	Vivamus faucibus, sapien at porttitor condimentum, sapien sem ultricies lacus, a volutpat justo velit eu dui. Nullam rhoncus risus eget ullamcorper pharetra. Phasellus tincidunt sagittis suscipit. Donec blandit metus vitae sapien condimentum, ac porta arcu aliquam. Suspendisse potenti. Pellentesque auctor mi odio, in bibendum enim finibus et. Nulla non ligula a ante fringilla auctor. Nam neque ante, interdum viverra eros nec, malesuada efficitur risus. Nulla facilisi.
 		"""
-	conclusion = "Erik Satie, with his eccentric personality and innovative musical style, stands as a testament to the power of individuality in art. His legacy in the world of music serves as a reminder that breaking convention can lead to the creation of timeless masterpieces."
 	image_url = "https://backoffice.staging.lalettredumusicien.fr/articles/articlelesmorceauxenformedepoirederiksatie0320230935520000.jpeg"  # replace with the actual image URL
 
 	post = Post(
 		title=title,
-		excerpt=excerpt,
-		header=header,
-		introduction=introduction,
-		body=body,
-		conclusion=conclusion,
+		content=body,
 		date_posted=datetime.utcnow(),
 		image_url=image_url
 	)
@@ -97,10 +75,6 @@ with app.app_context():
 	db.session.add(post)
 
 	title = "Cartier: The Crown Jeweler"
-	excerpt = "The captivating history, renowned craftsmanship, and pioneering innovations of the distinguished French luxury goods company, Cartier."
-	header = "Cartier: The Pioneering Luxury Brand That Shaped The World Of Jewelry"
-	introduction = "This post illuminates the enduring legacy of Cartier, its noteworthy contributions to jewelry " \
-				   "design, and the timeless appeal of its exquisite creations."
 	body = """
 
 
@@ -117,11 +91,7 @@ with app.app_context():
 
 	post = Post(
 		title=title,
-		excerpt=excerpt,
-		header=header,
-		introduction=introduction,
-		body=body,
-		conclusion=conclusion,
+		content=body,
 		date_posted=datetime.utcnow(),
 		image_url=image_url
 	)
