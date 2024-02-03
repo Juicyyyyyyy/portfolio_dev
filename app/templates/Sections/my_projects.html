@@ -18,7 +18,7 @@
             <div class="project-card overflow-hidden rounded-lg shadow-lg transform transition-transform duration-300 hover:shadow-xl">
 
                 <!-- Project Image -->
-                <a href="{{ project.link_url }}" class="group block relative overflow-hidden">
+                <a href="{{ url_for('project', project_id=project.id) }}" class="group block relative overflow-hidden">
                     <img src="../static/img/{{ project.image_url }}" alt="{{ project.title }}" class="w-full object-cover h-64 md:h-80 transition-opacity duration-300 group-hover:opacity-85">
                     <div class="absolute inset-0 bg-indigo-600 opacity-0 group-hover:opacity-75 transition-opacity duration-300 flex justify-center items-center">
                         <span class="text-white text-2xl font-semibold">View Project</span>
