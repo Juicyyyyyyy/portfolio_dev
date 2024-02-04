@@ -5,7 +5,7 @@ with app.app_context():
 	project1 = Project(
 		# project data here
 		title='Multi Indicator',
-		short_description='This tool presents an overview of the market in a tabular format, organized into five distinct categories of trading indicators',
+		short_description='This tool presents an overview of the market in a tabular format, organized into five distinct categories of trading indicators.',
 		description="""# Comprehensive Trading Tool Overview
 
 This tool presents an **overview of the market** in a tabular format, organized into five distinct categories of trading indicators:

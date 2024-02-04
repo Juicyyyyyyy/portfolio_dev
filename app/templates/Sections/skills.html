@@ -8,46 +8,62 @@
         </div>
 
         <!-- Skills Wrapper -->
-        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20">
-
-            <!-- Skills Navigation -->
-            <aside class="skills-nav bg-white p-8 rounded-xl shadow-md">
-                <h3 class="text-3xl font-bold mb-6 text-indigo-700">Domains</h3>
-                <ul class="divide-y divide-gray-200">
-                    {% for category in categories %}
-                    <li class="py-3">
-                        <a class="skills-nav-item cursor-pointer block px-4 py-2 text-lg hover:bg-indigo-100 transition-colors duration-300" href="#{{ category.name | lower }}" data-category="{{ category.name | lower }}">
-                            {{ category.name }}
-                        </a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </aside>
-
-            <!-- Skills Content -->
-            <div class="skills-content space-y-12">
-                {% for category in categories %}
-                <div id="{{ category.name | lower }}" class="skills-category">
-                    <h4 class="text-2xl font-bold mb-8 text-indigo-700">{{ category.name }}</h4>
-                    <div class="grid grid-cols-2 gap-10">
-                        {% for skill in category.skills %}
-                        <div class="skill-card bg-white rounded-xl shadow-md p-6 h-full transform hover:scale-105 transition-transform duration-300">
-                            <div class="skill-icon flex justify-center items-center mb-6">
-                                {{ skill.icon | safe }}
-                            </div>
-                            <h5 class="skill-title text-lg font-semibold text-center">{{ skill.name }}</h5>
-                        </div>
+        <div class="skills-wrapper grid grid-cols-1 md:grid-cols-3 gap-20">
+            <!-- Domains Wrapper -->
+            <div class="domains-wrapper md:col-span-1">
+                <!-- Skills Navigation -->
+                <aside class="skills-nav bg-white p-8 rounded-xl shadow-md sticky top-20">
+                    <h3 class="text-3xl font-bold mb-6 text-indigo-700">Domains</h3>
+                    <ul class="divide-y divide-gray-200">
+                        {% for category in categories %}
+                        <li class="py-3">
+                            <a class="skills-nav-item cursor-pointer block px-4 py-2 text-lg hover:bg-indigo-100 transition-colors duration-300" href="#{{ category.name | lower }}" data-category="{{ category.name | lower }}">
+                                {{ category.name }}
+                            </a>
+                        </li>
                         {% endfor %}
-                    </div>
-                </div>
-                {% endfor %}
+                    </ul>
+                </aside>
             </div>
 
+            <!-- Skills Content Wrapper -->
+            <div class="skills-content-wrapper md:col-span-2">
+                <!-- Skills Content -->
+                <div class="skills-content space-y-12">
+                    {% for category in categories %}
+                    <div id="{{ category.name | lower }}" class="skills-category">
+                        <h4 class="text-2xl font-bold mb-8 text-indigo-700">{{ category.name }}</h4>
+                        <div class="grid grid-cols-2 gap-10" id="skill-icon">
+                            {% for skill in category.skills %}
+                            <div class="skill-card bg-white rounded-xl shadow-md p-6 h-full transform transition-transform duration-300">
+                                <div class="skill-icon flex justify-center items-center mb-6">
+                                    {{ skill.icon | safe }}
+                                </div>
+                                <h5 class="skill-title text-lg font-semibold text-center">{{ skill.name }}</h5>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 </section>
+
 <style>
-    .skills-nav-item {
+.skills-content-wrapper {
+    margin-left: 150px;
+}
+
+/* Responsive media query for mobile devices */
+@media (max-width: 768px) {
+    .skills-content-wrapper {
+        margin-left: 0;
+    }
+}
+
+.skills-nav-item {
     font-size: 1.25rem;
     font-weight: bold;
     padding: 0.5rem 1rem;
@@ -64,10 +80,20 @@
     background-color: rgba(96, 165, 250, 0.5);
 }
 
-.skills-nav-item.active:hover {
-    background-color: rgba(96, 165, 250, 1);
+#skill-icon {
+    max-width: 400px;
 }
+
+/* Optional: Additional media query for larger screens */
+@media (min-width: 769px) {
+    .skills-nav-item {
+        font-size: 1.25rem;
+    }
+}
+
+
 </style>
+
 <script>
     document.addEventListener("DOMContentLoaded", function() {
     const categories = Array.from(document.querySelectorAll('.skills-category'));
@@ -83,6 +109,17 @@
         const category = document.getElementById(categoryId);
         if (category) {
             category.style.display = 'block';
+        }
+    }
+
+    function scrollToCategory(categoryId) {
+        const category = document.getElementById(categoryId);
+        if (category) {
+            const offsetTop = category.offsetTop - 100; // Adjust this value to account for fixed headers or other elements
+            window.scrollTo({
+                top: offsetTop,
+                behavior: "smooth"
+            });
         }
     }
 
@@ -104,6 +141,9 @@
             // Show the selected category
             const categoryToDisplay = navItem.getAttribute('data-category');
             showCategory(categoryToDisplay);
+
+            // Scroll to the selected category
+            scrollToCategory(categoryToDisplay);
         });
     });
 
@@ -112,4 +152,5 @@
         navItems[0].click();
     }
 });
+
 </script>
