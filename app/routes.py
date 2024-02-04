@@ -47,6 +47,12 @@ def project(project_id):
     project.description = markdown(project.description)
     return render_template('project.html', project=project)
 
+@app.route("/experience/<int:experience_id>")
+def experience(experience_id):
+    experience = Experience.query.get(experience_id)
+    experience.description = markdown(experience.description)
+    return render_template('experience.html', experience=experience)
+
 @app.route("/blog")
 def blog():
     posts = Post.query.order_by(Post.date_posted.desc()).all()
