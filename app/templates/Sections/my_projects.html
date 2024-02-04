@@ -19,7 +19,7 @@
 
                 <!-- Project Image -->
                 <a href="{{ url_for('project', project_id=project.id) }}" class="group block relative overflow-hidden">
-                    <img src="../static/img/{{ project.image_url }}" alt="{{ project.title }}" class="w-full object-cover h-64 md:h-80 transition-opacity duration-300 group-hover:opacity-85">
+                    <img src="../static/img/{{ project.image_url }}" alt="{{ project.title }}" class="w-full object-cover" style="object-position: top; max-height: 200px">
                     <div class="absolute inset-0 bg-indigo-600 opacity-0 group-hover:opacity-75 transition-opacity duration-300 flex justify-center items-center">
                         <span class="text-white text-2xl font-semibold">View Project</span>
                     </div>
@@ -30,7 +30,7 @@
                     <!-- Title -->
                     <h3 class="text-2xl font-bold mb-6">{{ project.title }}</h3>
                     <!-- Description -->
-                    <p class="text-lg text-gray-700 mb-6 line-clamp-4">{{ project.description }}</p>
+                    <p class="text-lg text-gray-700 mb-6 line-clamp-4">{{ project.short_description }}</p>
 
                     <!-- Technologies -->
                     <div class="flex flex-wrap gap-2">

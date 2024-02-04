@@ -5,6 +5,7 @@ with app.app_context():
 	project1 = Project(
 		# project data here
 		title='Multi Indicator',
+		short_description='This tool presents an overview of the market in a tabular format, organized into five distinct categories of trading indicators',
 		description="""# Comprehensive Trading Tool Overview
 
 This tool presents an **overview of the market** in a tabular format, organized into five distinct categories of trading indicators:
@@ -60,21 +61,29 @@ This tool is designed to offer a **clear and concise view of the market**, helpi
 
 	project2 = Project(
 		# project data here
-		title='AI artist portfolio',
-		description="This is a portfolio project displaying my AI art. Since the portfolio is made using the Django framework, I've made the galleries adaptively which mean you simply need to add a new folder inside the static/gallery folder and add images inside, and it will automatically add the new collections and use the title of the folders and files as captions.",
-		languages_used='Python, Django, Css, Javascript, Git',
+		title='Portfolio Optimizer',
+		short_description=""" This tool is designed to optimize a portfolio of financial assets by finding for you the most 
+		optimal weight allocation based on your needs.  """,
+		description=""" This desktop app is made using CustomTkinter python framework for the frontend and python for
+		the backend. I also used the python library 'PyPortfolioOpt' which helped me for many complex math calculus.
+		The app logic is based on some famous and internationally recognized financial and mathematical theories.
+		The most famous one being the 'Modern Portfolio Theory' developed in 1952 by the financial Nobel price winner: 
+		Harry Markowitz. he Modern Portfolio Theory (MPT) refers to an investment theory that allows investors to assemble 
+		an asset portfolio that maximizes expected return for a given level of risk.""",
+		languages_used='Python, CustomTkinter, Pandas, Numpy',
 		link_url='https://github.com/Juicyyyyyyy/portfolio_artist',
-		image_url='portfolio_artist.png',
+		image_url='portfolio-optimizer.png',
 		video_url='portfolio_artist.mp4'
 	)
 
 	project3 = Project(
 		# project data here
 		title='Website generator',
+		short_description="A no-code website generator",
 		description="This is an advanced frontend generator, developed leveraging the robust Laravel framework coupled with Vue.js. We've incorporated a proprietary algorithm based on GPT prompts to engineer a website generator, which facilitates the production of highly customized websites by adjusting a set of simple parameters. We are currently in the process of expanding our offerings, with imminent plans to introduce not just a frontend generator, but a comprehensive full-stack generator, to cater to a wider range of user needs.",
 		languages_used='Laravel, Vue.js, Open ai API, Prompting, Git',
 		link_url='https://justclickbuild.com',
-		image_url='justclickbuildd.png',
+		image_url='jcb_main_page.png',
 		video_url=''
 	)
 
