@@ -142,8 +142,9 @@
             const categoryToDisplay = navItem.getAttribute('data-category');
             showCategory(categoryToDisplay);
 
-            // Scroll to the selected category
-            scrollToCategory(categoryToDisplay);
+            if (navItem !== navItems[0]) {
+                scrollToCategory(categoryToDisplay);
+            }
         });
     });
 
