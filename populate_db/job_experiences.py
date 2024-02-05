@@ -20,13 +20,13 @@ This website was developed using **Laravel, Vue.js, and the OpenAI API**. I woul
 
 	experience2 = Experience(
 		name='Runbot',
-		short_description='Runbot',
-		description="""At runbot I had to use again my comprehension in
-										mathematical trading indicators and algorithmic logic but this time I discovered a
-										whole new universe
-										using for the first time the Django framework and git in a professional environment.
-										I've learned a lot on the importance of backend optimisation while working on
-										massive datas.""",
+		short_description='In my role at Runbot, I was tasked with integrating a variety of trading indicators into a user-friendly, no-code platform.',
+		description="""In my role at **Runbot**, I was tasked with integrating a variety of trading indicators into a user-friendly, no-code platform. This responsibility required leveraging my in-depth knowledge of both **mathematical and financial trading indicators**, enabling me to efficiently transform these concepts into well-structured, optimal, and modular classes and functions.
+
+Our work at Runbot involved handling extensive datasets, primarily consisting of **asset price data**, necessitating the development of functions optimized for both **time and memory efficiency**. This was critical as any inefficiency in these functions could result in significant delays for our users.
+
+Furthermore, a profound understanding of the **Django framework** was essential for the accurate implementation of these functions, ensuring seamless integration with the **Vue.js frontend**. Additionally, my role involved utilizing a professional **Git** environment for effective version control, ensuring robust management and tracking of code changes.
+""",
 		url='https://runbot.io/',
 		img_src='/static/img/runbot.png',
 		languages_used='Python, Django'

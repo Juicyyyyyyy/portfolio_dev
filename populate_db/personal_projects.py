@@ -64,7 +64,9 @@ This tool is designed to offer a **clear and concise view of the market**, helpi
 		title='Portfolio Optimizer',
 		short_description=""" This tool is designed to optimize a portfolio of financial assets by finding for you the most 
 		optimal weight allocation based on your needs.""",
-		description="""This desktop app is developed using the **CustomTkinter Python framework** for the frontend and **Python** for the backend. I also utilized the Python library '**PyPortfolioOpt**', which aided in performing many complex mathematical calculations. 
+		description="""This tool is designed to optimize a portfolio of financial assets by finding for you the most optimal weight allocation based on your needs.
+
+This desktop app has been developed using the **CustomTkinter Python framework** for the frontend and **Python** for the backend. I also utilized the Python library '**PyPortfolioOpt**', which aided in performing many complex mathematical calculations. 
 
 The app's logic is grounded in several famous and internationally recognized financial and mathematical theories. The most notable is the '**Modern Portfolio Theory**' (MPT), developed in 1952 by Nobel Prize-winning financial expert **Harry Markowitz**. MPT is an investment theory that enables investors to construct an asset portfolio maximizing expected return for a given level of risk. 
 
@@ -73,8 +75,7 @@ Another key model is the **Black-Litterman model**, which extends modern portfol
 To use the app, you will need to choose between manually entering each asset in the portfolio or generating a portfolio of assets using AI (**GPT-3.5**). Then, select a start date and an end date, as the app will fetch price data for this period. You must also choose the financial model you wish to use: **MPT**, **Black-Litterman**, or **Monte Carlo**. 
 
 After filling in all parameters, click on '**continue**'. You will be directed to a page depending on the chosen model. Here, you'll need to select additional parameters before obtaining your results.
-
-		""",
+""",
 		languages_used='Python, CustomTkinter, Pandas, Numpy',
 		link_url='https://github.com/Juicyyyyyyy/portfolio_optimizer',
 		image_url='portfolio-optimizer.png',
