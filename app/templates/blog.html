@@ -3,10 +3,6 @@
 
 {% include './Sections/head.html' %}
 
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-
 <body data-categories="{{ categories_names | join(',') }}" class="bg-gray-100 font-sans leading-normal tracking-normal">
     {% include './Sections/header.html' %}
 

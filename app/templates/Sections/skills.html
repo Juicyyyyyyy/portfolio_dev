@@ -1,157 +1,173 @@
 <!-- Skills Section -->
-<section id="skills" class="bg-gray-200 py-28">
-    <div class="container mx-auto px-6 md:px-12 xl:px-24">
-        <!-- Section Heading -->
-        <div class="text-center mb-20">
-            <h2 class="text-5xl font-extrabold text-indigo-900 mb-8">Skills & Expertise</h2>
-            <p class="text-xl text-gray-700 leading-relaxed">Proficient domains and skills I specialize in</p>
-        </div>
-
-        <!-- Skills Wrapper -->
-        <div class="skills-wrapper grid grid-cols-1 md:grid-cols-3 gap-20">
-            <!-- Domains Wrapper -->
-            <div class="domains-wrapper md:col-span-1">
-                <!-- Skills Navigation -->
-                <aside class="skills-nav bg-white p-8 rounded-xl shadow-md sticky top-20">
-                    <h3 class="text-3xl font-bold mb-6 text-indigo-700">Domains</h3>
-                    <ul class="divide-y divide-gray-200">
-                        {% for category in categories %}
-                        <li class="py-3">
-                            <a class="skills-nav-item cursor-pointer block px-4 py-2 text-lg hover:bg-indigo-100 transition-colors duration-300" href="#{{ category.name | lower }}" data-category="{{ category.name | lower }}">
-                                {{ category.name }}
-                            </a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </aside>
+    <section id="skills" class="bg-gray-100 py-32">
+        <div class="container mx-auto px-6 md:px-12 xl:px-24">
+            <!-- Section Heading -->
+            <div class="text-center mb-20">
+                <h2 class="text-5xl font-extrabold text-indigo-900 mb-8">Skills & Expertise</h2>
+                <p class="text-xl text-gray-700 leading-relaxed">Proficient domains and skills I specialize in</p>
             </div>
 
-            <!-- Skills Content Wrapper -->
-            <div class="skills-content-wrapper md:col-span-2">
-                <!-- Skills Content -->
-                <div class="skills-content space-y-12">
-                    {% for category in categories %}
-                    <div id="{{ category.name | lower }}" class="skills-category">
-                        <h4 class="text-2xl font-bold mb-8 text-indigo-700">{{ category.name }}</h4>
-                        <div class="grid grid-cols-2 gap-10" id="skill-icon">
-                            {% for skill in category.skills %}
-                            <div class="skill-card bg-white rounded-xl shadow-md p-6 h-full transform transition-transform duration-300">
-                                <div class="skill-icon flex justify-center items-center mb-6">
-                                    {{ skill.icon | safe }}
-                                </div>
-                                <h5 class="skill-title text-lg font-semibold text-center">{{ skill.name }}</h5>
-                            </div>
+            <!-- Skills Wrapper -->
+            <div class="skills-wrapper grid grid-cols-1 md:grid-cols-3 gap-20">
+                <!-- Domains Wrapper -->
+                <div class="domains-wrapper md:col-span-1">
+                    <!-- Skills Navigation -->
+                    <aside class="skills-nav bg-gray-200 p-8 rounded-xl shadow-md sticky top-20">
+                        <h3 class="text-3xl font-bold mb-6 text-indigo-700">Explore Domains</h3>
+                        <ul class="divide-y divide-gray-300">
+                            {% for category in categories %}
+                                <li class="py-3 transition-transform duration-300 transform hover:translate-x-2">
+                                    <a class="skills-nav-item cursor-pointer flex items-center px-4 py-2 text-lg font-semibold text-gray-800 hover:bg-indigo-100 hover:text-indigo-700 transition-colors duration-300"
+                                       href="#{{ category.name | lower }}" data-category="{{ category.name | lower }}">
+                                        <div class="w-6 h-6 mr-3 rounded-full bg-indigo-200 flex items-center justify-center">
+                                            {% if category.name == "Backend" %}
+                                                🖥️
+                                            {% elif category.name == "Frontend" %}
+                                                🎨
+                                            {% elif category.name == "Databases" %}
+                                                📊
+                                            {% elif category.name == "Tools" %}
+                                                🛠️
+                                            {% else %}
+                                                ❓
+                                            {% endif %}
+                                        </div>
+                                        {{ category.name }}
+                                    </a>
+                                </li>
                             {% endfor %}
-                        </div>
+                        </ul>
+                    </aside>
+                </div>
+                <!-- Skills Content Wrapper -->
+                <div class="skills-content-wrapper md:col-span-2">
+                    <!-- Skills Content -->
+                    <div class="skills-content space-y-12">
+                        {% for category in categories %}
+                            <div id="{{ category.name | lower }}" class="skills-category">
+                                <h4 class="text-2xl font-bold mb-8 text-indigo-700">{{ category.name }}</h4>
+                                <div class="grid grid-cols-2 gap-10" id="skill-icon">
+                                    {% for skill in skills %}
+                                        {% if skill.category == category %}
+                                            <div class="skill-card bg-white rounded-xl shadow-md p-6 h-full transform transition-transform duration-300">
+                                                <div class="skill-icon flex justify-center items-center mb-6">
+                                                    {{ skill.icon | safe }}
+                                                </div>
+                                                <h5 class="skill-title text-lg font-semibold text-center">{{ skill.name }}</h5>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        {% endfor %}
+
                     </div>
-                    {% endfor %}
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<style>
-.skills-content-wrapper {
-    margin-left: 150px;
-}
-
-/* Responsive media query for mobile devices */
-@media (max-width: 768px) {
-    .skills-content-wrapper {
-        margin-left: 0;
-    }
-}
-
-.skills-nav-item {
-    font-size: 1.25rem;
-    font-weight: bold;
-    padding: 0.5rem 1rem;
-    background-color: rgba(229, 231, 235, 0.5);
-    border-radius: 0.5rem;
-    transition: background-color 0.3s;
-}
-
-.skills-nav-item:hover {
-    background-color: rgba(229, 231, 235, 1);
-}
-
-.skills-nav-item.active {
-    background-color: rgba(96, 165, 250, 0.5);
-}
-
-#skill-icon {
-    max-width: 400px;
-}
-
-/* Optional: Additional media query for larger screens */
-@media (min-width: 769px) {
-    .skills-nav-item {
-        font-size: 1.25rem;
-    }
-}
-
-
-</style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-    const categories = Array.from(document.querySelectorAll('.skills-category'));
-    const navItems = document.querySelectorAll('.skills-nav-item');
-
-    function hideAllCategories() {
-        categories.forEach(cat => {
-            cat.style.display = 'none';
-        });
-    }
-
-    function showCategory(categoryId) {
-        const category = document.getElementById(categoryId);
-        if (category) {
-            category.style.display = 'block';
+    <style>
+        .skills-content-wrapper {
+            margin-left: 150px;
         }
-    }
 
-    function scrollToCategory(categoryId) {
-        const category = document.getElementById(categoryId);
-        if (category) {
-            const offsetTop = category.offsetTop - 100; // Adjust this value to account for fixed headers or other elements
-            window.scrollTo({
-                top: offsetTop,
-                behavior: "smooth"
-            });
+        /* Responsive media query for mobile devices */
+        @media (max-width: 768px) {
+            .skills-content-wrapper {
+                margin-left: 0;
+            }
         }
-    }
 
-    navItems.forEach(navItem => {
-        navItem.addEventListener('click', function(event) {
-            event.preventDefault();
+        .skills-nav-item {
+            font-size: 1.25rem;
+            font-weight: bold;
+            padding: 0.5rem 1rem;
+            background-color: rgba(229, 231, 235, 0.5);
+            border-radius: 0.5rem;
+            transition: background-color 0.3s;
+        }
 
-            // Remove 'active' class from all navigation items
-            navItems.forEach(item => {
-                item.classList.remove('active');
+        .skills-nav-item:hover {
+            background-color: rgba(229, 231, 235, 1);
+        }
+
+        .skills-nav-item.active {
+            background-color: rgba(96, 165, 250, 0.5);
+        }
+
+        #skill-icon {
+            max-width: 400px;
+        }
+
+        /* Optional: Additional media query for larger screens */
+        @media (min-width: 769px) {
+            .skills-nav-item {
+                font-size: 1.25rem;
+            }
+        }
+
+
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const categories = Array.from(document.querySelectorAll('.skills-category'));
+            const navItems = document.querySelectorAll('.skills-nav-item');
+
+            function hideAllCategories() {
+                categories.forEach(cat => {
+                    cat.style.display = 'none';
+                });
+            }
+
+            function showCategory(categoryId) {
+                const category = document.getElementById(categoryId);
+                if (category) {
+                    category.style.display = 'block';
+                }
+            }
+
+            function scrollToCategory(categoryId) {
+                const category = document.getElementById(categoryId);
+                if (category) {
+                    const offsetTop = category.offsetTop - 100; // Adjust this value to account for fixed headers or other elements
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: "smooth"
+                    });
+                }
+            }
+
+            navItems.forEach(navItem => {
+                navItem.addEventListener('click', function (event) {
+                    event.preventDefault();
+
+                    // Remove 'active' class from all navigation items
+                    navItems.forEach(item => {
+                        item.classList.remove('active');
+                    });
+
+                    // Add 'active' class to the clicked navigation item
+                    navItem.classList.add('active');
+
+                    // Hide all categories
+                    hideAllCategories();
+
+                    // Show the selected category
+                    const categoryToDisplay = navItem.getAttribute('data-category');
+                    showCategory(categoryToDisplay);
+
+                    if (navItem !== navItems[0]) {
+                        scrollToCategory(categoryToDisplay);
+                    }
+                });
             });
 
-            // Add 'active' class to the clicked navigation item
-            navItem.classList.add('active');
-
-            // Hide all categories
-            hideAllCategories();
-
-            // Show the selected category
-            const categoryToDisplay = navItem.getAttribute('data-category');
-            showCategory(categoryToDisplay);
-
-            if (navItem !== navItems[0]) {
-                scrollToCategory(categoryToDisplay);
+            // Initialize by showing the first category
+            if (navItems.length > 0) {
+                navItems[0].click();
             }
         });
-    });
 
-    // Initialize by showing the first category
-    if (navItems.length > 0) {
-        navItems[0].click();
-    }
-});
-
-</script>
+    </script>

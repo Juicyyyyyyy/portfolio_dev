@@ -5,114 +5,92 @@
 
 {% include './Sections/header.html' %}
 
-<section class="py-20 bg-gray-100">
-    <div class="container mx-auto px-4">
-        <div class="flex flex-wrap">
-            <!-- Main content -->
-            <div class="w-full lg:w-3/4 px-4">
-                <article class="bg-white p-8 rounded-lg shadow-md">
-                    <div class="relative rounded-lg overflow-hidden">
-                        <img class="w-full  object-cover" src="{{ post.image_url }}" alt="Post Image">
-                        <div class="absolute bottom-0 left-0 p-5 bg-opacity-50 bg-black">
-                            <h1 class="font-bold text-4xl text-white mb-2">{{ post.title }}</h1>
-                            <div class="flex items-center">
-                                <img class="h-8 w-8 rounded-full mr-2"
-                                     src="{{ url_for('static', filename='img/corentin_2.jpg') }}" alt="Author Image">
-                                <div class="text-white">
-                                    <p class="font-semibold">Corentin Dupaigne</p>
-                                    <p class="text-sm">{{ post.date_posted.strftime('%B %d, %Y') }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mt-8 post-content text-gray-800 leading-relaxed text-lg">
-                        <div class="mb-6 text-base leading-loose text-gray-700">
-                            {{ post.content|safe }}
-                        </div>
-                    </div>
+<section class="max-w-screen-xl mx-auto py-32">
 
-                </article>
+    <div class="mt-10">
+
+      <div class="mb-4 md:mb-0 w-full max-w-screen-md mx-auto relative" style="height: 24em;">
+        <div class="absolute left-0 bottom-0 w-full h-full z-10"
+          style="background-image: linear-gradient(180deg,transparent,rgba(0,0,0,.7));"></div>
+        <img src="{{ post.image_url }}" class="absolute left-0 top-0 w-full h-full z-0 object-cover" />
+        <div class="p-4 absolute bottom-0 left-0 z-20">
+          <h2 class="text-4xl font-semibold text-gray-100 leading-tight">
+              {{ post.title}}
+          </h2>
+          <div class="flex mt-3">
+            <img src="https://cdn.discordapp.com/attachments/780634443157078026/1204937932318703616/image.png?ex=65d68ce5&is=65c417e5&hm=62cfa26f3e345223ae1a810e51adc752892a9687d852b0da73336036304a9990&"
+              class="h-10 w-10 rounded-full mr-2 object-cover"  alt="post-image"/>
+            <div>
+              <p class="font-semibold text-gray-200 text-sm"> Corentin Dupaigne </p>
+              <p class="font-semibold text-gray-400 text-xs"> {{ post.date_posted }} </p>
             </div>
-            <!-- Sidebar -->
-            <div class="w-full lg:w-1/4 px-4 mt-12 lg:mt-0">
-                <div class="bg-white rounded-lg p-6 shadow-md">
-                    <h3 class="font-bold text-2xl mb-4 text-gray-800">Recent Posts</h3>
-
-                    <ul class="space-y-4">
-                        {% for recent_post in recent_posts %}
-                        {% if recent_post.id != post.id %}
-                        <li>
-                            <a href="{{ url_for('post', post_id=recent_post.id) }}"
-                               class="font-semibold text-indigo-600 hover:text-indigo-800 hover:underline">{{
-                                recent_post.title }}</a>
-                            <p class="text-gray-500 text-sm">{{ recent_post.date_posted.strftime('%B %d, %Y') }}</p>
-                        </li>
-                        {% endif %}
-                        {% endfor %}
-                    </ul>
-
-
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="px-4 lg:px-0 mt-12 text-gray-700 max-w-screen-md mx-auto text-lg leading-relaxed blog-content">
+
+          {{ post.content | safe }}
+
+      </div>
     </div>
-</section>
+  </section>
 
-<style>
-    /* Custom styles for imitating Medium's professional blog style */
+    <style>
 
-    /* Adjust post content width */
-    .post-content {
-        max-width: 680px;
-        margin: auto;
-    }
+    .container {
+    width: 80%;
+    margin: 0 auto;
+}
 
-    /* Center the post title */
-    .post-content h1 {
-        text-align: center;
-        font-size: 3rem;
-    }
+/* Style for blog content */
+.blog-content {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #fff;
+    font-family: "Lora", serif !important;
+    padding: 20px;
+}
 
-    /* Styling for the author section */
-    .post-content .flex.items-center img {
-        border: 2px solid white;
-    }
+h1 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
 
-    /* Adjust font size and line-height for readability */
-    .post-content h2 {
-        font-size: 3rem;
-        line-height: 1.3;
-    }
+h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 15px;
+}
 
-    .post-content p {
-        font-size: 1.25rem;
-        line-height: 1.6;
-    }
+p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
 
-    /* Style recent posts section */
-    .sidebar .font-bold {
-        font-size: 1.5rem;
-        line-height: 1.3;
-    }
+a {
+    color: #007BFF;
+    text-decoration: none;
+}
 
-    .sidebar .text-gray-800 {
-        font-size: 1.25rem;
-        line-height: 1.4;
-    }
+a:hover {
+    text-decoration: underline;
+}
 
-    .sidebar .text-gray-500 {
-        font-size: 0.875rem;
-        line-height: 1.5;
-    }
+/* Add some styling for code blocks if needed */
+pre {
+    background-color: #f5f5f5;
+    padding: 10px;
+    overflow: auto;
+}
 
-    .relative .absolute {
-        bottom: 20px; /* Adjust this value as needed for more padding */
-        left: 0;
-    }
-
-</style>
+code {
+    font-family: 'Courier New', monospace;
+}
+    </style>
 
 {% include './Sections/footer.html' %}
 
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </html>

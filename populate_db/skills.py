@@ -3,10 +3,10 @@ from populate_db import app, db, kill_db, Skill, Category
 with app.app_context():
 	db.session.query(Skill).delete()
 	db.session.query(Category).delete()
-	category1 = Category(name='Frontend', order=1)
-	category2 = Category(name='Backend', order=2)
-	category3 = Category(name='Tools', order=3)
-	category4 = Category(name='Databases', order=4)
+	category1 = Category(name='Frontend', order=2)
+	category2 = Category(name='Backend', order=1)
+	category3 = Category(name='Tools', order=4)
+	category4 = Category(name='Databases', order=3)
 
 	# Add them to the session
 	db.session.add(category1)
