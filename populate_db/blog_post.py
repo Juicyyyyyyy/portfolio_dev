@@ -2,7 +2,7 @@ from populate_db import app, kill_db, db, Post, datetime
 
 with app.app_context():
 	db.session.query(Post).delete()
-	title = "Comment Sommes-nous Passés de Simples Étudiants en BTS à Être les Premiers du Marché à Proposer un Générateur de Site Web Entièrement Alimenté par l'IA? 🚀"
+	title = "De simples étudiants en BTS à pionniers d'un marché 🚀"
 
 	body = """
 

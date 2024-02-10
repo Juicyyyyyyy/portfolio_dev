@@ -12,14 +12,13 @@
                     Developer & Software Engineer based in Paris.</h2>
 
                 <a href="#about"
-                   class="bg-indigo-700 text-white px-5 py-2 rounded-full font-semibold hover:bg-indigo-800 transition-colors duration-300 inline-block mx-auto md:mx-0 md:ml-0 gsap-scale-hover mx-auto">Discover
-                    More</a>
+   class="bg-indigo-700 text-white px-5 py-2 rounded-full font-semibold hover:bg-indigo-800 transition-colors duration-300 inline-block mx-auto md:mx-0 md:ml-0 gsap-scale-hover mx-auto text-center sm:text-left">Discover More</a>
+
 
             </div>
 
             <!-- Image Section -->
             <div class="md:w-1/2 interactive-img-container">
-                <!-- The image could have a WebGL shader effect or a dynamic texture overlay using Three.js -->
                 <img src="https://corentindupaigne.herokuapp.com/static/img/img.png" alt="Corentin Dupaigne"
                      id="interactive-img"
                      class="rounded-full shadow-lg mx-auto w-2/3 md:w-3/5 gsap-rotate-hover"/>
@@ -34,6 +33,15 @@
             color: white;
             padding: 4rem 0;
         }
+
+        @media (max-width: 767px) {
+    .hero .animated-text a {
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+    }
+}
+
     </style>
 
     <!-- Scripts -->

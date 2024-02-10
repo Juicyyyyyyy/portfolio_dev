@@ -3,7 +3,7 @@
 
 {% include './Sections/head.html' %}
 
-<body data-categories="{{ categories_names | join(',') }}" class="bg-gray-100 font-sans leading-normal tracking-normal">
+<body data-categories="{{ categories_names | join(',') }}" class="font-sans leading-normal tracking-normal">
 
 <!-- Includes -->
 
@@ -15,16 +15,22 @@
 {% include './Sections/hero.html' %}
 
 <!-- about -->
+    <div class="bg-gray-100 ">
 {% include './Sections/about.html' %}
+        </div>
 
 <!-- skills -->
+    <div class="bg-gray-200 ">
 {% include './Sections/skills.html' %}
+    </div>
 
 <!-- experiences -->
 {% include './Sections/experiences.html' %}
 
 <!-- projects -->
+    <div class="bg-gray-200 ">
 {% include './Sections/my_projects.html' %}
+    </div>
 
 <!-- contact -->
 {% include './Sections/contact.html' %}
