@@ -1,157 +1,76 @@
-<header id="mainHeader">
-    <nav class="bg-white p-4 w-full z-10 top-0 shadow-lg transition-transform duration-300 ease-in-out"
-         id="custom-navbar">
-        <div class="container mx-auto flex flex-wrap items-center justify-between">
+<header id="mainHeader"
+        class="bg-gray-100 p-4 w-full z-10 top-0 shadow-lg transition-transform duration-300 ease-in-out">
 
-            <!-- Brand Name -->
-            <div class="flex items-center">
-                <a class="z-50 text-2xl font-bold text-indigo-700 hover:text-indigo-800 transition-colors duration-300"
-                   id="brandName" href="/#">Corentin Dupaigne</a>
+    <div class="container mx-auto flex justify-between items-center header">
+        <a href="/" id="brandName"
+           class="z-50 text-4xl sm:text-3xl font-semibold text-indigo-700 hover:underline transition-colors duration-300">Corentin Dupaigne</a>
+
+        <div class="relative lg:hidden block z-40">
+            <div id="menuToggle" class="hamburger hamburger--squeeze" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
             </div>
-
-            <!-- Hamburger Button for Mobile View -->
-            <div class="relative lg:hidden block z-40">
-                <div id="menuToggle" class="hamburger hamburger--squeeze" type="button">
-                    <span class="hamburger-box">
-                        <span class="hamburger-inner"></span>
-                    </span>
-                </div>
-            </div>
-
-            <!-- Navigation Links -->
-            <nav id="nav-content" class="hidden lg:flex space-x-6">
-                <a class="text-gray-700 hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll"
-                   data-duration="300" href="/#about">About</a>
-                <a class="text-gray-700 hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll"
-                   data-duration="300" href="/#projects">Projects</a>
-                <a class="text-gray-700 hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll"
-                   data-duration="300" href="/#skills">Skills</a>
-                <a class="text-gray-700 hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll"
-                   data-duration="300" href="/#experiences">Experiences</a>
-                <a class="text-gray-700 hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll"
-                   data-duration="300" href="/#contact">Contact</a>
-                <a class="font-semibold text-indigo-700 hover:text-indigo-800 py-2 px-4 border border-indigo-700 rounded-full js-smooth-scroll"
-                   data-duration="300" href="/blog">Blog</a>
-            </nav>
-
-            <!-- Mobile View Menu (Hidden initially) -->
-            <nav id="menu"
-                 class="fixed top-0 left-0 w-full h-full bg-rich-black text-gold flex flex-col justify-center items-center space-y-6 hidden z-30 shadow-lg">
-                <a href="/#about"
-                   class="block text-left text-3xl font-medium px-8 py-3 hover:bg-opacity-10 hover:bg-gold transform transition-transform duration-200 hover:scale-105">
-                    <i class="fas fa-user"></i> About
-                </a>
-                <a href="/#skills"
-                   class="block text-left text-3xl font-medium px-8 py-3 hover:bg-opacity-10 hover:bg-gold transform transition-transform duration-200 hover:scale-105">
-                    <i class="fas fa-cogs"></i> Skills
-                </a>
-                <a href="/#projects"
-                   class="block text-left text-3xl font-medium px-8 py-3 hover:bg-opacity-10 hover:bg-gold transform transition-transform duration-200 hover:scale-105">
-                    <i class="fas fa-briefcase"></i> Projects
-                </a>
-                <a href="/#experiences"
-                   class="block text-left text-3xl font-medium px-8 py-3 hover:bg-opacity-10 hover:bg-gold transform transition-transform duration-200 hover:scale-105">
-                    <i class="fas fa-history"></i> Experiences
-                </a>
-                <a href="/#contact"
-                   class="block text-left text-3xl font-medium px-8 py-3 hover:bg-opacity-10 hover:bg-gold transform transition-transform duration-200 hover:scale-105">
-                    <i class="fas fa-envelope"></i> Contact
-                </a>
-                <a href="/blog"
-                   class="block text-left text-3xl font-medium px-8 py-3 hover:bg-opacity-10 hover:bg-gold transform transition-transform duration-200 hover:scale-105">
-                    <i class="fas fa-book"></i> Blog
-                </a>
-
-                <a href="{{ url_for('static', filename='pdf/cv_updated.pdf') }}" download
-                   class="block text-left text-3xl font-medium px-8 py-3 hover:bg-opacity-10 hover:bg-gold transform transition-transform duration-200 hover:scale-105">
-                    <i class="fas fa-file-download"></i> Download CV
-                </a>
-            </nav>
-
-
-            <!-- Desktop View - CV Download -->
-            <div class="hidden lg:flex space-x-8 items-center">
-                <a class="text-gray-700 hover:text-gray-900 hover:underline py-2 px-4 flex items-center space-x-2"
-                   href="{{ url_for('static', filename='pdf/CorentinDupaigne.pdf') }}" target="_blank"
-                   rel="noopener noreferrer">
-                    <i class="fas fa-download"></i>
-                    <span>Download CV</span>
-                </a>
-            </div>
-
-
         </div>
-    </nav>
+        <nav class="hidden lg:flex space-x-6" id="always-displayed-header">
+            <a class="text-gray-800 hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll"
+                   data-duration="300" href="/#about">About</a>
+                <a class="text-gray-800 hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll"
+                   data-duration="300" href="/#projects">Projects</a>
+                <a class="text-gray-800 hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll"
+                   data-duration="300" href="/#skills">Skills</a>
+                <a class="text-gray-800 hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll"
+                   data-duration="300" href="/#experiences">Experiences</a>
+                <a class="text-gray-800 hover:text-gray-900 hover:underline py-2 px-4 js-smooth-scroll"
+                   data-duration="300" href="/#contact">Contact</a>
+                <a class="font-semibold text-indigo-700 hover:text-indigo-900 hover:underline py-2 px-4 border border-indigo-700 rounded-full js-smooth-scroll"
+                   data-duration="300" href="/blog">Blog</a>
+        </nav>
+
+        <nav id="burger-menu-header"
+             class="fixed top-0 left-0 w-full h-full bg-gray-800 text-white flex flex-col justify-center items-center space-y-6 hidden z-30 shadow-lg">
+            <a href="/"
+               class="block text-left text-3xl font-medium px-8 py-3 hover:bg-opacity-10 hover:bg-gray-700 transform transition-transform duration-200 hover:scale-105 full-width-hover-menu">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="/blog"
+               class="block text-left text-3xl font-medium px-8 py-3 hover:bg-opacity-10 hover:bg-gray-700 transform transition-transform duration-200 hover:scale-105 full-width-hover-menu">
+                <i class="fas fa-book"></i> Blog
+            </a>
+            <a href="/#contact"
+               class="block text-left text-3xl font-medium px-8 py-3 hover:bg-opacity-10 hover:bg-gray-700 transform transition-transform duration-200 hover:scale-105 full-width-hover-menu">
+                <i class="fas fa-envelope"></i> Contact
+            </a>
+        </nav>
+    </div>
 </header>
-
 <style>
-    #custom-navbar {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        transition: top 0.3s;
-    }
 
-    a {
-        font-family: 'Roboto', sans-serif; /* Adding Roboto font */
-        letter-spacing: 0.05em;
-    }
+.full-width-hover-menu {
+    width: 100vw;
+    text-align: center;
+}
 
+.header{
+    width: 80%;
+    margin: 0 auto;
+}
 
-    .hover\:text-gold:hover {
-        color: #FFD700;
-    }
-
-    .bg-gold-text * {
-        color: #FFD700 !important;
-    }
-
-    #menu a {
-        font-family: 'Playfair Display', serif;
-        letter-spacing: 0.05em;
-        transition: background-color 0.3s, transform 0.3s;
-        border-left: 4px solid transparent;
-    }
-
-    #menu a:hover {
-        border-left: 4px solid #FFD700;
-        padding-left: 4px;
-    }
-
-    .bg-rich-black {
-        background-color: #0a0a0a;
-    }
-
-    .text-gold {
-        color: #FFD700;
-    }
-
-
-    .hover\:bg-opacity-10:hover {
-        background-color: rgba(255, 215, 0, 0.1);
-    }
-
-    .hamburger.is-active .hamburger-inner,
-    .hamburger.is-active .hamburger-inner::before,
-    .hamburger.is-active .hamburger-inner::after {
-        background-color: #FFD700;
-    }
+.hamburger.is-active .hamburger-inner,
+.hamburger.is-active .hamburger-inner::before,
+.hamburger.is-active .hamburger-inner::after {
+}
 
     html {
-        scroll-behavior: smooth;
-    }
+            scroll-behavior: smooth;
+        }
 
-    header {
-        padding: 0.3%;
-    }
 </style>
-
-
 <script>
-
     const menuToggle = document.getElementById('menuToggle');
-    const menu = document.getElementById('menu');
+    const menu = document.getElementById('burger-menu-header');
     const menuLinks = menu.querySelectorAll('a');
+    const brandName = document.getElementById('brandName');
 
     menuToggle.addEventListener('click', toggleMenu);
 
@@ -164,12 +83,8 @@
     });
 
     function toggleMenu() {
-        const brandName = document.getElementById('brandName');
-        const mainHeader = document.getElementById('mainHeader');
 
         menuToggle.classList.toggle('is-active');
-        brandName.classList.toggle('text-gold');
-        mainHeader.classList.toggle('bg-gold-text');
 
         if (menu.classList.contains('hidden')) {
             gsap.fromTo(menu, {opacity: 0, y: "100%"}, {
@@ -182,6 +97,4 @@
             gsap.to(menu, {duration: 0.3, opacity: 0, y: "100%", onComplete: () => menu.classList.add('hidden')});
         }
     }
-
-
 </script>

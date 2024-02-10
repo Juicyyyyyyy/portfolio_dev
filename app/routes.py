@@ -54,7 +54,7 @@ def experience(experience_id):
     return render_template('experience.html', experience=experience)
 
 
-def crop_article(full_article, max_words=50):
+def crop_article(full_article, max_words=30):
     words = full_article.split()
     cropped_article = ' '.join(words[:max_words])
     return cropped_article
