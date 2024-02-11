@@ -10,7 +10,7 @@
 
             <div class="flex flex-wrap justify-center">
                 {% for experience in experiences %}
-                    <div class="bg-white shadow-md border border-gray-300 rounded-lg max-w-lg m-4 dark:bg-gray-800 dark:border-gray-700">
+                    <div class="bg-white shadow-md border border-gray-300 rounded-lg max-w-lg m-4 ">
                         <a href="{{ url_for('experience', experience_id=experience.id) }}" class="relative overflow-hidden group">
                             <img class="rounded-t-lg w-full object-cover object-top h-60"
                                  src="{{ experience.img_src }}" alt="">
@@ -20,9 +20,9 @@
                         </a>
                         <div class="p-5">
                             <a href="{{ experience.link_url }}">
-                                <h5 class="text-gray-800 font-bold text-2xl tracking-tight mb-2 dark:text-white">{{ experience.title }}</h5>
+                                <h5 class="text-gray-800 font-bold text-2xl tracking-tight mb-2">{{ experience.title }}</h5>
                             </a>
-                            <p class="font-normal text-gray-600 mb-3 dark:text-gray-400">{{ experience.short_description }}</p>
+                            <p class="font-normal text-gray-600 mb-3">{{ experience.short_description }}</p>
 
                             <div class="flex flex-wrap gap-2">
                                 {% for language in experience.languages_used.split(",") %}
@@ -31,7 +31,7 @@
                             </div>
 
                             <a href="{{ experience.link_url }}"
-                               class="text-gray-100 bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center dark:bg-indigo-700 dark:hover:bg-indigo-800 dark:focus:ring-indigo-800 mt-4">
+                               class="text-gray-100 bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center  mt-4">
                                 Read more
                                 <svg class="-mr-1 ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20"
                                      xmlns="http://www.w3.org/2000/svg">
