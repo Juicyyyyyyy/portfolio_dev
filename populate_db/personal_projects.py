@@ -78,12 +78,61 @@ After filling in all parameters, click on '**continue**'. You will be directed t
 """,
 		languages_used='Python, CustomTkinter, Pandas, Numpy',
 		link_url='https://github.com/Juicyyyyyyy/portfolio_optimizer',
-		image_url='portfolio-optimizer.png',
+		image_url='portfolio_optimizer_.png',
+		video_url='portfolio_artist.mp4'
+	)
+
+	project3 = Project(
+		# project data here
+		title='Component Generator',
+		short_description=""" A Tailwind CSS component generator based on artificial intelligence.""",
+		description="""The component generator website leverages **Django** and the **GPT-3.5 API** to deliver an innovative and powerful solution. It enables developers to generate custom Tailwind CSS components tailored to their specific needs, thanks to a user-friendly interface.
+	""",
+		languages_used='Python, Django, OpenAI API, Tailwind CSS, Javascript',
+		link_url='https://github.com/Juicyyyyyyy/component_generator',
+		image_url='component_generator.png',
+		video_url='portfolio_artist.mp4'
+	)
+
+	project4 = Project(
+		# project data here
+		title='TrendVista Swing Indicator',
+		short_description="""A trading tool based on bollinger bands and average true range giving buy/sell signals on key levels.""",
+		description="""###Overview
+
+The swing indicator is designed to offer traders a comprehensive analysis of market trends and volatility by integrating Bollinger Bands and the Average True Range (ATR). It aids in the visualization of price movements and volatility across multiple time frames, thereby providing insights into potential buy and sell opportunities.
+
+###Key Features
+
+- Multitimeframe Analysis: By default, the indicator examines the market across the following time frames: 1 Day (1D), 4 Hours (4H), 1 Hour (1H), and 15 Minutes (15min). Users have the flexibility to modify these time frames to suit their trading strategy by adjusting the indicator's settings.
+
+- Buy and Sell Timings: The indicator identifies optimal buy signals when the price drops below the lower Bollinger Band and subsequently re-enters the band's range. Additionally, a buy signal is generated during high volatility periods—signified by the ATR exceeding its 10-day average—helping traders spot potential liquidation points. Sell signals are tailored for traders looking to exit long positions rather than for initiating short positions.
+
+- Bollinger Bands Phases: The indicator categorizes the market condition into three phases based on Bollinger Bands movement:
+- Neutral Phase: When the closing price is within the Bollinger Bands' upper and lower limits.
+- Bullish Phase: Signaled by the price closing above the upper Bollinger Band, suggesting an upward trend until the price closes below the middle band.
+- Bearish Phase: Initiated when the price closes below the lower Bollinger Band, indicating a downtrend until the price closes above the middle band.
+
+Users can opt to exclude the neutral phase from the analysis through the indicator's settings for a more focused view on bullish or bearish trends.
+
+###Indicator Customization
+
+The swing indicator is versatile, allowing users to customize the time frames and phase visibility according to their preferences. This feature ensures that traders can tailor the indicator to match their specific analysis needs and trading strategies.
+
+###Considerations
+
+- The signals provided by the swing indicator are not symmetrically designed for both buy and sell actions. The indicator primarily optimizes for identifying long positions, particularly in bull markets. The sell signals are intended for exiting existing long positions rather than for short selling.
+		""",
+		languages_used='pinescript',
+		link_url='https://www.tradingview.com/script/R12WO2J5-TrendVista-Swing-Indicator/',
+		image_url='trendvista.png',
 		video_url='portfolio_artist.mp4'
 	)
 
 	# Add them to the session
 	db.session.add(project1)
 	db.session.add(project2)
+	db.session.add(project3)
+	db.session.add(project4)
 
 	db.session.commit()
