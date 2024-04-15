@@ -1,10 +1,10 @@
 <!-- experiences Section -->
-<section id="experiences" class="py-32">
+<section id="experiences" class="py-24">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-24">
                 <h2 class="text-5xl font-extrabold text-indigo-900 mb-8">Professional Journey</h2>
                 <p class="text-xl leading-relaxed text-gray-700">
-                    A detailed look into my industry experiences and contributions.
+                    A look into my industry experiences and contributions.
                 </p>
             </div>
 
@@ -30,7 +30,7 @@
                                 {% endfor %}
                             </div>
 
-                            <a href="{{ experience.link_url }}"
+                            <a href="{{ url_for('experience', experience_id=experience.id) }}"
                                class="text-gray-100 bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center  mt-4">
                                 Read more
                                 <svg class="-mr-1 ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20"
