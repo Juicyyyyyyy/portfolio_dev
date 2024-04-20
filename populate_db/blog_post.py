@@ -28,10 +28,44 @@ Envie d'en savoir plus, d'échanger avec notre équipe, ou de partager vos retou
 
 
 		"""
-	conclusion = "From his early days in New York to his lasting impact on global art, Edward Hopper's journey is a tribute to the enduring power of art to encapsulate human emotions and experiences. His work, a blend of realism and emotion, continues to inspire, educate, and move audiences today."
-	image_url = "../../static/img/jcb_banner.png"  # replace with the actual image URL
+	image_url = "../../static/img/jcb_banner.png"
 
-	post = Post(
+	post1 = Post(
+		title=title,
+		content=body,
+		date_posted=datetime.utcnow(),
+		image_url=image_url
+	)
+
+	title = "Logarithmes Naturels démystifiés"
+
+	body = """
+
+	# Introduction
+Lorsqu'on parle de croissance exponentielle, il est commun de penser à quelque chose qui grandit très rapidement. Cependant, la croissance exponentielle désigne un type spécifique de croissance, distincte de la croissance polynomiale, telle que celle décrite par les fonctions \(x^2\), \(x^3\), ou \(x^{300}\). Ces dernières, bien qu'accélérant rapidement, ne se comparent pas à la vitesse de la croissance exponentielle, qui est proportionnelle à la taille de la population ou du montant en question. 
+
+# Le Principe de la Croissance Exponentielle
+La croissance exponentielle s'observe dans de nombreux phénomènes naturels et financiers, tels que la reproduction des lapins ou l'accumulation des intérêts sur un montant d'argent. Cette croissance n'est pas seulement rapide, mais sa vitesse augmente proportionnellement à sa grandeur actuelle.
+
+# Intérêt Composé et le Nombre \( e \)
+Prenons un exemple avec un compte bancaire offrant un intérêt annuel de 100 %. Si vous déposez un dollar, ce montant deviendra deux dollars en un an. Cependant, les intérêts ne sont pas seulement calculés à la fin de l'année. En réalité, ils sont souvent calculés plus fréquemment, ce qui accélère la croissance de votre argent.
+
+# Expérimentation avec le Taux de Composition
+Supposons que l'intérêt soit calculé deux fois par an, chaque semestre. Dans ce cas, votre dollar initial deviendra 2.25 dollars à la fin de l'année. Si l'intérêt est calculé chaque mois, le montant atteint sera environ 2.61 dollars. Ce montant continue d'augmenter avec la fréquence de calcul de l'intérêt, approchant une limite à mesure que la fréquence de calcul devient infiniment grande.
+
+# Découverte du Nombre \( e \)
+Lorsque l'intérêt est calculé en continu, c'est-à-dire à une fréquence infinie, le montant final converge vers une valeur spécifique, environ 2.71828, connue sous le nom de \( e \), le nombre d'Euler. Ce nombre est fondamental en mathématiques et en sciences, car il décrit des taux de croissance ou de décroissance proportionnels à la grandeur actuelle d'un système.
+
+# Signification du Nombre \( e \)
+Le nombre \( e \) apparaît naturellement dans de nombreux contextes, y compris la croissance des populations, la décomposition radioactive, et le refroidissement des objets. Il représente un taux de croissance ou de décroissance proportionnel à la taille actuelle de l'entité observée.
+
+# Conclusion
+Le nombre \( e \) n'est pas simplement un nombre arbitraire; il émerge naturellement de la structure du monde autour de nous, illustrant des principes de croissance et de décroissance proportionnels. Que ce soit en finance, en biologie, ou en physique, \( e \) joue un rôle crucial dans notre compréhension des phénomènes naturels et artificiels.
+
+			"""
+	image_url = "../../static/img/blog_posts/log_nat.png"
+
+	post2 = Post(
 		title=title,
 		content=body,
 		date_posted=datetime.utcnow(),
@@ -39,7 +73,8 @@ Envie d'en savoir plus, d'échanger avec notre équipe, ou de partager vos retou
 	)
 
 	# Add the post to the session
-	db.session.add(post)
+	db.session.add(post1)
+	db.session.add(post2)
 
 	# db.session.query(Project).delete()
 	# Commit the changes
