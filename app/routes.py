@@ -78,7 +78,7 @@ def blog():
 @app.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
-    post.content = markdown(post.content)
+    post.content = markdown(post.content, extensions=['extra', 'codehilite'])
     recent_posts = Post.query.order_by(Post.date_posted.desc()).limit(5).all()
     return render_template('post.html', title=post.title, post=post, recent_posts=recent_posts, content=post.content)
 
