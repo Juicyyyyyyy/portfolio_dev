@@ -2,40 +2,6 @@ from populate_db import app, kill_db, db, Post, datetime
 
 with app.app_context():
 	db.session.query(Post).delete()
-	title = "De simples étudiants en BTS à pionniers d'un marché 🚀"
-
-	body = """
-
-## Voici notre histoire :
-
-Dès la sortie de la première version de Chat GPT, j'ai été immédiatement captivé par ce formidable outil. Un univers entier de possibilités s'est dévoilé à moi. J'ai tout de suite vu cette innovation comme un outil à grand potentiel de productivité et donc lucratif.
-
-Très vite, j'ai cherché à utiliser cet outil de la meilleure des manières possibles pour augmenter largement ma productivité en automatisant des tâches tout en gardant un travail de la même qualité. Par la même occasion, j'ai découvert le "prompt engineering", un mot compliqué qui signifie simplement le fait d'optimiser les instructions fournies à Chat GPT pour obtenir des réponses de la meilleure qualité possible.
-
-À partir de ce moment, j'eus une idée dont je fis part à mon fidèle associé et ami, Tahirou Laouan Magagi. Pourquoi ne pas utiliser la puissance de GPT pour automatiser le processus de création de sites internet dans le but de les vendre par la suite ?
-
-Ce à quoi Tahirou a surenchéri en proposant une idée encore plus innovante. Au lieu de se placer en tant que simple vendeur, pourquoi ne pas viser plus loin et devenir le vendeur des vendeurs? Pourquoi ne pas vendre la pioche plutôt que l'or ?
-
-Au début, cela me paraissait complètement irréalisable, bien trop ambitieux pour de simples étudiants dans la vingtaine, découvrant à peine la vie adulte et le milieu de l'entrepreneuriat. Mais, aimant le risque et l'aventure, j'ai accepté son idée et je l'ai suivi dans cette folle aventure entrepreneuriale.
-
-Après des mois de dévouement, jonglant entre nos cours, nos jobs en alternance et notre projet, nous sommes fiers d'annoncer la naissance de [justclickbuild.com](https://justclickbuild.com) : le premier générateur de sites web 100% alimenté par IA et no-code ! 🚀
-
-### OFFRE DE LANCEMENT
-
-Pour célébrer ce lancement, recevez 25€ de crédit. Générez et personnalisez votre site avec notre outil no-code. Essayez sur [justclickbuild.com](https://justclickbuild.com) et laissez vous surprendre par la magie de l'IA. 🎉
-
-Envie d'en savoir plus, d'échanger avec notre équipe, ou de partager vos retours? 👉 Rejoignez-nous dès maintenant sur notre serveur [Discord](https://discord.gg/8hbSFXSTHu)
-
-
-		"""
-	image_url = "../../static/img/jcb_banner.png"
-
-	post1 = Post(
-		title=title,
-		content=body,
-		date_posted="2024-01-27 11:09:49",
-		image_url=image_url
-	)
 
 	title = "Logarithmes Naturels démystifiés"
 
@@ -226,10 +192,114 @@ By mastering these foundational concepts, you’ll be well-prepared to dive into
 		image_url=image_url
 	)
 
+	title = "Arrays vs Lists : the differences"
+
+	body = """
+	# Understanding Lists and Arrays Across Programming Languages with C Examples
+
+In programming, the choice between using lists and arrays can significantly impact both the functionality and performance of an application. While the terminology can vary between languages, the core concepts remain largely the same. This blog post explores these two essential data structures—arrays and lists—across various programming languages, emphasizing their differences and uses. We'll illustrate these concepts with examples in the C programming language.
+
+## What is an Array?
+
+An array is a fundamental data structure in many programming languages, characterized by its fixed size and ability to store elements of the same type at contiguous memory locations. Arrays are especially popular in low-level programming due to their efficient memory usage and quick access times.
+
+### Key Features of Arrays:
+- **Fixed Size:** The number of elements an array can store is set at the time of its declaration and cannot be changed.
+- **Homogeneous Data Types:** All elements in an array must be of the same type.
+- **Efficient Access:** Arrays allow for rapid access to their elements via direct indexing, which is computationally inexpensive.
+
+In languages like C, arrays are a cornerstone of system programming, used for their speed and direct memory access.
+
+## What is a List?
+
+Unlike arrays, lists are more dynamic and can expand or contract as needed. Lists do not require continuous memory allocation, and they can typically store elements of various types, though in strongly typed languages like C++, Java, or C#, elements generally need to be of the same generic type or inherit from the same base class.
+
+### Key Features of Lists:
+- **Dynamic Sizing:** Lists can adjust their size automatically as elements are added or removed.
+- **Potentially Heterogeneous:** In some languages, lists can hold different types of data.
+- **Flexible Management:** Lists often come with built-in methods for easy manipulation of data, such as insertion, deletion, and traversal functionalities.
+
+In high-level languages, lists are implemented with complex data structures like linked lists, array lists, or other types of collections.
+
+## Arrays vs. Lists in C
+
+In C, arrays are part of the core language, offering efficient storage and data access. Lists, however, are not built-in and must be implemented manually using more complex data structures like linked lists. Here’s a look at how these two structures might be implemented and utilized in C:
+
+### Array Example in C:
+
+```c
+#include <stdio.h>
+
+int main() {
+    int a[4] = {1, 2, 3, 4};  // Declaration of an array of integers
+
+    // Accessing array elements
+    printf("First element of array: %d\n", a[0]);  // Outputs: 1
+
+    // Arrays are fixed size
+    // a[4] = 5;  // Uncommenting this would lead to a runtime error
+
+    return 0;
+}
+```
+
+### List Example in C (Using a Linked List):
+
+```c
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Node {
+    int data;
+    struct Node* next;
+} Node;
+
+// Function to add a node at the beginning of the list
+void push(Node** head_ref, int new_data) {
+    Node* new_node = (Node*) malloc(sizeof(Node));
+    new_node->data = new_data;
+    new_node->next = (*head_ref);
+    (*head_ref) = new_node;
+}
+
+// Function to print the list
+void printList(Node* node) {
+    while (node != NULL) {
+        printf("%d ", node->data);
+        node = node->next;
+    }
+}
+
+int main() {
+    Node* head = NULL;
+
+    push(&head, 4);
+    push(&head, 3);
+    push(&head, 2);
+    push(&head, 1);
+
+    printf("Created Linked List: ");
+    printList(head);
+    return 0;
+}
+```
+
+## Conclusion
+
+Arrays offer straightforward, efficient storage and access for fixed-size collections of homogeneous elements, making them ideal for performance-critical applications. Lists, on the other hand, provide flexibility and ease of manipulation, which is beneficial in scenarios where the size of the data set changes dynamically. Choosing the right data structure depends on the specific requirements of your application, such as performance considerations, type safety, and memory management."""
+	image_url = "../../static/img/blog_posts/list_vs_array.png"
+
+	post4 = Post(
+		title=title,
+		content=body,
+		date_posted="2024-04-23",
+		image_url=image_url
+	)
+
 	# Add the post to the session
-	db.session.add(post1)
 	db.session.add(post2)
 	db.session.add(post3)
+	db.session.add(post4)
 
 	# db.session.query(Project).delete()
 	# Commit the changes
