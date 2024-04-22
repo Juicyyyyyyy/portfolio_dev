@@ -192,12 +192,10 @@ By mastering these foundational concepts, you’ll be well-prepared to dive into
 		image_url=image_url
 	)
 
-	title = "Arrays vs Lists : the differences"
+	title = "Arrays vs Lists: the differences"
 
 	body = """
-	# Understanding Lists and Arrays Across Programming Languages with C Examples
-
-In programming, the choice between using lists and arrays can significantly impact both the functionality and performance of an application. While the terminology can vary between languages, the core concepts remain largely the same. This blog post explores these two essential data structures—arrays and lists—across various programming languages, emphasizing their differences and uses. We'll illustrate these concepts with examples in the C programming language.
+In programming, the choice between using lists and arrays can significantly impact both the functionality and performance of an application. While the terminology can vary between languages, the core concepts remain largely the same. This blog post explores these two essential data structures—arrays and lists—across various programming languages, emphasizing their differences and uses.
 
 ## What is an Array?
 
@@ -221,69 +219,6 @@ Unlike arrays, lists are more dynamic and can expand or contract as needed. List
 
 In high-level languages, lists are implemented with complex data structures like linked lists, array lists, or other types of collections.
 
-## Arrays vs. Lists in C
-
-In C, arrays are part of the core language, offering efficient storage and data access. Lists, however, are not built-in and must be implemented manually using more complex data structures like linked lists. Here’s a look at how these two structures might be implemented and utilized in C:
-
-### Array Example in C:
-
-```c
-#include <stdio.h>
-
-int main() {
-    int a[4] = {1, 2, 3, 4};  // Declaration of an array of integers
-
-    // Accessing array elements
-    printf("First element of array: %d\n", a[0]);  // Outputs: 1
-
-    // Arrays are fixed size
-    // a[4] = 5;  // Uncommenting this would lead to a runtime error
-
-    return 0;
-}
-```
-
-### List Example in C (Using a Linked List):
-
-```c
-#include <stdio.h>
-#include <stdlib.h>
-
-typedef struct Node {
-    int data;
-    struct Node* next;
-} Node;
-
-// Function to add a node at the beginning of the list
-void push(Node** head_ref, int new_data) {
-    Node* new_node = (Node*) malloc(sizeof(Node));
-    new_node->data = new_data;
-    new_node->next = (*head_ref);
-    (*head_ref) = new_node;
-}
-
-// Function to print the list
-void printList(Node* node) {
-    while (node != NULL) {
-        printf("%d ", node->data);
-        node = node->next;
-    }
-}
-
-int main() {
-    Node* head = NULL;
-
-    push(&head, 4);
-    push(&head, 3);
-    push(&head, 2);
-    push(&head, 1);
-
-    printf("Created Linked List: ");
-    printList(head);
-    return 0;
-}
-```
-
 ## Conclusion
 
 Arrays offer straightforward, efficient storage and access for fixed-size collections of homogeneous elements, making them ideal for performance-critical applications. Lists, on the other hand, provide flexibility and ease of manipulation, which is beneficial in scenarios where the size of the data set changes dynamically. Choosing the right data structure depends on the specific requirements of your application, such as performance considerations, type safety, and memory management."""
@@ -296,10 +231,64 @@ Arrays offer straightforward, efficient storage and access for fixed-size collec
 		image_url=image_url
 	)
 
+	title = "Linked Lists: An Essential Data Structure"
+
+	body = """
+	Linked lists are a fundamental data structure in computer science, often used for efficiently managing collections of elements. Unlike arrays, which store elements in contiguous memory locations, linked lists consist of nodes that are connected using pointers. This structure allows for dynamic memory utilization and offers an efficient way to insert and delete elements. In this blog post, we'll explore the concept of linked lists, their types, advantages, and common applications.
+
+### What is a Linked List?
+
+A linked list is a sequence of nodes, where each node contains a piece of data and a reference (or link) to the next node in the sequence. This simple yet powerful structure allows for efficient insertion and deletion of elements as it does not require the elements to be contiguous in memory.
+
+### Types of Linked Lists
+
+There are several types of linked lists, each serving different purposes:
+
+![Single and double linked list](../../static/img/blog_posts/linked_lists_illustration.png)
+
+1. **Singly Linked List**: This is the simplest type of linked list, where each node contains data and a single link to the next node. Navigation is only possible in one direction, from the start to the end of the list.
+
+2. **Doubly Linked List**: In a doubly linked list, each node has two links: one pointing to the next node and the other to the previous node. This bidirectional structure allows for easier navigation (forward and backward through the list).
+
+3. **Circular Linked List**: A circular linked list can be either singly or doubly linked but with a twist: the last node in the sequence points back to the first node, making the list circular. This is useful for applications that require a continuous, cyclic access to the elements (e.g., a round-robin scheduler).
+
+### Advantages of Linked Lists
+
+Linked lists offer several benefits over other data structures like arrays, including:
+
+- **Dynamic Size**: The size of a linked list can grow or shrink dynamically, which is particularly advantageous in scenarios where the number of elements is not known in advance or can change frequently.
+
+- **Efficient Operations**: Insertions and deletions at any position in a linked list can be done in constant time if the position is known (i.e., you have a pointer to the node before the place of insertion or deletion). This is more efficient than the same operations in an array, which require shifting elements to maintain continuity.
+
+- **Memory Efficient**: Since linked lists do not require memory in contiguous blocks, they can make more efficient use of available memory. This avoids the overhead of reserving large blocks of memory, which might not be fully utilized.
+
+### Applications of Linked Lists
+
+Linked lists are used in many areas of computer science and software development. Some common applications include:
+
+- **Implementing other data structures**: Structures like stacks, queues, and other abstract data types can be efficiently implemented using linked lists.
+  
+- **Dynamic memory allocation**: The operating system may use linked lists to keep track of free blocks of memory, helping manage allocations and deallocations dynamically.
+  
+- **Performance-sensitive applications**: In applications where performance is critical, linked lists can provide faster access and manipulation compared to other data structures that require reorganizing or reallocating memory.
+
+### Conclusion
+
+Linked lists are a versatile and essential part of the data structure toolkit, offering flexible and efficient management of data. They shine in scenarios where the amount of data varies dynamically and where quick insertion and deletion are crucial. Understanding linked lists and their applications can significantly enhance one’s ability to design and implement efficient systems."""
+	image_url = "../../static/img/blog_posts/linked_lists.png"
+
+	post5 = Post(
+		title=title,
+		content=body,
+		date_posted="2024-04-23",
+		image_url=image_url
+	)
+
 	# Add the post to the session
 	db.session.add(post2)
 	db.session.add(post3)
 	db.session.add(post4)
+	db.session.add(post5)
 
 	# db.session.query(Project).delete()
 	# Commit the changes
