@@ -1,27 +1,20 @@
-from flask import render_template
-from app import app
-from app import Project, Skill, Category, Experience, Post
+from app.models.experience import Experience
+from app.models.post import Post
+from app.models.project import Project
+from app.models.skill import Skill
+from app.models.skill_category import Category
+
+from flask import Blueprint, render_template
+import re
+
+main_bp = Blueprint('main', __name__)
+
 from markdown import markdown
 import re
 
 
-@app.route('/', methods=['GET', 'POST'])
+@main_bp.route('/', methods=['GET', 'POST'])
 def index():
-    def truncate_words(s, count=20):
-        words = s.split()
-        if len(words) > count:
-            words = words[:count] + ['...']
-        return ' '.join(words)
-
-    app.jinja_env.filters['truncatewords'] = truncate_words
-
-    def truncate_chars(s, count=100):
-        if len(s) > count:
-            return s[:count] + '...'
-        return s
-
-    app.jinja_env.filters['truncatechars'] = truncate_chars
-
     projects = Project.query.all()
     skills = Skill.query.all()
     skills_category = Category.query.order_by(Category.order).all()
@@ -32,14 +25,14 @@ def index():
                            categories=skills_category, categories_names=categories_names, experiences=experiences)
 
 
-@app.route("/project/<int:project_id>")
+@main_bp.route("/project/<int:project_id>")
 def project(project_id):
     project = Project.query.get(project_id)
     project.description = markdown(project.description)
     return render_template('project.html', project=project)
 
 
-@app.route("/experience/<int:experience_id>")
+@main_bp.route("/experience/<int:experience_id>")
 def experience(experience_id):
     experience = Experience.query.get(experience_id)
     experience.description = markdown(experience.description)
@@ -52,7 +45,7 @@ def crop_article(full_article, max_words=30):
     return cropped_article
 
 
-@app.route("/blog")
+@main_bp.route("/blog")
 def blog():
     posts = Post.query.order_by(Post.date_posted.desc()).all()
 
@@ -60,13 +53,13 @@ def blog():
         cropped_article = crop_article(post.content)
         cropped_article_markdown_to_html = markdown(cropped_article)
         clean_text = re.sub('<.*?>', '', cropped_article_markdown_to_html)
-        clean_text = re.sub('\s+', ' ', clean_text).strip()
+        clean_text = re.sub('\\s+', ' ', clean_text).strip()
         post.short_description = clean_text
 
     return render_template('blog.html', posts=posts)
 
 
-@app.route("/post/<int:post_id>")
+@main_bp.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     post.content = markdown(post.content, extensions=['extra', 'codehilite'])

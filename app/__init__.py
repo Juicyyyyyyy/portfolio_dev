@@ -2,32 +2,30 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_admin import Admin
-from flask_admin.contrib.sqla import ModelView
 import os
 from dotenv import load_dotenv
 
 load_dotenv()
 
-app = Flask(__name__, template_folder='templates', static_folder='static')
+db = SQLAlchemy()
+migrate = Migrate()
+admin = Admin(template_mode='bootstrap3')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('JAWSDB_MARIA_URL')
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
-migrate = Migrate(app, db)
+def create_app():
+    app = Flask(__name__, template_folder='templates', static_folder='static')
 
-admin = Admin(app, name='myadmin', template_mode='bootstrap3')
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_URL')
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-from app.models.post import Post
-from app.models.project import Project
-from app.models.company import Experience
-from app.models.skill import Skill
-from app.models.skill_category import Category
+    db.init_app(app)
+    migrate.init_app(app, db)
+    admin.init_app(app)
 
-admin.add_view(ModelView(Post, db.session))
-admin.add_view(ModelView(Project, db.session))
-admin.add_view(ModelView(Experience, db.session))
-admin.add_view(ModelView(Skill, db.session))
-admin.add_view(ModelView(Category, db.session))
+    with app.app_context():
+        db.create_all()
 
-from app import routes
+    from app.routes import main_bp
+    app.register_blueprint(main_bp)
+
+    return app

@@ -11,7 +11,7 @@
             <div class="flex flex-wrap justify-center">
                 {% for project in projects %}
                     <div class="bg-white shadow-md border border-gray-300 rounded-lg max-w-lg m-4">
-                        <a href="{{ url_for('project', project_id=project.id) }}" class="relative overflow-hidden group">
+                        <a href="{{ url_for('main.project', project_id=project.id) }}" class="relative overflow-hidden group">
                             <img class="rounded-t-lg w-full object-cover object-top h-60"
                                  src="../static/img/{{ project.image_url }}" alt="">
                             <div class="absolute inset-0 bg-indigo-600 opacity-0 group-hover:opacity-75 transition-opacity duration-300 flex justify-center items-center">
@@ -30,7 +30,7 @@
                                 {% endfor %}
                             </div>
 
-                            <a href="{{ url_for('project', project_id=project.id) }}"
+                            <a href="{{ url_for('main.project', project_id=project.id) }}"
                                class="text-gray-100 bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center  mt-4">
                                 Read more
                                 <svg class="-mr-1 ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20"

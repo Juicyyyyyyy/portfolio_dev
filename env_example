@@ -1,1 +1,1 @@
-JAWSDB_MARIA_URL=
+DB_URL=mysql://root:password123@localhost:3306/my_project_db
