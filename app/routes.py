@@ -1,7 +1,8 @@
-from flask import request, render_template
-from app import app, db
+from flask import render_template
+from app import app
 from app import Project, Skill, Category, Experience, Post
 from markdown import markdown
+import re
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -50,7 +51,7 @@ def crop_article(full_article, max_words=30):
     cropped_article = ' '.join(words[:max_words])
     return cropped_article
 
-import re
+
 @app.route("/blog")
 def blog():
     posts = Post.query.order_by(Post.date_posted.desc()).all()
@@ -61,7 +62,6 @@ def blog():
         clean_text = re.sub('<.*?>', '', cropped_article_markdown_to_html)
         clean_text = re.sub('\s+', ' ', clean_text).strip()
         post.short_description = clean_text
-
 
     return render_template('blog.html', posts=posts)
 

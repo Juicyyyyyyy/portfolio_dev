@@ -7,6 +7,3 @@ class Skill(db.Model):
     icon = db.Column(db.Text, nullable=False)
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'), nullable=False)
     category = db.relationship('Category', backref=db.backref('skills', lazy=True))
-
-    def __repr__(self):
-        return '<Skill %r>' % self.name
