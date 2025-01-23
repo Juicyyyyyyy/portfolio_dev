@@ -8,9 +8,9 @@
             <div class="flex flex-wrap justify-center">
                 {% for experience in experiences %}
                     <div class="bg-white shadow-md border border-gray-300 rounded-lg max-w-lg m-4 ">
-                        <a href="{{ url_for('main.experience', experience_id=experience.id) }}" class="relative overflow-hidden group">
+                        <a href="{{ experience.link_url }}" class="relative overflow-hidden group">
                             <img class="rounded-t-lg w-full object-cover object-top h-60"
-                                 src="{{ experience.img_src }}" alt="">
+                                 src="/static/img/experiences/{{ experience.img_src }}" alt="">
                             <div class="absolute inset-0 bg-indigo-600 opacity-0 group-hover:opacity-75 transition-opacity duration-300 flex justify-center items-center">
                                 <span class="text-white text-2xl font-semibold">View experience</span>
                             </div>
