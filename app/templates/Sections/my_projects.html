@@ -2,11 +2,8 @@
 <section id="projects" class="py-24">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-24">
-                <h2 class="text-5xl font-extrabold text-indigo-900 mb-8">My Projects</h2>
-                <p class="text-xl leading-relaxed text-gray-700">
-                    Showcasing a curated selection of my favourite projects.
-                </p>
-            </div>
+                <h2 class="text-5xl font-bold text-indigo-900 mb-8">My Projects</h2>
+           </div>
 
             <div class="flex flex-wrap justify-center">
                 {% for project in projects %}
@@ -32,7 +29,7 @@
 
                             <a href="{{ url_for('main.project', project_id=project.id) }}"
                                class="text-gray-100 bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center  mt-4">
-                                Read more
+                                View Project
                                 <svg class="-mr-1 ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20"
                                      xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd"
