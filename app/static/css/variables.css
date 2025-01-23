@@ -1,0 +1,85 @@
+:root {
+  --background: #e5e7eb;;
+  --background-alt: #1A1A1C;
+  --text: #E5E5E7;
+  --primary: #4C4F52;
+  --secondary: #4338ca;
+  --urgent: #6F4E37;
+}
+
+._text_ {
+  color: var(--text);
+}
+
+._header_ {
+  color: var(--secondary);
+  font-weight: bold;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+._subheader_ {
+  color: var(--text);
+  font-size: 1.25rem; 
+  line-height: 1.625; 
+}
+
+._component-header_ {
+  color: var(--secondary);
+  font-size: 1.875rem;
+  font-weight: 700; 
+  margin-bottom: 1.5rem;
+}
+
+._background_ {
+  background-color: var(--background)
+}
+
+._background-alt_ {
+  background-color: var(--background-alt)
+}
+
+._button_ {
+  background-color: var(--secondary);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 500; 
+  border-radius: 0.5rem;
+  font-size: 0.875rem; 
+  padding: 0.5rem 0.75rem;
+  text-align: center; 
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1rem; 
+  color: var(--text);
+}
+
+._badge_ {
+  font-size: 0.875rem;
+  font-weight: 600;
+  background-color: var(--urgent);
+  color: var(--text);
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+._button-round_ {
+  background-color: var(--urgent);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 500; 
+  border-radius: 3rem;
+  font-size: 0.875rem; 
+  padding: 0.5rem 0.75rem;
+  text-align: center; 
+  display: inline-flex;
+  align-items: center;
+  margin-top: 0.5rem; 
+  color: var(--text);
+}
+
+._description_ {
+  color: var(--text);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+

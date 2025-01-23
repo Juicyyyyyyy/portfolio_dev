@@ -2,36 +2,36 @@
 <section id="experiences" class="py-24">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-24">
-                <h2 class="text-5xl font-extrabold text-indigo-900 mb-8">Professional Journey</h2>
-                <p class="text-xl leading-relaxed text-gray-700">
+                <h2 class="_header_ text-5xl font-extrabold mb-8">Professional Journey</h2>
+                <p class="_text_ text-xl leading-relaxed">
                     A look into my industry experiences and contributions.
                 </p>
             </div>
 
             <div class="flex flex-wrap justify-center">
                 {% for experience in experiences %}
-                    <div class="bg-white shadow-md border border-gray-300 rounded-lg max-w-lg m-4 ">
+                    <div class="_background-alt_ shadow-md border border-gray-300 rounded-lg max-w-lg m-4 ">
                         <a href="{{ url_for('main.experience', experience_id=experience.id) }}" class="relative overflow-hidden group">
                             <img class="rounded-t-lg w-full object-cover object-top h-60"
                                  src="{{ experience.img_src }}" alt="">
                             <div class="absolute inset-0 bg-indigo-600 opacity-0 group-hover:opacity-75 transition-opacity duration-300 flex justify-center items-center">
-                                <span class="text-white text-2xl font-semibold">View experience</span>
+                                <span class="_text_ text-2xl font-semibold">View experience</span>
                             </div>
                         </a>
                         <div class="p-5">
                             <a href="{{ experience.link_url }}">
                                 <h5 class="text-gray-800 font-bold text-2xl tracking-tight mb-2">{{ experience.title }}</h5>
                             </a>
-                            <p class="font-normal text-gray-600 mb-3">{{ experience.short_description }}</p>
+                            <p class="_description_">{{ experience.short_description }}</p>
 
                             <div class="flex flex-wrap gap-2">
                                 {% for language in experience.languages_used.split(",") %}
-                                    <span class="text-sm font-semibold bg-gray-200 text-gray-800 px-3 py-1 rounded-full">{{ language }}</span>
+                                    <span class="_badge_">{{ language }}</span>
                                 {% endfor %}
                             </div>
 
                             <a href="{{ url_for('main.experience', experience_id=experience.id) }}"
-                               class="text-gray-100 bg-indigo-600 hover:bg-indigo-700 focus:ring-4 focus:ring-indigo-300 font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center  mt-4">
+                               class="_button_">
                                 Read more
                                 <svg class="-mr-1 ml-2 h-4 w-4" fill="currentColor" viewBox="0 0 20 20"
                                      xmlns="http://www.w3.org/2000/svg">
