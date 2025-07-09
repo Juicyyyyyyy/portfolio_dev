@@ -175,7 +175,7 @@ def create_app():
         try:
             db.create_all()
             print("Database tables created successfully")
-            # populate_database()
+            populate_database()
         except Exception as e:
             print(f"Error creating tables: {e}")
 
