@@ -3,14 +3,19 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
 from dotenv import load_dotenv
 from datetime import datetime
+from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from app.models.user import User
 
 load_dotenv()
 
 db = SQLAlchemy()
 migrate = Migrate()
 admin = Admin(template_mode='bootstrap3')
+login_manager = LoginManager()
+login_manager.login_view = 'login'
 
 # Import all models so they are registered with SQLAlchemy
 from app.models.experience import Experience
@@ -18,6 +23,12 @@ from app.models.post import Post
 from app.models.project import Project
 from app.models.skill import Skill
 from app.models.skill_category import Category
+
+@login_manager.user_loader
+def load_user(user_id):
+    if user_id == os.getenv('ADMIN_USERNAME'):
+        return User(user_id)
+    return None
 
 def populate_database():
     """Populate the database with fake data"""
@@ -163,13 +174,49 @@ def populate_database():
 
 def create_app():
     app = Flask(__name__, template_folder='templates', static_folder='static')
-
     app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DB_URL')
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.secret_key = os.getenv('SECRET_KEY', 'dev')
 
     db.init_app(app)
     migrate.init_app(app, db)
     admin.init_app(app)
+    login_manager.init_app(app)
+
+    # Register models with Flask-Admin, restrict to logged-in users
+    class AdminModelView(ModelView):
+        def is_accessible(self):
+            return current_user.is_authenticated
+        def inaccessible_callback(self, name, **kwargs):
+            from flask import redirect, url_for
+            return redirect(url_for('login'))
+
+    admin.add_view(AdminModelView(Skill, db.session))
+    admin.add_view(AdminModelView(Category, db.session))
+    admin.add_view(AdminModelView(Experience, db.session))
+    admin.add_view(AdminModelView(Project, db.session))
+    admin.add_view(AdminModelView(Post, db.session))
+
+    # Login route
+    from flask import request, render_template, redirect, url_for, flash
+    @app.route('/login', methods=['GET', 'POST'])
+    def login():
+        if request.method == 'POST':
+            username = request.form.get('username')
+            password = request.form.get('password')
+            if username == os.getenv('ADMIN_USERNAME') and password == os.getenv('ADMIN_PASSWORD'):
+                user = User(username)
+                login_user(user)
+                return redirect(url_for('admin.index'))
+            else:
+                flash('Invalid credentials', 'danger')
+        return render_template('login.html')
+
+    @app.route('/logout')
+    @login_required
+    def logout():
+        logout_user()
+        return redirect(url_for('login'))
 
     with app.app_context():
         try:

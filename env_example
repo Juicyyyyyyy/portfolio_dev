@@ -2,3 +2,5 @@
 # DB_URL=mysql://root:password123@db:3306/my_project_db
 # For local development without Docker, use:
 DB_URL=mysql://root:password123@localhost:3306/my_project_db
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=changeme
