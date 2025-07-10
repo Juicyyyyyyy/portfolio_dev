@@ -145,19 +145,19 @@ def populate_database():
                 title="Getting Started with Flask",
                 content="Flask is a lightweight web framework for Python that makes it easy to build web applications. In this post, we'll explore the basics of Flask and how to create your first web application.\n\n## Installation\n\nFirst, install Flask using pip:\n\n```bash\npip install flask\n```\n\n## Basic Application\n\nHere's a simple Flask application:\n\n```python\nfrom flask import Flask\n\napp = Flask(__name__)\n\n@app.route('/')\ndef hello_world():\n    return 'Hello, World!'\n\nif __name__ == '__main__':\n    app.run()\n```\n\nThis creates a basic web server that responds with 'Hello, World!' when you visit the root URL.",
                 date_posted=datetime.utcnow(),
-                image_url="/static/img/profile_pictures/blog_post_profile_pic_cropped.png"
+                image_url="https://www.ubuntumint.com/wp-content/uploads/2022/06/Debian-Linux.png"
             ),
             Post(
                 title="Database Design Best Practices",
                 content="Good database design is crucial for the performance and maintainability of your applications. Here are some best practices to follow when designing your database schema.\n\n## Normalization\n\nNormalize your data to reduce redundancy and improve data integrity. However, don't over-normalize as it can impact performance.\n\n## Indexing\n\nCreate indexes on columns that are frequently used in WHERE clauses, JOIN conditions, and ORDER BY clauses.\n\n## Relationships\n\nUse foreign keys to establish relationships between tables and maintain referential integrity.\n\n## Naming Conventions\n\nUse consistent naming conventions for tables, columns, and constraints to make your schema more readable and maintainable.",
                 date_posted=datetime.utcnow(),
-                image_url="/static/img/profile_pictures/blog_post_profile_pic_cropped.png"
+                image_url="https://www.ubuntumint.com/wp-content/uploads/2022/06/Debian-Linux.png"
             ),
             Post(
                 title="Docker for Development",
                 content="Docker has revolutionized how we develop and deploy applications. It provides a consistent environment across different machines and makes it easy to manage dependencies.\n\n## Benefits\n\n- **Consistency**: Same environment across development, staging, and production\n- **Isolation**: Each application runs in its own container\n- **Portability**: Easy to move applications between different environments\n- **Scalability**: Simple to scale applications horizontally\n\n## Basic Commands\n\n```bash\n# Build an image\ndocker build -t myapp .\n\n# Run a container\ndocker run -p 5000:5000 myapp\n\n# Stop a container\ndocker stop <container_id>\n```",
                 date_posted=datetime.utcnow(),
-                image_url="/static/img/profile_pictures/blog_post_profile_pic_cropped.png"
+                image_url="https://www.ubuntumint.com/wp-content/uploads/2022/06/Debian-Linux.png"
             )
         ]
         

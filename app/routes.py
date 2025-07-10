@@ -1,8 +1,4 @@
-from app.models.experience import Experience
 from app.models.post import Post
-from app.models.project import Project
-from app.models.skill import Skill
-from app.models.skill_category import Category
 
 from flask import Blueprint, render_template
 import re
@@ -15,28 +11,18 @@ import re
 
 @main_bp.route('/', methods=['GET', 'POST'])
 def index():
-    projects = Project.query.all()
-    skills = Skill.query.all()
-    skills_category = Category.query.order_by(Category.order).all()
-    categories_names = [category.name.lower() for category in skills_category]
-    experiences = Experience.query.all()
+    # Get recent blog posts for the homepage
+    recent_posts = Post.query.order_by(Post.date_posted.desc()).limit(6).all()
+    
+    # Process posts for display
+    for post in recent_posts:
+        cropped_article = crop_article(post.content)
+        cropped_article_markdown_to_html = markdown(cropped_article)
+        clean_text = re.sub('<.*?>', '', cropped_article_markdown_to_html)
+        clean_text = re.sub('\\s+', ' ', clean_text).strip()
+        post.short_description = clean_text
 
-    return render_template('main.html', projects=projects, skills=skills,
-                           categories=skills_category, categories_names=categories_names, experiences=experiences)
-
-
-@main_bp.route("/project/<int:project_id>")
-def project(project_id):
-    project = Project.query.get(project_id)
-    project.description = markdown(project.description)
-    return render_template('project.html', project=project)
-
-
-@main_bp.route("/experience/<int:experience_id>")
-def experience(experience_id):
-    experience = Experience.query.get(experience_id)
-    experience.description = markdown(experience.description)
-    return render_template('experience.html', experience=experience)
+    return render_template('main.html', recent_posts=recent_posts)
 
 
 def crop_article(full_article, max_words=30):

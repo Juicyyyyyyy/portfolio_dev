@@ -3,37 +3,93 @@
 
 {% include './Sections/head.html' %}
 
-<body data-categories="{{ categories_names | join(',') }}" class="font-sans leading-normal tracking-normal">
-
-<!-- Includes -->
+<body class="font-sans leading-normal tracking-normal">
 
 <!-- header -->
 {% include './Sections/header.html' %}
 
 <main>
-<!-- hero -->
-{% include './Sections/hero.html' %}
-
-<!-- about -->
-    <div class="bg-gray-100 ">
-{% include './Sections/about.html' %}
+    <!-- Blog Hero Section -->
+    <section class="bg-gradient-to-r from-indigo-900 to-purple-900 text-white py-20">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl font-bold mb-6 animate-fade-slide">Welcome to My Blog</h1>
+            <p class="text-xl text-indigo-200 leading-relaxed animate-fade-slide-delay max-w-3xl mx-auto">
+                Exploring technology, development, and everything in between. Join me on this journey of continuous learning and discovery.
+            </p>
+            <div class="mt-8">
+                <a href="{{ url_for('main.blog') }}" 
+                   class="inline-block bg-white text-indigo-900 px-8 py-3 rounded-lg font-semibold hover:bg-indigo-100 transition-colors duration-300">
+                    View All Posts
+                </a>
+            </div>
         </div>
+    </section>
 
-<!-- skills -->
-    <div class="bg-gray-200 ">
-{% include './Sections/skills.html' %}
-    </div>
+    <!-- Recent Posts Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Recent Posts</h2>
+                <p class="text-lg text-gray-600">Latest thoughts and insights</p>
+            </div>
 
-<!-- experiences -->
-{% include './Sections/experiences.html' %}
+            {% if recent_posts %}
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% for post in recent_posts %}
+                <article class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    {% if post.image_url %}
+                    <img src="{{ post.image_url }}" alt="{{ post.title }}" 
+                         class="w-full h-48 object-cover">
+                    {% endif %}
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-3">
+                            <a href="{{ url_for('main.post', post_id=post.id) }}" 
+                               class="hover:text-indigo-600 transition-colors duration-300">
+                                {{ post.title }}
+                            </a>
+                        </h3>
+                        <p class="text-gray-600 mb-4 line-clamp-3">
+                            {{ post.short_description }}...
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">
+                                {{ post.date_posted.strftime('%B %d, %Y') if post.date_posted else 'No date' }}
+                            </span>
+                            <a href="{{ url_for('main.post', post_id=post.id) }}" 
+                               class="text-indigo-600 hover:text-indigo-800 font-medium">
+                                Read More →
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="{{ url_for('main.blog') }}" 
+                   class="inline-block bg-indigo-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-colors duration-300">
+                    View All Posts
+                </a>
+            </div>
+            {% else %}
+            <div class="text-center py-12">
+                <p class="text-gray-600 text-lg">No posts available yet. Check back soon!</p>
+            </div>
+            {% endif %}
+        </div>
+    </section>
 
-<!-- projects -->
-    <div class="bg-gray-200 ">
-{% include './Sections/my_projects.html' %}
-    </div>
-
-<!-- contact -->
-{% include './Sections/contact.html' %}
+    <!-- About Section (Simplified) -->
+    <section class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-bold text-gray-900 mb-6">About This Blog</h2>
+            <p class="text-lg text-gray-600 leading-relaxed">
+                This is where I share my thoughts on technology, software development, and the lessons learned along the way. 
+                Whether you're a fellow developer, tech enthusiast, or just curious about the digital world, 
+                I hope you find something valuable here.
+            </p>
+        </div>
+    </section>
 </main>
 
 <!-- footer -->
@@ -55,11 +111,36 @@
         min-height: 100dvh;
     }
 
-</style>
+    .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 
+    .animate-fade-slide {
+        animation: fadeSlide 1s ease-out;
+    }
+
+    .animate-fade-slide-delay {
+        animation: fadeSlide 1s ease-out 0.3s both;
+    }
+
+    @keyframes fadeSlide {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
 
 <script>
     AOS.init();
 </script>
 
 </body>
+</html>
