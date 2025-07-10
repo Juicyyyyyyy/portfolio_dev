@@ -22,10 +22,10 @@ RUN pip install --upgrade pip \
 COPY . /app/
 
 # Expose port (Gunicorn default or Flask dev)
-EXPOSE 5000
+EXPOSE 5001
 
 # Set environment variable for Flask
 ENV FLASK_APP=run.py
 
 # Run the application with Gunicorn
-CMD ["gunicorn", "run:app", "--bind", "0.0.0.0:5000"] 
+CMD ["gunicorn", "run:app", "--bind", "0.0.0.0:5001"] 

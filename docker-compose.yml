@@ -6,20 +6,23 @@ services:
       MYSQL_DATABASE: portfolio
       MYSQL_ROOT_PASSWORD: password123
     ports:
-      - "3306:3306"
+      - "3309:3306"
     volumes:
       - db_data:/var/lib/mysql
 
   web:
     build: .
-    command: gunicorn run:app --bind 0.0.0.0:5000
+    command: gunicorn run:app --bind 0.0.0.0:5001
     volumes:
       - .:/app
     ports:
-      - "5000:5000"
+      - "5001:5001"
     environment:
       DB_URL: mysql://root:password123@db:3306/portfolio
       FLASK_ENV: production
+      SECRET_KEY: your-secret-key-here-change-in-production
+      ADMIN_USERNAME: admin
+      ADMIN_PASSWORD: changeme
     depends_on:
       - db
 

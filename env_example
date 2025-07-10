@@ -4,3 +4,4 @@
 DB_URL=mysql://root:password123@localhost:3306/my_project_db
 ADMIN_USERNAME=admin
 ADMIN_PASSWORD=changeme
+SECRET_KEY: your-secret-key-here-change-in-production
