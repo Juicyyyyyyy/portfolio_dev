@@ -20,7 +20,7 @@
                                      class="object-cover object-center w-full h-48"/>
                                 <div class="flex flex-grow">
                                     <div class="triangle"></div>
-                                    <div class="flex flex-col justify-between px-4 py-6 bg-white border border-gray-400 text">
+                                    <div class="flex flex-col justify-between px-4 py-6 bg-white border border-gray-400 text rounded-b-xl">
                                         <div>
                                             <a href="{{ url_for('main.post', post_id=post.id) }}" class="block mb-4 text-2xl font-black leading-tight hover:underline hover:text-blue-600">{{ post.title }}</a>
                                             <p class="mb-4">
@@ -29,8 +29,7 @@
                                         </div>
                                         <div>
                                             <a href="{{ url_for('main.post', post_id=post.id) }}"
-                                               class="inline-block pb-1 mt-2 text-base font-black text-blue-600 uppercase border-b border-transparent hover:border-blue-600">Read
-                                                More -></a>
+                                               class="inline-block pb-1 mt-2 text-base font-black text-blue-600 uppercase border-b border-transparent hover:border-blue-600">Read More -></a>
                                         </div>
                                     </div>
                                 </div>
