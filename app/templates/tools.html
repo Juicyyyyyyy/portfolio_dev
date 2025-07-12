@@ -6,8 +6,8 @@
     <main class="pt-[91.5px]">
       <!-- Heading -->
 <div class="text-center heading">
-  <h2 class="text-5xl font-extrabold text-indigo-900 mb-8 animate-fade-slide">Tools</h2>
-  <p class="text-xl text-gray-700 leading-relaxed animate-fade-slide-delay">Explore and try the latest tool I've developed.</p>
+  <h2 class="text-5xl font-extrabold text-indigo-900 mb-8">Tools</h2>
+  <p class="text-xl text-gray-700 leading-relaxed">Explore and try the latest tool I've developed.</p>
 </div>
 
 <!-- Tools Section -->
@@ -123,8 +123,7 @@
     display: block;
     transform: translateY(0); /* Décalage de 0 */
     opacity: 1;
-    animation: resizer 0.3s ease-in-out;
-    animation-fill-mode: forwards;
+    height: 100px;
 }
 
 /* Lorsque la div parent n'est pas survolée (hover), masquer le texte caché */
@@ -132,26 +131,7 @@
     display: block;
     transform: translateY(20px); /* Décalage vers le bas lorsqu'on quitte le hover */
     opacity: 0;
-    animation: resizer-out 0.3s ease-in-out;
-    animation-fill-mode: forwards;
-}
-
-@keyframes resizer {
-    0% {
-        height: 0px;
-    }
-    100% {
-        height: 100px;
-    }
-}
-
-@keyframes resizer-out {
-    0% {
-        height: 100px;
-    }
-    100% {
-        height: 0px;
-    }
+    height: 0px;
 }
 
 </style>

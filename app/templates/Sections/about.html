@@ -4,11 +4,11 @@
     <div class="container mx-auto px-6 md:px-12 xl:px-24">
         <!-- Heading -->
         <div class="text-center mb-16">
-            <h2 class="text-5xl font-bold text-indigo-900 mb-6 animate-fade-slide">About Me</h2>
+            <h2 class="text-5xl font-bold text-indigo-900 mb-6">About Me</h2>
         </div>
         <div class="grid grid-cols-1 gap-16 items-center">
             <!-- Text content -->
-            <div class="space-y-8 animate-text-content text-center">
+            <div class="space-y-8 text-center">
                 <p class="text-lg text-gray-800">
                     I'm studying Software Engineering at EPITA Paris, and I'm currently in my third year. I'm passionate about many computer-related domains as well as other fields, such as productivity optimization, finance (investment/trading), Linux configuration, and software design.
                 </p>
@@ -17,10 +17,5 @@
                 </p>
             </div>
         </div>
-        <!-- GSAP animations -->
-        <script>
-            gsap.from('.animate-fade-slide', {duration: 1.2, y: -50, opacity: 0, delay: 0.5});
-            gsap.from('.animate-text-content', {duration: 1.2, y: -50, opacity: 0, stagger: 0.3, delay: 1});
-        </script>
     </div>
 </section>

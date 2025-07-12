@@ -75,18 +75,18 @@
     });
 
     function toggleMenu() {
-
         menuToggle.classList.toggle('is-active');
 
         if (menu.classList.contains('hidden')) {
-            gsap.fromTo(menu, {opacity: 0, y: "100%"}, {
-                duration: 0.3,
-                opacity: 1,
-                y: "0%",
-                onStart: () => menu.classList.remove('hidden')
-            });
+            menu.classList.remove('hidden');
+            menu.style.opacity = '1';
+            menu.style.transform = 'translateY(0)';
         } else {
-            gsap.to(menu, {duration: 0.3, opacity: 0, y: "100%", onComplete: () => menu.classList.add('hidden')});
+            menu.style.opacity = '0';
+            menu.style.transform = 'translateY(100%)';
+            setTimeout(() => {
+                menu.classList.add('hidden');
+            }, 300);
         }
     }
 </script>
