@@ -1,0 +1,86 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title">Create New Folder</h3>
+                    <a href="{{ url_for('image_upload.index') }}" class="btn btn-outline-secondary">
+                        <i class="fa fa-arrow-left"></i> Back to Upload
+                    </a>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        <div class="form-group">
+                            <label for="folder_name">Folder Name</label>
+                            <input type="text" class="form-control" id="folder_name" name="folder_name" 
+                                   placeholder="e.g., my-blog-post-2024" required>
+                            <small class="form-text text-muted">
+                                Use letters, numbers, hyphens, and underscores only. 
+                                This will create a folder to organize images for a specific blog post.
+                            </small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-folder-plus"></i> Create Folder
+                            </button>
+                            <a href="{{ url_for('image_upload.index') }}" class="btn btn-secondary ml-2">
+                                Cancel
+                            </a>
+                        </div>
+                    </form>
+
+                    <div class="mt-4">
+                        <h5>Folder Naming Tips:</h5>
+                        <ul class="list-unstyled">
+                            <li><i class="fa fa-check text-success"></i> Use descriptive names like "python-tutorial-2024"</li>
+                            <li><i class="fa fa-check text-success"></i> Avoid spaces - use hyphens or underscores</li>
+                            <li><i class="fa fa-check text-success"></i> Keep names short but meaningful</li>
+                            <li><i class="fa fa-check text-success"></i> Use lowercase letters for consistency</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('folder_name').addEventListener('input', function() {
+    // Convert to lowercase and replace spaces with hyphens
+    let value = this.value.toLowerCase();
+    value = value.replace(/[^a-z0-9_-]/g, '-');
+    value = value.replace(/-+/g, '-'); // Replace multiple hyphens with single
+    value = value.replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+    this.value = value;
+});
+</script>
+
+<style>
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+    border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.list-unstyled li {
+    margin-bottom: 0.5rem;
+}
+
+.list-unstyled i {
+    margin-right: 0.5rem;
+}
+</style>
+{% endblock %} 

@@ -1,12 +1,13 @@
 import os
-from flask import Flask
+from flask import Flask, request, render_template, redirect, url_for, flash, send_from_directory
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-from flask_admin import Admin
+from flask_admin import Admin, BaseView, expose
 from flask_admin.contrib.sqla import ModelView
 from dotenv import load_dotenv
 from datetime import datetime
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
+from werkzeug.utils import secure_filename
 from app.models.user import User
 
 load_dotenv()
@@ -191,6 +192,164 @@ def create_app():
             from flask import redirect, url_for
             return redirect(url_for('login'))
 
+    class ImageUploadView(BaseView):
+        def is_accessible(self):
+            return current_user.is_authenticated
+        def inaccessible_callback(self, name, **kwargs):
+            from flask import redirect, url_for
+            return redirect(url_for('login'))
+
+        def get_folders(self):
+            """Get list of folders in the posts directory"""
+            upload_dir = os.path.join(app.static_folder, 'img', 'posts')
+            folders = []
+            
+            if os.path.exists(upload_dir):
+                for item in os.listdir(upload_dir):
+                    item_path = os.path.join(upload_dir, item)
+                    if os.path.isdir(item_path):
+                        folders.append(item)
+            
+            return sorted(folders)
+
+        @expose('/', methods=['GET', 'POST'])
+        def index(self):
+            folders = self.get_folders()
+            
+            if request.method == 'POST':
+                if 'file' not in request.files:
+                    flash('No file selected', 'error')
+                    return self.render('admin/image_upload.html', folders=folders)
+                
+                file = request.files['file']
+                if file.filename == '':
+                    flash('No file selected', 'error')
+                    return self.render('admin/image_upload.html', folders=folders)
+                
+                if file:
+                    # Validate file type
+                    allowed_extensions = {'png', 'jpg', 'jpeg', 'gif', 'webp'}
+                    filename = secure_filename(file.filename)
+                    file_ext = filename.rsplit('.', 1)[1].lower() if '.' in filename else ''
+                    
+                    if file_ext not in allowed_extensions:
+                        flash('Invalid file type. Allowed: PNG, JPG, JPEG, GIF, WebP', 'error')
+                        return self.render('admin/image_upload.html', folders=folders)
+                    
+                    # Validate file size (10MB limit)
+                    file.seek(0, 2)  # Seek to end
+                    file_size = file.tell()
+                    file.seek(0)  # Reset to beginning
+                    
+                    if file_size > 10 * 1024 * 1024:  # 10MB
+                        flash('File size too large. Maximum size is 10MB', 'error')
+                        return self.render('admin/image_upload.html', folders=folders)
+                    
+                    # Get selected folder
+                    selected_folder = request.form.get('folder', '').strip()
+                    
+                    # Ensure the upload directory exists
+                    upload_dir = os.path.join(app.static_folder, 'img', 'posts')
+                    if selected_folder:
+                        upload_dir = os.path.join(upload_dir, selected_folder)
+                    os.makedirs(upload_dir, exist_ok=True)
+                    
+                    # Check if file already exists and add number if needed
+                    base_name, ext = os.path.splitext(filename)
+                    counter = 1
+                    while os.path.exists(os.path.join(upload_dir, filename)):
+                        filename = f"{base_name}_{counter}{ext}"
+                        counter += 1
+                    
+                    file_path = os.path.join(upload_dir, filename)
+                    file.save(file_path)
+                    
+                    # Return the URL path for easy copying
+                    if selected_folder:
+                        image_url = f"/static/img/posts/{selected_folder}/{filename}"
+                    else:
+                        image_url = f"/static/img/posts/{filename}"
+                    
+                    flash(f'Image uploaded successfully! URL: {image_url}', 'success')
+                    return self.render('admin/image_upload.html', uploaded_url=image_url, folders=folders)
+            
+            return self.render('admin/image_upload.html', folders=folders)
+
+        @expose('/create_folder', methods=['GET', 'POST'])
+        def create_folder(self):
+            """Create a new folder"""
+            if request.method == 'POST':
+                folder_name = request.form.get('folder_name', '').strip()
+                
+                if not folder_name:
+                    flash('Folder name is required', 'error')
+                    return redirect(url_for('image_upload.index'))
+                
+                # Validate folder name (alphanumeric and hyphens only)
+                import re
+                if not re.match(r'^[a-zA-Z0-9_-]+$', folder_name):
+                    flash('Folder name can only contain letters, numbers, hyphens, and underscores', 'error')
+                    return redirect(url_for('image_upload.index'))
+                
+                # Create folder
+                upload_dir = os.path.join(app.static_folder, 'img', 'posts')
+                folder_path = os.path.join(upload_dir, folder_name)
+                
+                if os.path.exists(folder_path):
+                    flash(f'Folder "{folder_name}" already exists', 'error')
+                    return redirect(url_for('image_upload.index'))
+                
+                try:
+                    os.makedirs(folder_path, exist_ok=True)
+                    flash(f'Folder "{folder_name}" created successfully!', 'success')
+                except Exception as e:
+                    flash(f'Error creating folder: {str(e)}', 'error')
+                
+                return redirect(url_for('image_upload.index'))
+            
+            return self.render('admin/create_folder.html')
+
+        @expose('/list')
+        def list_images(self):
+            """List all uploaded images"""
+            upload_dir = os.path.join(app.static_folder, 'img', 'posts')
+            images = []
+            folders = []
+            
+            if os.path.exists(upload_dir):
+                for item in os.listdir(upload_dir):
+                    item_path = os.path.join(upload_dir, item)
+                    if os.path.isdir(item_path):
+                        folders.append(item)
+                        # Get images in this folder
+                        for filename in os.listdir(item_path):
+                            if filename.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp')):
+                                file_path = os.path.join(item_path, filename)
+                                file_size = os.path.getsize(file_path)
+                                images.append({
+                                    'filename': filename,
+                                    'folder': item,
+                                    'url': f"/static/img/posts/{item}/{filename}",
+                                    'size': file_size,
+                                    'size_mb': round(file_size / (1024 * 1024), 2)
+                                })
+                    elif item.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.webp')):
+                        # Images in root directory
+                        file_path = os.path.join(upload_dir, item)
+                        file_size = os.path.getsize(file_path)
+                        images.append({
+                            'filename': item,
+                            'folder': 'Root',
+                            'url': f"/static/img/posts/{item}",
+                            'size': file_size,
+                            'size_mb': round(file_size / (1024 * 1024), 2)
+                        })
+            
+            # Sort by folder, then by filename
+            images.sort(key=lambda x: (x['folder'], x['filename']))
+            return self.render('admin/image_list.html', images=images, folders=folders)
+
+    admin.add_view(ImageUploadView(name='Image Upload', endpoint='image_upload'))
     admin.add_view(AdminModelView(Skill, db.session))
     admin.add_view(AdminModelView(Category, db.session))
     admin.add_view(AdminModelView(Experience, db.session))
@@ -198,7 +357,6 @@ def create_app():
     admin.add_view(AdminModelView(Post, db.session))
 
     # Login route
-    from flask import request, render_template, redirect, url_for, flash
     @app.route('/login', methods=['GET', 'POST'])
     def login():
         if request.method == 'POST':

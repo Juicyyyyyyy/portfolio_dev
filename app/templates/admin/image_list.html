@@ -1,0 +1,242 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3 class="card-title">Uploaded Images</h3>
+                    <a href="{{ url_for('image_upload.index') }}" class="btn btn-primary">
+                        <i class="fa fa-upload"></i> Upload New Image
+                    </a>
+                </div>
+                <div class="card-body">
+                    {% if images %}
+                    <!-- Filter Controls -->
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" id="searchInput" placeholder="Search images...">
+                        </div>
+                        <div class="col-md-6">
+                            <select class="form-control" id="folderFilter">
+                                <option value="">All Folders</option>
+                                <option value="Root">Root Directory</option>
+                                {% for folder in folders %}
+                                <option value="{{ folder }}">{{ folder }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Preview</th>
+                                    <th>Filename</th>
+                                    <th>Folder</th>
+                                    <th>URL</th>
+                                    <th>Size</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for image in images %}
+                                <tr>
+                                    <td>
+                                        <img src="{{ image.url }}" alt="{{ image.filename }}" 
+                                             style="width: 60px; height: 60px; object-fit: cover; border-radius: 4px;">
+                                    </td>
+                                    <td>{{ image.filename }}</td>
+                                    <td>
+                                        <span class="badge badge-{{ 'primary' if image.folder != 'Root' else 'secondary' }}">
+                                            {{ image.folder }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="input-group">
+                                            <input type="text" class="form-control form-control-sm" 
+                                                   value="{{ image.url }}" readonly>
+                                            <div class="input-group-append">
+                                                <button class="btn btn-outline-secondary btn-sm" 
+                                                        onclick="copyToClipboard('{{ image.url }}')">
+                                                    <i class="fa fa-copy"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>{{ image.size_mb }} MB</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary" 
+                                                onclick="openImageModal('{{ image.url }}', '{{ image.filename }}')">
+                                            <i class="fa fa-eye"></i> View
+                                        </button>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="text-center py-5">
+                        <i class="fa fa-image fa-3x text-muted mb-3"></i>
+                        <h5 class="text-muted">No images uploaded yet</h5>
+                        <p class="text-muted">Upload your first image to get started.</p>
+                        <a href="{{ url_for('image_upload.index') }}" class="btn btn-primary">
+                            <i class="fa fa-upload"></i> Upload Image
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Image Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalTitle">Image Preview</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" alt="" class="img-fluid">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="copyModalImageUrl()">Copy URL</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function copyToClipboard(url) {
+    const tempInput = document.createElement('input');
+    tempInput.value = url;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand('copy');
+    document.body.removeChild(tempInput);
+    
+    // Show feedback
+    const button = event.target.closest('button');
+    const originalHTML = button.innerHTML;
+    button.innerHTML = '<i class="fa fa-check"></i>';
+    button.classList.remove('btn-outline-secondary');
+    button.classList.add('btn-success');
+    
+    setTimeout(() => {
+        button.innerHTML = originalHTML;
+        button.classList.remove('btn-success');
+        button.classList.add('btn-outline-secondary');
+    }, 2000);
+}
+
+function openImageModal(url, filename) {
+    document.getElementById('modalImage').src = url;
+    document.getElementById('modalImage').alt = filename;
+    document.getElementById('imageModalTitle').textContent = filename;
+    $('#imageModal').modal('show');
+}
+
+function copyModalImageUrl() {
+    const url = document.getElementById('modalImage').src;
+    copyToClipboard(url);
+    
+    // Show feedback on modal button
+    const button = event.target;
+    const originalText = button.textContent;
+    button.textContent = 'Copied!';
+    button.classList.remove('btn-primary');
+    button.classList.add('btn-success');
+    
+    setTimeout(() => {
+        button.textContent = originalText;
+        button.classList.remove('btn-success');
+        button.classList.add('btn-primary');
+    }, 2000);
+}
+
+// Add search functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('searchInput');
+    const folderFilter = document.getElementById('folderFilter');
+    const rows = document.querySelectorAll('tbody tr');
+    
+    function filterImages() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const selectedFolder = folderFilter.value;
+        
+        rows.forEach(row => {
+            const filename = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+            const folder = row.querySelector('td:nth-child(3) .badge').textContent.trim();
+            
+            const matchesSearch = filename.includes(searchTerm);
+            const matchesFolder = !selectedFolder || folder === selectedFolder;
+            
+            if (matchesSearch && matchesFolder) {
+                row.style.display = '';
+            } else {
+                row.style.display = 'none';
+            }
+        });
+        
+        // Update results count
+        updateResultsCount();
+    }
+    
+    function updateResultsCount() {
+        const visibleRows = Array.from(rows).filter(row => row.style.display !== 'none');
+        const countElement = document.getElementById('resultsCount');
+        if (countElement) {
+            countElement.textContent = `${visibleRows.length} of ${rows.length} images`;
+        }
+    }
+    
+    if (searchInput) {
+        searchInput.addEventListener('input', filterImages);
+    }
+    
+    if (folderFilter) {
+        folderFilter.addEventListener('change', filterImages);
+    }
+    
+    // Initial count
+    updateResultsCount();
+});
+</script>
+
+<style>
+.table img {
+    border: 1px solid #dee2e6;
+}
+
+.input-group .form-control {
+    font-size: 0.875rem;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+.modal-body img {
+    max-height: 70vh;
+    object-fit: contain;
+}
+
+.table-responsive {
+    border-radius: 0.375rem;
+}
+
+.card {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+</style>
+{% endblock %} 
